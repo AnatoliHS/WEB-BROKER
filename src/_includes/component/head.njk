@@ -18,6 +18,14 @@
     rel="stylesheet">
 
   <style>
+    @font-face {
+      font-family: 'Teodor';
+      src: url('/teodor.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
     :root {
       --bg-color: #f2f8fc;
       --primary-color: #1a365d;
@@ -30,7 +38,7 @@
       --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
       --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
 
-      --font-serif: 'Playfair Display', serif;
+      --font-serif: 'Teodor', 'Playfair Display', serif;
       --font-sans: 'Inter', sans-serif;
     }
 
@@ -66,9 +74,10 @@
     }
 
     section {
-      padding: 120px 20px;
-      max-width: 1400px;
-      margin: 0 auto;
+        padding: 120px 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+        scroll-margin-top: 100px;
     }
 
     .container {

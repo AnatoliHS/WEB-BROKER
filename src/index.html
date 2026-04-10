@@ -69,8 +69,9 @@ title: Home
     /* REVEAL SECTION STYLES */
     .reveal-section {
         background-color: var(--white);
-        padding: 180px 20px;
+        padding: 140px 20px 80px;
         text-align: center;
+        border-bottom: 1px solid rgba(26, 54, 93, 0.08);
     }
 
     .reveal-container {
@@ -79,10 +80,12 @@ title: Home
     }
 
     .reveal-title {
-        font-size: clamp(1.9rem, 3vw, 2.8rem);
-        line-height: 1.45;
+        font-family: 'Teodor', var(--font-serif);
+        font-size: clamp(2rem, 3.8vw, 3.2rem);
+        line-height: 1.2;
         margin-bottom: 40px;
-        font-weight: 300;
+        font-weight: normal;
+        letter-spacing: -0.02em;
     }
 
     .reveal-cta {
@@ -109,6 +112,9 @@ title: Home
     /* ABOUT SECTION STYLES */
     .about-section {
         background-color: var(--white);
+        padding-top: 60px;
+        padding-bottom: 120px;
+        border-bottom: 1px solid rgba(26, 54, 93, 0.08);
     }
 
     .about-grid {
@@ -154,6 +160,7 @@ title: Home
     .services-v2 {
         background-color: var(--white);
         padding: 0;
+        border-bottom: 1px solid rgba(26, 54, 93, 0.08);
     }
 
     .service-row {
@@ -168,14 +175,21 @@ title: Home
 
     .service-image {
         flex: 1;
-        height: 80vh;
-        overflow: hidden;
+        height: 85vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
     }
 
     .service-image img {
         width: 100%;
         height: 100%;
+        max-width: 420px;
+        /* Distinctly narrower than height to ensure capsule shape */
         object-fit: cover;
+        border-radius: 250px;
+        /* Semi-circular ends for the capsule */
         transition: transform 1.5s ease;
     }
 
@@ -213,11 +227,18 @@ title: Home
     .faq-section {
         background-color: var(--white);
         padding: 120px 20px;
+        text-align: center;
+    }
+
+    .faq-section h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
     }
 
     .faq-container {
         max-width: 800px;
         margin: 60px auto 0;
+        text-align: left;
     }
 
     .faq-item {
@@ -268,6 +289,141 @@ title: Home
         transform: rotate(180deg);
     }
 
+    .faq-item.active .faq-icon {
+        transform: rotate(45deg);
+    }
+
+    /* FINAL CTA SECTION STYLES */
+    .final-cta-section {
+        background-color: var(--bg-color);
+        color: var(--primary-color);
+        padding: 120px 20px;
+        text-align: center;
+    }
+
+    .final-cta-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .final-cta-section h2 {
+        font-family: 'Teodor', var(--font-serif);
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        color: var(--primary-color);
+        margin-bottom: 30px;
+        line-height: 1.1;
+    }
+
+    .final-cta-section p {
+        font-size: 1.2rem;
+        color: var(--text-light);
+        margin-bottom: 50px;
+        font-weight: 300;
+    }
+
+    .final-cta-section .btn-primary {
+        background-color: var(--accent-color);
+        color: var(--white);
+        padding: 20px 45px;
+        font-size: 1rem;
+    }
+
+    .final-cta-section .btn-primary:hover {
+        background-color: var(--white);
+        color: var(--primary-color);
+    }
+
+    /* CONTACT SECTION STYLES */
+    .contact-section {
+        background-color: var(--white);
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 80px;
+        align-items: start;
+    }
+
+    .contact-info h2 {
+        font-family: 'Teodor', var(--font-serif);
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+
+    .contact-info p {
+        font-size: 1.1rem;
+        color: var(--text-light);
+        margin-bottom: 40px;
+        line-height: 1.6;
+    }
+
+    .contact-details {
+        margin-top: 40px;
+    }
+
+    .contact-item {
+        margin-bottom: 25px;
+    }
+
+    .contact-item label {
+        display: block;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--accent-color);
+        margin-bottom: 5px;
+        font-weight: 600;
+    }
+
+    .contact-item span {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        font-weight: 500;
+    }
+
+    .contact-form {
+        background-color: #f9fbfd;
+        padding: 50px;
+        border-radius: 12px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--primary-color);
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid rgba(26, 54, 93, 0.1);
+        border-radius: 6px;
+        font-family: inherit;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background-color: var(--white);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
+    }
+
+    .contact-form .btn {
+        width: 100%;
+        margin-top: 20px;
+    }
+
     /* MEDIA QUERIES */
     @media (max-width: 992px) {
 
@@ -279,12 +435,31 @@ title: Home
 
         .service-image {
             width: 100%;
+            height: auto;
+            min-height: 450px;
+            padding: 40px 20px;
+        }
+
+        .service-image img {
+            width: 260px;
             height: 400px;
+            margin: 0 auto;
+            border-radius: 200px;
+            /* Semi-circular ends */
         }
 
         .service-content {
-            padding: 60px 20px;
+            padding: 40px 20px;
             text-align: center;
+        }
+
+        .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .contact-form {
+            padding: 30px 20px;
         }
 
         .service-content h3 {
@@ -331,8 +506,9 @@ title: Home
     <div class="reveal-container">
         <h2 class="reveal-title">
             <span class="reveal-text">Turning your monthly expense into a smart investment strategy. Powered by Dominion
-                Lending Centres, I leverage Canada’s largest network and 230+ lenders to secure elite rates—transforming
-                your mortgage into a strategic wealth-building asset.</span>
+                Lending Centres and backed by Canada’s largest network of 230+ lenders, mortgages are structured to
+                secure competitive rates and transform home financing into a strategic wealth-building asset.
+            </span>
         </h2>
     </div>
 </section>
@@ -459,6 +635,64 @@ title: Home
     </div>
 </section>
 
+</section>
+
+<section class="final-cta-section">
+    <div class="final-cta-container">
+        <h2>Ready to get more from your mortgage?</h2>
+        <p>Find the right financing at the right rate.</p>
+        <a href="#contact" class="btn btn-primary">Start Application</a>
+    </div>
+</section>
+
+<section class="contact-section" id="contact">
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <p>Have a question or ready to start? Send a message and I'll get back to you shortly to discuss your mortgage strategy.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <label>Phone</label>
+                        <span>{{ site.phone }}</span>
+                    </div>
+                    <div class="contact-item">
+                        <label>Email</label>
+                        <span>{{ site.email }}</span>
+                    </div>
+                    <div class="contact-item">
+                        <label>Brokerage</label>
+                        <span>{{ site.brokerage }}</span>
+                    </div>
+                    <div class="contact-item">
+                        <label>Licence</label>
+                        <span>{{ site.license }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">FullName</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="How can I help you today?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Scripts Grouped Together -->
 <script>
     // Scroll Reveal Observer
@@ -484,7 +718,7 @@ title: Home
             const rect = reveal.getBoundingClientRect();
             const windowHeight = window.innerHeight;
             const visibility = (windowHeight - rect.top) / windowHeight;
-            const progress = Math.min(Math.max(visibility * 2 - 0.2, 0), 1);
+            const progress = Math.min(Math.max(visibility * 2 - 0.6, 0), 1);
             reveal.style.backgroundSize = `${progress * 100}% 100%`;
         });
     });

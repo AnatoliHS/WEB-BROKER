@@ -21,10 +21,67 @@
   }
 
   .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
     font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-weight: 700;
     color: var(--primary-color);
+  }
+
+  .nav-portrait {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    flex-shrink: 0;
+  }
+
+  .nav-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nav-name-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .nav-name {
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.1;
+    transition: all 0.4s ease;
+  }
+
+  .nav-license {
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: 2px;
+    opacity: 1;
+    max-height: 20px;
+    transition: all 0.4s ease;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Scrolled State Transitions */
+  .navbar.scrolled .nav-portrait {
+    width: 0;
+    height: 60px;
+    margin-right: -15px;
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  .navbar.scrolled .nav-license {
+    opacity: 0;
+    max-height: 0;
+    margin-top: 0;
+    overflow: hidden;
   }
 
   .nav-links {
@@ -38,6 +95,10 @@
     color: var(--primary-color);
     font-size: 0.95rem;
     position: relative;
+  }
+
+  .nav-links a.btn-primary {
+    color: var(--white);
   }
 
   .nav-links a::after {
@@ -96,7 +157,13 @@
 
 <nav class="navbar" id="navbar">
   <div class="nav-brand">
-    {{ site.name }}
+    <div class="nav-portrait">
+      <img src="/assets/carole-ann-bryant-portrait.png" alt="Carole Ann Bryant">
+    </div>
+    <div class="nav-name-group">
+      <div class="nav-name">{{ site.name }}</div>
+      <div class="nav-license">Originator Licence #M08001276</div>
+    </div>
   </div>
 
   <div class="nav-links" id="nav-links">
