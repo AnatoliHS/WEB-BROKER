@@ -3,600 +3,497 @@ layout: default.njk
 title: Home
 ---
 
+<!-- Styles Grouped Together -->
 <style>
-    /* --- 1. GLOBAL & HERO STYLES --- */
-    .hero-section {
-        background-color: #588cba;
-        width: 100vw;
-        margin-left: calc(-50vw + 50%);
+    /* HERO SECTION STYLES */
+    .hero {
+        height: 90vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 500px;
-        color: white;
-        padding-top: 50px;
-        overflow: hidden;
-        margin-bottom: -1px;
+        text-align: center;
+        position: relative;
+        padding-top: 100px;
+        background-color: var(--bg-color);
     }
 
     .hero-container {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-    }
-
-    .hero-left {
-        flex: 1;
-        overflow: hidden;
-    }
-
-    .hero-left img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        min-height: 500px;
-    }
-
-    .hero-right {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 40px;
-        text-align: left;
-    }
-
-    .hero-title {
-        font-size: 3.5rem;
-        font-weight: bold;
-        margin-bottom: 20px;
-        line-height: 1.2;
-    }
-
-    .hero-text {
-        font-size: 1.9rem;
-        line-height: 1.6;
-    }
-
-    /* --- 2. WAVE ANIMATION --- */
-    .waves-container {
-        position: relative;
-        width: 100vw;
-        margin-left: calc(-50vw + 50%);
-        background: #588cba;
-        height: 100px;
-        overflow: hidden;
-        margin-bottom: -1px;
-    }
-
-    .waves {
-        position: relative;
-        width: 100%;
-        height: 100px;
-        margin-bottom: -7px;
-        min-height: 100px;
-        max-height: 150px;
-    }
-
-    .parallax>use {
-        animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
-    }
-
-    .parallax>use:nth-child(1) {
-        animation-delay: -2s;
-        animation-duration: 7s;
-        fill: rgba(88, 140, 186, 0.7);
-    }
-
-    .parallax>use:nth-child(2) {
-        animation-delay: -3s;
-        animation-duration: 10s;
-        fill: rgba(125, 170, 208, 0.7);
-    }
-
-    .parallax>use:nth-child(3) {
-        animation-delay: -4s;
-        animation-duration: 13s;
-        fill: rgba(163, 201, 230, 0.7);
-    }
-
-    .parallax>use:nth-child(4) {
-        animation-delay: -5s;
-        animation-duration: 20s;
-        fill: #f2f8fc;
-    }
-
-    @keyframes move-forever {
-        0% {
-            transform: translate3d(-90px, 0, 0);
-        }
-
-        100% {
-            transform: translate3d(85px, 0, 0);
-        }
-    }
-
-    /* --- 3. CORE POINTS SECTION --- */
-    .core-points-section {
-        padding: 120px 20px 80px;
-        background: #f2f8fc;
-        overflow: hidden;
-    }
-
-    .core-points-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: flex-start;
-        max-width: 1200px;
+        max-width: 900px;
         margin: 0 auto;
-        gap: 40px;
-    }
-
-    .core-point {
-        flex: 1;
-        text-align: center;
-        opacity: 0;
-        animation: fadeInUp 1s ease-out forwards;
-    }
-
-    .core-point:nth-child(1) {
-        animation-delay: 0.5s;
-    }
-
-    .core-point:nth-child(2) {
-        animation-delay: 1.0s;
-    }
-
-    .core-point:nth-child(3) {
-        animation-delay: 1.5s;
-    }
-
-    .core-point img {
-        height: 250px;
-        width: auto;
-        margin-bottom: 25px;
-        object-fit: contain;
-    }
-
-    .core-point h3 {
-        font-size: 1.5rem;
-        color: #191f4f;
-        margin-bottom: 15px;
-        font-weight: 700;
-    }
-
-    .core-point p {
-        font-size: 1rem;
-        color: #555;
-        line-height: 1.6;
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(40px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    /* --- 4. NEW SEQUENCE-STYLE SERVICES SECTION --- */
-    .services-section {
-        padding: 80px 0;
-        background: #f2f8fc;
-        overflow-x: hidden;
-    }
-
-    .services-main-title {
-        text-align: center;
-        font-size: 3rem;
-        color: #191f4f;
-        margin-bottom: 60px;
-        font-weight: 800;
-    }
-
-    .sequence-container {
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100vw;
-        height: 70vh;
-        margin: 100px 0;
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-    }
-
-    .visual-stack {
-        position: relative;
-        width: 60%;
-        height: 100%;
-    }
-
-    .gradient-square {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 55vw;
-        height: 100%;
-        background: #588cba;
-        /* Blue Box */
-        border-radius: 0 20px 20px 0;
-        z-index: 1;
-    }
-
-    .sliding-image-wrap {
-        position: absolute;
-        left: 80px;
-        top: 50%;
-        transform: translateY(-50%);
-        height: 85%;
-        width: 100%;
         z-index: 2;
     }
 
-    .design-image {
-        width: 90%;
+    .hero-tagline {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--accent-color);
+        margin-bottom: 30px;
+        font-weight: 500;
+    }
+
+    .hero h1 {
+        font-size: clamp(3rem, 8vw, 5.5rem);
+        line-height: 1.05;
+        margin-bottom: 40px;
+        letter-spacing: -0.02em;
+    }
+
+    .hero p {
+        font-size: 1.25rem;
+        color: var(--text-light);
+        margin: 0 auto 50px;
+        max-width: 600px;
+        font-weight: 300;
+    }
+
+    .hero-btns {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .hero::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
         height: 100%;
-        object-fit: cover;
-        border-radius: 12px;
-        box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
+        background: radial-gradient(circle at 50% 50%, rgba(184, 134, 11, 0.05) 0%, transparent 70%);
+        z-index: 1;
+        pointer-events: none;
     }
 
-    /* Mirror Logic (Service 2 & 4) */
-    .sequence-container.mirror {
-        flex-direction: row-reverse;
+    /* REVEAL SECTION STYLES */
+    .reveal-section {
+        background-color: var(--white);
+        padding: 180px 20px;
+        text-align: center;
     }
 
-    .sequence-container.mirror .gradient-square {
-        left: auto;
-        right: 0;
-        background: #ee6257;
-        /* Red Box */
-        border-radius: 20px 0 0 20px;
+    .reveal-container {
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
-    .sequence-container.mirror .sliding-image-wrap {
-        left: auto;
-        right: 80px;
+    .reveal-title {
+        font-size: clamp(1.9rem, 3vw, 2.8rem);
+        line-height: 1.45;
+        margin-bottom: 40px;
+        font-weight: 300;
     }
 
-    /* Text Content */
-    .sequence-content {
-        width: 40%;
-        padding: 0 60px;
-        z-index: 5;
+    .reveal-cta {
+        margin-top: 60px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 1s ease 0.5s;
     }
 
-    .sequence-title {
+    .reveal-cta.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .reveal-subtext {
+        font-size: 1.25rem;
+        color: var(--text-light);
+        max-width: 600px;
+        margin: 40px auto 0;
+        font-weight: 300;
+        line-height: 1.8;
+    }
+
+    /* ABOUT SECTION STYLES */
+    .about-section {
+        background-color: var(--white);
+    }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .about-portrait {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .about-portrait img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .about-text h2 {
         font-size: 2.5rem;
-        font-weight: 800;
-        color: #191f4f;
+        margin-bottom: 25px;
+    }
+
+    .about-text p {
+        font-size: 1.1rem;
+        color: var(--text-light);
         margin-bottom: 20px;
     }
 
-    .service-text {
-        font-size: 1.2rem;
-        line-height: 1.7;
-        color: #333;
+    .about-text .license {
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-top: 30px;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
-    .quick-contact {
-        padding: 100px 20px;
-        background: #ffffff;
+    /* SERVICES SECTION STYLES */
+    .services-v2 {
+        background-color: var(--white);
+        padding: 0;
     }
 
-    .contact-container {
-        max-width: 1100px;
-        margin: 0 auto;
+    .service-row {
         display: flex;
+        min-height: 80vh;
         align-items: center;
-        gap: 80px;
     }
 
-    .contact-info {
+    .service-row:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    .service-image {
         flex: 1;
+        height: 80vh;
+        overflow: hidden;
     }
 
-    .contact-map-placeholder {
+    .service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 1.5s ease;
+    }
+
+    .service-row:hover .service-image img {
+        transform: scale(1.05);
+    }
+
+    .service-content {
         flex: 1;
+        padding: 10%;
+        max-width: 700px;
     }
 
-    .contact-title {
-        font-size: 2.8rem;
-        color: #191f4f;
-        margin-bottom: 15px;
-        font-weight: 800;
+    .service-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--accent-color);
+        margin-bottom: 20px;
+        display: block;
     }
 
-    .contact-subtitle {
-        font-size: 1.1rem;
-        color: #555;
-        margin-bottom: 40px;
-        line-height: 1.6;
-    }
-
-    .info-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 20px;
+    .service-content h3 {
+        font-size: 3rem;
         margin-bottom: 30px;
     }
 
-    .info-icon {
-        font-size: 1.8rem;
-        background: #f2f8fc;
-        padding: 15px;
-        border-radius: 50%;
-        line-height: 1;
-    }
-
-    .info-text strong {
-        display: block;
-        font-size: 1.2rem;
-        color: #191f4f;
-        margin-bottom: 5px;
-    }
-
-    .info-text p {
+    .service-content p {
         font-size: 1.1rem;
-        color: #666;
-        margin: 0;
+        color: var(--text-light);
+        margin-bottom: 40px;
     }
 
-    .contact-image {
-        width: 100%;
-        height: 450px;
-        object-fit: cover;
-        border-radius: 24px;
-        box-shadow: 0 20px 40px rgba(25, 31, 79, 0.1);
+    /* FAQ SECTION STYLES */
+    .faq-section {
+        background-color: var(--white);
+        padding: 120px 20px;
     }
 
-    /* --- 5. RESPONSIVE BREAKPOINTS --- */
-    @media (max-width: 1024px) {
-        .hero-container {
+    .faq-container {
+        max-width: 800px;
+        margin: 60px auto 0;
+    }
+
+    .faq-item {
+        margin-bottom: 30px;
+        border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+    }
+
+    .faq-question {
+        padding: 25px 0;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        transition: all 0.3s ease;
+        font-family: var(--font-serif);
+        font-weight: 300;
+    }
+
+    .faq-question:hover {
+        color: var(--accent-color);
+    }
+
+    .faq-answer {
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+        color: var(--text-light);
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    .faq-item.active .faq-answer {
+        padding-bottom: 30px;
+        max-height: 400px;
+    }
+
+    .faq-icon::before {
+        content: '↓';
+        font-size: 1.2rem;
+        transition: transform 0.4s ease;
+        display: inline-block;
+    }
+
+    .faq-item.active .faq-icon::before {
+        transform: rotate(180deg);
+    }
+
+    /* MEDIA QUERIES */
+    @media (max-width: 992px) {
+
+        .service-row,
+        .service-row:nth-child(even) {
             flex-direction: column;
+            height: auto;
         }
 
-        .hero-section {
-            padding-top: 40px;
-        }
-
-        .hero-left img {
-            min-height: 250px;
-        }
-
-        .hero-right {
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: 2rem;
-        }
-
-        .hero-text {
-            font-size: 1.2rem;
-        }
-
-        .core-points-container {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .core-point {
+        .service-image {
             width: 100%;
-            margin-bottom: 40px;
+            height: 400px;
         }
 
-        /* Mobile Sequence Layout */
-        .sequence-container,
-        .sequence-container.mirror {
-            flex-direction: column !important;
-            height: auto !important;
-            margin: 60px 0 !important;
-            left: 0;
-            transform: none;
-            width: 100%;
-        }
-
-        .visual-stack {
-            width: 100% !important;
-            height: 350px !important;
-        }
-
-        .gradient-square,
-        .sequence-container.mirror .gradient-square {
-            left: 0 !important;
-            right: auto !important;
-            width: 90% !important;
-            height: 350px !important;
-            border-radius: 0 20px 20px 0 !important;
-        }
-
-        .sliding-image-wrap,
-        .sequence-container.mirror .sliding-image-wrap {
-            left: 20px !important;
-            right: auto !important;
-            height: 300px !important;
-            width: 100% !important;
-            top: 25px !important;
-            transform: none;
-        }
-
-        .design-image {
-            width: 90vw !important;
-            height: 100% !important;
-        }
-
-        .sequence-content {
-            width: 100% !important;
-            padding: 40px 20px !important;
+        .service-content {
+            padding: 60px 20px;
             text-align: center;
         }
 
-        .contact-container {
-            flex-direction: column;
-            text-align: center;
-            gap: 50px;
-        }
-
-        .info-item {
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .contact-title {
+        .service-content h3 {
             font-size: 2.2rem;
         }
 
-        .contact-image {
-            height: 300px;
+        .about-grid {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero {
+            height: auto;
+            padding: 160px 20px 100px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+        }
+
+        .hero-btns {
+            flex-direction: column;
+            align-items: center;
         }
     }
 </style>
 
-<div class="hero-section">
+<!-- HTML Sections Grouped Together -->
+<section class="hero" id="hero">
     <div class="hero-container">
-        <div class="hero-left">
-            <img src="/assets/rideau-House.png" alt="Pharmacy Interior">
-        </div>
-        <div class="hero-right">
-            <h1 class="hero-title">Your Trusted Neighborhood Pharmacy</h1>
-            <p class="hero-text">Providing quality healthcare, prescription services, and wellness products with care
-                and convenience right in your community.</p>
-        </div>
-    </div>
-</div>
-
-<div class="waves-container">
-    <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none"
-        shape-rendering="auto">
-        <defs>
-            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-        </defs>
-        <g class="parallax">
-            <use xlink:href="#gentle-wave" x="48" y="0" />
-            <use xlink:href="#gentle-wave" x="48" y="3" />
-            <use xlink:href="#gentle-wave" x="48" y="5" />
-            <use xlink:href="#gentle-wave" x="48" y="7" />
-        </g>
-    </svg>
-</div>
-
-<div class="core-points-section">
-    <div class="core-points-container">
-        <div class="core-point">
-            <img src="/assets/rx.png" alt="Prescription Care">
-            <h3>Personalized Prescription Care</h3>
-            <p>We don’t just fill bottles; we manage your health with precision and expert consultation.</p>
-        </div>
-        <div class="core-point">
-            <img src="/assets/modern.png" alt="Modern Convenience">
-            <h3>Modern Convenience</h3>
-            <p>Easy transfers, online refills, and quick service without the "big box" wait times.</p>
-        </div>
-        <div class="core-point">
-            <img src="/assets/community.png" alt="Community Wellness">
-            <h3>Community-First Wellness</h3>
-            <p>Locally owned and operated, dedicated to the families in our neighborhood.</p>
-        </div>
-    </div>
-</div>
-
-<div class="services-section">
-    <h2 class="services-main-title">Our Services</h2>
-
-    <div class="sequence-container">
-        <div class="visual-stack">
-            <div class="gradient-square"></div>
-            <div class="sliding-image-wrap">
-                <img src="/assets/vaccine.jpg" alt="Vaccination" class="design-image">
-            </div>
-        </div>
-        <div class="sequence-content">
-            <h2 class="sequence-title">Immunizations & Vaccinations</h2>
-            <p class="service-text">Providing a convenient way for the community to stay protected. From annual flu
-                shots to travel vaccines, we offer professional administration without the long wait times.</p>
-        </div>
-    </div>
-
-    <div class="sequence-container mirror">
-        <div class="visual-stack">
-            <div class="gradient-square"></div>
-            <div class="sliding-image-wrap">
-                <img src="/assets/delivery.png" alt="Free Delivery" class="design-image">
-            </div>
-        </div>
-        <div class="sequence-content">
-            <h2 class="sequence-title">Free Local Delivery</h2>
-            <p class="service-text">We bring your health to your doorstep. Our reliable delivery service ensures your
-                prescriptions and wellness essentials arrive safely and on time.</p>
-        </div>
-    </div>
-
-    <div class="sequence-container">
-        <div class="visual-stack">
-            <div class="gradient-square"></div>
-            <div class="sliding-image-wrap">
-                <img src="/assets/pack.jpg" alt="Compliance Packaging" class="design-image">
-            </div>
-        </div>
-        <div class="sequence-content">
-            <h2 class="sequence-title">Compliance Packaging</h2>
-            <p class="service-text">Taking the guesswork out of medication. We organize your daily doses into clearly
-                labeled blister packs, helping you stay on track with complex schedules.</p>
-        </div>
-    </div>
-
-    <div class="sequence-container mirror">
-        <div class="visual-stack">
-            <div class="gradient-square"></div>
-            <div class="sliding-image-wrap">
-                <img src="/assets/consult.png" alt="Consultations" class="design-image">
-            </div>
-        </div>
-        <div class="sequence-content">
-            <h2 class="sequence-title">Professional Consultations</h2>
-            <p class="service-text">Your pharmacist is your most accessible healthcare provider. We offer private
-                one-on-one consultations to review your medications and answer your health questions.</p>
-        </div>
-    </div>
-</div>
-<section class="quick-contact">
-    <div class="contact-container">
-        <div class="contact-info">
-            <h2 class="contact-title">Visit Us Today</h2>
-            <p class="contact-subtitle">We are conveniently located in the heart of the community, ready to serve your
-                healthcare needs.</p>
-
-            <div class="info-item">
-                <span class="info-icon">📍</span>
-                <div class="info-text">
-                    <strong>Our Address</strong>
-                    <p>390 Rideau St, Ottawa, ON K1N 5Y8</p>
-                </div>
-            </div>
-
-            <div class="info-item">
-                <span class="info-icon">📞</span>
-                <div class="info-text">
-                    <strong>Give Us a Call</strong>
-                    <p>(613) 789-4444</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="contact-map-placeholder">
-            <img src="/assets/street.png" alt="Rideau Pharmacy Storefront" class="contact-image">
+        <div class="hero-tagline">Licensed Mortgage Professional</div>
+        <h1>Your Journey Home <br><em>Starts Here.</em></h1>
+        <p>Providing expert, unbiased mortgage advice with access to hundreds of products tailored to your unique
+            financial needs.</p>
+        <div class="hero-btns">
+            <a href="#contact" class="btn btn-primary">Start Your Application</a>
         </div>
     </div>
 </section>
+
+<section class="reveal-section">
+    <div class="reveal-container">
+        <h2 class="reveal-title">
+            <span class="reveal-text">Turning your monthly expense into a smart investment strategy. Powered by Dominion
+                Lending Centres, I leverage Canada’s largest network and 230+ lenders to secure elite rates—transforming
+                your mortgage into a strategic wealth-building asset.</span>
+        </h2>
+    </div>
+</section>
+
+<section class="about-section" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-portrait">
+                <img src="/assets/carole-ann-bryant-portrait.png" alt="Carole Ann Bryant - Mortgage Broker">
+            </div>
+            <div class="about-text">
+                <h2>Unbiased Expertise. <br><em>Tailored for You.</em></h2>
+                <p>Your mortgage is likely your largest financial commitment. Choosing the right one can save you
+                    thousands. Unlike a bank, I work with dozens of lenders to ensure you have access to the most
+                    competitive rates and products in Canada.</p>
+                <p>From first-time buyers to complex refinances, my mission is to provide professional, unbiased advice
+                    that simplifies your journey to homeownership.</p>
+                <div class="license">
+                    {{ site.license }} <br>
+                    {{ site.brokerage }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services-v2" id="services">
+    <div class="service-row">
+        <div class="service-image">
+            <img src="/assets/home-purchase.png" alt="Happy family in new home">
+        </div>
+        <div class="service-content">
+            <span class="service-label">Purchase</span>
+            <h3>Home Purchase</h3>
+            <p>Your home is more than an address. It's an investment in your future. We provide the expertise to ensure
+                you secure the best possible financing terms for your new beginning.</p>
+            <a href="#contact" class="btn btn-outline">Explore Solutions</a>
+        </div>
+    </div>
+
+    <div class="service-row">
+        <div class="service-image">
+            <img src="/assets/mortgage-renewal.png" alt="Modern office meeting">
+        </div>
+        <div class="service-content">
+            <span class="service-label">Renewal</span>
+            <h3>Mortgage Renewal</h3>
+            <p>Don't just sign your renewal notice. Let's review your financial goals and find a product that aligns
+                with where you are today, not where you were five years ago.</p>
+            <a href="#contact" class="btn btn-outline">Review Your Options</a>
+        </div>
+    </div>
+
+    <div class="service-row">
+        <div class="service-image">
+            <img src="/assets/equity-refinance.png" alt="Beautiful home exterior">
+        </div>
+        <div class="service-content">
+            <span class="service-label">Refinance</span>
+            <h3>Equity & Refinance</h3>
+            <p>Unlock the power of your home's equity. From debt consolidation to investment opportunities, we help you
+                leverage your largest asset effectively.</p>
+            <a href="#contact" class="btn btn-outline">Unlock Equity</a>
+        </div>
+    </div>
+</section>
+
+<section class="faq-section" id="faq">
+    <div class="container">
+        <div class="section-title">
+            <h2>Common Questions</h2>
+            <p>Answers to some of the most frequently asked questions about mortgages in Canada.</p>
+        </div>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is the difference between a mortgage broker and a bank?
+                    <span class="faq-icon"></span>
+                </div>
+                <div class="faq-answer">
+                    A bank only offers mortgage products from their own institution. As a licensed mortgage
+                    professional, I have access to dozens of different lenders, including major banks, credit unions,
+                    and private lenders, allowing me to find the best product and rate for your specific situation.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How much does it cost to use a mortgage broker?
+                    <span class="faq-icon"></span>
+                </div>
+                <div class="faq-answer">
+                    In most cases (standard residential mortgages), there is no cost to you! The lender pays the broker
+                    a finder's fee for bringing them the business. For complex or commercial mortgages, a fee may be
+                    charged, which would be discussed upfront.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is a mortgage pre-approval?
+                    <span class="faq-icon"></span>
+                </div>
+                <div class="faq-answer">
+                    A pre-approval is a commitment from a lender to provide you with a specific mortgage amount at a
+                    certain interest rate for a period (usually 90-120 days). It helps you know your budget and makes
+                    your offer more attractive to sellers.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Fixed vs. Variable: Which is better?
+                    <span class="faq-icon"></span>
+                </div>
+                <div class="faq-answer">
+                    A fixed rate remains the same for your entire term, providing stability. A variable rate fluctuates
+                    with the prime rate, which can save you money if rates drop, but carries more risk if rates rise.
+                    The right choice depends on your risk tolerance and financial goals.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Scripts Grouped Together -->
+<script>
+    // Scroll Reveal Observer
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.reveal-text').forEach(text => {
+        revealObserver.observe(text);
+    });
+
+    const revealCta = document.getElementById('reveal-cta');
+    if (revealCta) revealObserver.observe(revealCta);
+
+    // Smooth background clip text fill on scroll
+    window.addEventListener('scroll', () => {
+        const reveals = document.querySelectorAll('.reveal-text');
+        reveals.forEach(reveal => {
+            const rect = reveal.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const visibility = (windowHeight - rect.top) / windowHeight;
+            const progress = Math.min(Math.max(visibility * 2 - 0.2, 0), 1);
+            reveal.style.backgroundSize = `${progress * 100}% 100%`;
+        });
+    });
+
+    // FAQ Accordion Logic
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const item = question.parentElement;
+            item.classList.toggle('active');
+        });
+    });
+</script>

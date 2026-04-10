@@ -1,191 +1,115 @@
-<footer class="whmis-footer">
-    <div class="footer-content">
-
-        <div class="footer-col brand-col">
-            <img src="/assets/rideau-Logo.png" alt="Company Logo" class="site-logo-footer">
-            <span class="vertical-divider">|</span>
-            <p class="tagline">
-                Right Corner. Right Care. Right Now
-            </p>
-        </div>
-
-        <div class="footer-col links-col">
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about/">About</a></li>
-                <li><a href="/faq/">Faq</a></li>
-                <li><a href="/contact/">Contact</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col legal-col">
-
-            <ul class="legal-list">
-                <li><a href="/privacy_statement">Privacy Policy</a></li>
-                <li class="copyright">&copy; 2026</li>
-            </ul>
-        </div>
-    </div>
-</footer>
-
 <style>
-    /* --- COMPACT FOOTER STYLES --- */
-    .whmis-footer {
-        width: 100%;
-        background-color: #f2f8fc;
-        /* drastically reduced padding for height control */
-        padding: 15px 30px;
-        box-sizing: border-box;
-        border-top: 1px solid rgba(25, 31, 79, 0.05);
-        font-family: sans-serif;
-    }
+  .footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 80px 20px 40px;
+  }
 
-    .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 20px;
-    }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 60px;
+    margin-bottom: 60px;
+  }
 
-    /* --- BRANDING (HORIZONTAL ROW) --- */
-    .brand-col {
-        display: flex;
-        align-items: center;
-        /* Forces logo and text to line up */
-        gap: 15px;
-    }
+  .footer-col h3 {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
 
-    .site-logo-footer {
-        height: 60px;
-        /* Much smaller to fit the "bar" look */
-        width: auto;
-        object-fit: contain;
-        display: block;
-    }
+  .footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+    color: #cbd5e0;
+  }
 
-    .vertical-divider {
-        color: #ccc;
-        font-size: 1.2rem;
-        font-weight: 300;
-    }
+  .footer-contact-item i {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+  }
 
-    .tagline {
-        color: #191f4f;
-        opacity: 0.7;
-        font-size: 0.85rem;
-        margin: 0;
-        white-space: nowrap;
-        /* Keeps it on one line */
-    }
+  .footer-contact-item a:hover {
+    color: var(--accent-color);
+  }
 
-    /* --- NAVIGATION --- */
-    .links-col .nav-links {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        gap: 20px;
-    }
+  .footer-links a {
+    display: block;
+    margin-bottom: 12px;
+    color: #cbd5e0;
+  }
 
-    .links-col a {
-        color: #191f4f;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.9rem;
-        transition: 0.3s ease;
-    }
+  .footer-links a:hover {
+    color: var(--accent-color);
+    padding-left: 5px;
+  }
 
-    .links-col a:hover {
-        color: #436aee;
-        transform: translateY(-2px);
-        display: inline-block;
-    }
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 40px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #a0aec0;
+  }
 
-    /* --- LEGAL & PARENT COMPANY --- */
-    .legal-col {
-        text-align: right;
-        display: flex;
-        flex-direction: column;
-        /* Stacked tight on right side */
-        justify-content: center;
-        gap: 2px;
-    }
+  .footer-logo {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: block;
+  }
 
-    .parent-company {
-        font-size: 0.75rem;
-        color: #191f4f;
-        margin: 0;
-        opacity: 0.8;
-    }
-
-    .parent-company a {
-        color: #436aee;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    .legal-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        justify-content: flex-end;
-        gap: 10px;
-    }
-
-    .legal-list li,
-    .legal-list a {
-        font-size: 0.75rem;
-        color: #191f4f;
-        opacity: 0.6;
-        text-decoration: none;
-    }
-
-    .legal-list a:hover {
-        opacity: 1;
-        text-decoration: underline;
-    }
-
-    /* --- MOBILE RESPONSIVENESS --- */
-    @media (max-width: 900px) {
-        .footer-content {
-            flex-direction: column;
-            text-align: center;
-            gap: 20px;
-            padding: 10px 0;
-        }
-
-        .brand-col {
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .vertical-divider {
-            display: none;
-        }
-
-        /* Hide divider on mobile */
-
-        .tagline {
-            white-space: normal;
-        }
-
-        /* Allow text wrap on mobile */
-
-        .nav-links {
-            gap: 15px;
-            font-size: 1rem;
-        }
-
-        .legal-col {
-            text-align: center;
-            align-items: center;
-        }
-
-        .legal-list {
-            justify-content: center;
-        }
-    }
+  .disclaimer {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    max-width: 900px;
+    margin: 20px auto 0;
+  }
 </style>
+
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <span class="footer-logo">{{ site.name }}</span>
+        <p style="color: #cbd5e0;">Professional mortgage solutions tailored to your unique financial situation. Access to hundreds of products and expert, unbiased advice.</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contact Information</h3>
+        <div class="footer-contact-item">
+          <i>📍</i>
+          <span>{{ site.address }}</span>
+        </div>
+        <div class="footer-contact-item">
+          <i>📞</i>
+          <a href="tel:{{ site.phone }}">{{ site.phone }}</a>
+        </div>
+        <div class="footer-contact-item">
+          <i>✉️</i>
+          <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <div class="footer-links">
+          <a href="#hero">Home</a>
+          <a href="#about">About Carole</a>
+          <a href="#services">Mortgage Services</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {{ site.year or '2026' }} Carole Ann Bryant. All Rights Reserved.</p>
+      <div class="disclaimer">
+        Dominion Lending Centres is a national mortgage brokerage and leasing company with more than 2,000 members offering free expert advice across Canada. {{ site.brokerage }} ({{ site.brokerageLicense }}). {{ site.license }}.
+      </div>
+    </div>
+  </div>
+</footer>

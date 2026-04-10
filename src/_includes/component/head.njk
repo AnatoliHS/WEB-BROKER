@@ -1,342 +1,132 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ title }}</title>
+  <title>{{ site.name }} - {{ site.title }}</title>
 
- 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="11ty Startr Site is a website dedicated to showcasing the best of Canada, 
-    from AI innovations to the arts, nature, and fun activities."
-    />
+  <meta name="description"
+    content="Professional mortgage advice from {{ site.name }}, {{ site.title }} at {{ site.brokerage }}. Serving Georgetown and Ontario." />
+  <meta name="keywords"
+    content="Mortgage Broker, Georgetown, Ontario, Home Purchase, Mortgage Renewal, Refinancing, Carole Ann Bryant" />
+  <meta name="author" content="{{ site.name }}" />
+  <meta name="robots" content="index, follow" />
 
-    <meta
-      name="keywords"
-      content="Canada, AI, arts, nature, fun, technology, education, culture, landscape, festivals"
-    />
-    <meta name="author" content="11ty Startr Site" />
-    <meta name="robots" content="index, follow" />
-    <meta name="revisit-after" content="1 days" />
-    <meta name="language" content="English" />
-    <meta name="generator" content="Startr" />
-    <!-- Include Startr Style CSS -->
-    <link rel="stylesheet" href="https://startr.style/style.css" />
-    
-    <style>
-      :root {
-        --oklch-light-green: oklch(80%, 0.15, 145);
-        --oklch-dark-green: oklch(45%, 0.2, 145);
-        --oklch-light-blue: oklch(80%, 0.14, 250);
-        --oklch-dark-blue: oklch(15%, 0.2, 250);
-        --oklch-light-brown: oklch(60%, 0.25, 70);
-        --oklch-dark-brown: oklch(30%, 0.35, 70);
-        --oklch-light-yellow: oklch(95%, 0.1, 100);
-        --oklch-dark-yellow: oklch(75%, 0.22, 90);
-        --oklch-light-gray: oklch(90%, 0.01, 0);
-        --oklch-dark-gray: oklch(20%, 0+5, 150);
-      
-      }
-      body {   
-      }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
 
-      /* Add this inside the <style> tag in head.njk */
+  <style>
+    :root {
+      --bg-color: #f2f8fc;
+      --primary-color: #1a365d;
+      /* Deep Navy */
+      --accent-color: #b8860b;
+      /* Gold/Brass */
+      --text-color: #1a365d;
+      --text-light: rgba(26, 54, 93, 0.7);
+      --white: #ffffff;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
 
-body::before {
-  content: "";
-  position: fixed; /* Locks it to the screen, preventing pixelation */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1; /* Pushes it behind all your text */
-  
-  /* Move your background settings here */
-  background-color: #f2f8fc;
-  background-size: cover;
-  
-  /* Ensure no white edges */
-  margin: 0;
-  padding: 0;
-}
-
-      .coming-soon{
-        flex: 1; 
-        padding: 10px;
-        text-align: center;
-        color: black;
-      }
-      
-      .info-box {
-        flex: 1; 
-        padding: 10px;
-        text-align: center;
-        color: black;
-        
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Inter', sans-serif;
     }
 
-    .info-box img {
-        width: 20%;
-        
-    }
-      .content{
-            width: calc(100% - 20px);
-            max-width: 1300px; /* Adjust as needed */
-            padding: 20px 5rem;
-            
-           
-            margin: 0 auto; 
-            margin-bottom: 10px;
-        }
-
-        .content2{
-            width: calc(100% - 20px);
-            max-width: 1000px; /* Adjust as needed */
-            padding: 20px 5rem;
-            background-color: rgba(255, 255, 255, 0.9); 
-            border-radius: 5px;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8); 
-            margin: 0 auto; 
-            margin-bottom: 10px;
-        }
-
-        .content3{
-            width: calc(100% - 20px);
-            max-width: 800px; /* Adjust as needed */
-            padding: 40px 5rem;
-            background: linear-gradient(to bottom, #f2f2f2, #ffffff); 
-            border-radius: 5px;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8); 
-            margin: 0 auto; 
-            margin-bottom: 50px;
-            margin-top: -20px;
-            font-size: 20px;
-            color: black;
-            text-align: left;
-          }
-
-          .cert-wrapper {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 20px;
-          }
-
-          .cert-links {
-            flex: 1;
-          }
-
-          .cert-link {
-            display: block;
-            color: black;
-            padding-left: 30px;
-            margin-bottom: 10px;
-            text-decoration: none;
-            background: url('https://cdn-icons-png.flaticon.com/512/845/845646.png') no-repeat left center;
-            background-size: 20px;
-          }
-
-          .cert-image {
-            width: 150px; /* Adjust size as needed */
-            height: auto;
-            object-fit: contain;
-          }
-
-        .content-fees{
-            width: calc(100% - 20px);
-            max-width: 1300px; /* Adjust as needed */
-            padding: 20px 1rem;
-            background-color: rgba(255, 255, 255, 0.9); 
-            border-radius: 5px;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8); 
-            margin: 0 auto; 
-            margin-bottom: 10px;
-        }
-
-        .content-about{
-            width: calc(100% - 20px);
-            max-width: 800px; /* Adjust as needed */
-            padding: 20px 1rem;
-            background-color: rgba(255, 255, 255, 0.9); 
-            border-radius: 5px;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8); 
-            margin: 0 auto; 
-            margin-bottom: 10px;
-        }
-        .faq{
-          background-color: rgba(255, 255, 255, 0.9);
-          border-color: rgba(255, 255, 255, 0.8);
-           width: 100%;
-           margin: 0 auto; 
-           max-width: 1000px; 
-           background: linear-gradient(90deg, rgba(30, 251, 170, 0.1) 0%, rgba(30, 240, 251, 0.15) 100%);
-          border-radius: 16px;
-          border: 1px solid rgba(255, 255, 255, 0.3); /* frosty white border */
-
-          backdrop-filter: blur(12px); /* stronger blur */
-          -webkit-backdrop-filter: blur(12px); /* Safari support */
-
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25); /* soft shadow */
-          transition: all 0.3s ease;
-           padding: 20px ;
-        }
-
-         @media (max-width: 1310px) {
-          .info-box {
-            flex-basis: 100%;
-        }
-
-        .info-box img{
-          max-width: 100px;
-        }
-
-        .coming-soon img{
-          max-width: 30em;
-        }
-
-        div[style*="display: flex"] {
-            flex-direction: column;
-        }
-        .content{
-             padding: 20px 1rem;
-        }
-        .content2{
-             padding: 20px 1rem;
-        }
-           
-
-
-           .whmis-carousel{
-            display: none !important;
-           }
-           .header{
-            min-width: 42em;
-           }
-
-          .content3 img{
-            display: none !important;
-          }
-         }
-
-   * { box-sizing: border-box; }
-
-    .slideshow-container {
-      max-width: 900px;
-      position: relative;
-      margin: 50px auto;
-      background: #fff;
-      padding: 30px 20px;
-      border-radius: 10px;
-      box-shadow: 5px 10px 10px rgba(0,0,0,0.6);
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .mySlides {
-      display: none;
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-sans);
+      line-height: 1.8;
+      overflow-x: hidden;
+      letter-spacing: -0.01em;
     }
 
-    .review-content {
-      text-align: center;
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--font-serif);
+      color: var(--primary-color);
+      font-weight: 300;
+      line-height: 1.2;
     }
 
-    .review-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 15px;
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
-    .user-img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+    section {
+      padding: 120px 20px;
+      max-width: 1400px;
+      margin: 0 auto;
     }
 
-    .stars {
-      font-size: 20px;
-      color: gold;
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .google-logo {
-      height: 25px;
+    /* Scroll Reveal Base Classes */
+    .reveal-text {
+      color: rgba(26, 54, 93, 0.15);
+      background-clip: text;
+      -webkit-background-clip: text;
+      background-repeat: no-repeat;
+      background-size: 0% 100%;
+      background-image: linear-gradient(90deg, var(--primary-color), var(--primary-color));
     }
 
-    .review-text {
-      font-size: 16px;
-      line-height: 1.5;
-      color: #333;
-      margin-top: 10px;
-      padding: 0 10px;
+    .reveal-text.visible {
+      background-size: 100% 100%;
     }
 
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      width: auto;
-      padding: 16px;
-      margin-top: -22px;
-      font-weight: bold;
-      font-size: 22px;
-      transition: 0.3s ease;
-      user-select: none;
-      color: black;
-    }
-
-    .next { right: 0; }
-    .prev { left: 0; }
-
-    .prev:hover, .next:hover {
-      background-color: rgba(0,0,0,0.1);
-    }
-
-    .text { display: none; } /* Not used here */
-    .numbertext {
-      color: #999;
-      font-size: 12px;
-      position: absolute;
-      top: 8px;
-      left: 16px;
-    }
-
-    .dot-container {
-      text-align: center;
-      margin-top: 15px;
-    }
-
-    .dot {
-      cursor: pointer;
-      height: 12px;
-      width: 12px;
-      margin: 0 4px;
-      background-color: #bbb;
-      border-radius: 50%;
+    .btn {
       display: inline-block;
-      transition: background-color 0.6s ease;
+      padding: 16px 32px;
+      border-radius: 100px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
-    .active, .dot:hover {
-      background-color: #717171;
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: var(--white);
     }
 
-    @keyframes fade {
-      from {opacity: .4} 
-      to {opacity: 1}
+    .btn-primary:hover {
+      background-color: var(--accent-color);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
     }
 
-    .fade {
-      animation-name: fade;
-      animation-duration: 1s;
+    .btn-outline {
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
     }
 
+    .btn-outline:hover {
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+  </style>
 
-        
-    </style>
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 </head>
