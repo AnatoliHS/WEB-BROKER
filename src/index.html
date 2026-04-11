@@ -22,7 +22,7 @@ title: Home
         margin: 0 auto;
         z-index: 2;
         position: relative;
-        padding-top: 40px;
+        padding-top: 170px;
     }
 
     .hero-watermark {
@@ -31,15 +31,15 @@ title: Home
         left: 50%;
         transform: translate(-50%, -50%);
         width: 100%;
-        max-width: 1100px;
-        opacity: 0.2;
+        max-width: 1200px;
+        opacity: 0.15;
         z-index: 1;
         pointer-events: none;
     }
 
     .hero-watermark-text {
         position: absolute;
-        top: 96.5%;
+        top: calc(99% + 10px);
         left: 50%;
         transform: translateX(-50%);
         font-family: var(--font-sans);
@@ -100,7 +100,8 @@ title: Home
     /* REVEAL SECTION STYLES */
     .reveal-section {
         background-color: var(--white);
-        padding: 140px 20px 80px;
+        margin-top: 60px;
+        padding: 120px 20px 80px;
         text-align: center;
         border-bottom: 1px solid rgba(26, 54, 93, 0.08);
     }
@@ -506,16 +507,38 @@ title: Home
     @media (max-width: 768px) {
         .hero {
             height: auto;
-            padding: 160px 20px 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 120px 20px 80px;
+        }
+
+        .hero-watermark {
+            top: 260px;
+            width: 500px;
+            max-width: 95%;
+            opacity: 0.25;
+        }
+
+        .hero-container {
+            padding-top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2.8rem;
+            margin-top: 80px;
+            margin-bottom: 5px;
+            z-index: 3;
         }
 
-        .hero-btns {
-            flex-direction: column;
-            align-items: center;
+        .hero-tagline {
+            margin-top: 0;
+            margin-bottom: 150px;
+            z-index: 3;
+            font-size: 0.8rem;
         }
 
         .hero-watermark-text {
@@ -523,7 +546,12 @@ title: Home
             width: 90%;
             font-size: 0.75rem;
             text-align: center;
-            top: 92%;
+            top: 400px;
+            opacity: 0.5;
+        }
+
+        .hero p {
+            margin-bottom: 40px;
         }
     }
 </style>
