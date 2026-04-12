@@ -7,81 +7,210 @@ title: Home
 <style>
     /* HERO SECTION STYLES */
     .hero {
-        height: 90vh;
+        height: auto;
+        display: block;
+        position: relative;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .hero-image-area {
+        height: 100vh;
+        width: 100%;
+        position: relative;
+        background-image: url('/assets/property.jpg');
+        background-size: cover;
+        background-position: center top;
+        background-attachment: fixed;
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         justify-content: center;
+        padding-bottom: 30px;
+        /* Nudged down 50px from 80px */
+    }
+
+    .hero-title-bottom {
+        max-width: 1000px;
+        width: 100%;
         text-align: center;
-        position: relative;
-        padding-top: 100px;
-        background-color: var(--bg-color);
-    }
-
-    .hero-container {
-        max-width: 900px;
-        margin: 0 auto;
         z-index: 2;
-        position: relative;
-        padding-top: 170px;
     }
 
-    .hero-watermark {
+    .hero-title-bottom h1 {
+        color: var(--white) !important;
+        font-size: clamp(3rem, 8vw, 5.5rem);
+        line-height: 1.05;
+        margin: 0;
+        letter-spacing: -0.02em;
+        text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        animation-delay: 0.3s;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .hero-title-bottom h1 em {
+        color: var(--white) !important;
+    }
+
+    .hero-content-area {
+        background-color: var(--white);
+        padding: 220px 20px;
+        /* Further expanded for maximum space */
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .hero-watermark-wrapper {
         position: absolute;
-        top: 55%;
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 100%;
-        max-width: 1200px;
-        opacity: 0.15;
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         z-index: 1;
         pointer-events: none;
     }
 
+    .hero-content-watermark {
+        width: 100%;
+        margin-bottom: -10px;
+        opacity: 0.12;
+        /* Kept the logo subtle */
+    }
+
     .hero-watermark-text {
-        position: absolute;
-        top: calc(99% + 10px);
-        left: 50%;
-        transform: translateX(-50%);
         font-family: var(--font-sans);
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         text-transform: uppercase;
         letter-spacing: 0.15em;
         white-space: nowrap;
         color: var(--primary-color);
         font-weight: 500;
-        opacity: 0.4;
-        z-index: 1;
-        pointer-events: none;
+        opacity: 0.6;
+        /* Made significantly fainter */
     }
+
+    .hero-content-inner {
+        position: relative;
+        z-index: 2;
+        /* Sit above watermark */
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
 
     .hero-tagline {
         font-size: 0.85rem;
         text-transform: uppercase;
         letter-spacing: 0.2em;
         color: var(--accent-color);
-        margin-bottom: 35px;
-        font-weight: 500;
+        margin-bottom: 25px;
+        font-weight: 600;
+        display: block;
     }
 
-    .hero h1 {
-        font-size: clamp(3rem, 8vw, 5.5rem);
-        line-height: 1.05;
-        margin-bottom: 15px;
-        letter-spacing: -0.02em;
+    .hero em {
+        font-family: var(--font-serif);
+        font-style: italic;
     }
 
     .hero p {
         font-size: 1.25rem;
         color: var(--text-light);
-        margin: 0 auto 50px;
-        max-width: 600px;
+        margin: 0 auto 40px;
+        max-width: 650px;
         font-weight: 300;
+        line-height: 1.6;
+    }
+
+    @media (min-width: 769px) {
+        .hero-tagline {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            text-transform: none;
+            letter-spacing: normal;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
     }
 
     .hero-btns {
         display: flex;
         gap: 20px;
         justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+        .hero {
+            padding: 0 !important;
+            margin: 0 !important;
+            width: 100% !important;
+            max-width: none !important;
+        }
+
+        .hero-image-area {
+            height: 100vh;
+            width: 100vw;
+            background-attachment: scroll;
+            padding-bottom: 190px;
+            /* Nudged up as requested */
+            background-position: center 15%;
+            /* Shifting downward more as requested */
+        }
+
+        .hero-title-bottom h1 {
+            font-size: 3.2rem;
+            padding: 0 20px;
+        }
+
+        .hero-content-area {
+            padding: 80px 20px;
+        }
+
+        .hero-tagline {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            text-transform: none;
+            margin-top: -50px;
+            margin-bottom: 60px;
+        }
+
+        .hero-content-watermark {
+            max-width: 550px;
+        }
+
+        .hero-watermark-text {
+            font-size: 0.65rem;
+            white-space: normal;
+            width: 90%;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
     }
 
     .hero::after {
@@ -218,10 +347,8 @@ title: Home
         width: 100%;
         height: 100%;
         max-width: 420px;
-        /* Distinctly narrower than height to ensure capsule shape */
         object-fit: cover;
         border-radius: 250px;
-        /* Semi-circular ends for the capsule */
         transition: transform 1.5s ease;
     }
 
@@ -504,69 +631,110 @@ title: Home
         }
     }
 
-    @media (max-width: 768px) {
-        .hero {
-            height: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            padding: 120px 20px 80px;
-        }
 
-        .hero-watermark {
-            top: 260px;
-            width: 500px;
-            max-width: 95%;
-            opacity: 0.25;
-        }
+    /* REVIEWS SECTION STYLES */
+    .reviews-section {
+        padding: 160px 20px;
+        background-color: var(--bg-color);
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+    }
 
-        .hero-container {
-            padding-top: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    .reviews-container {
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+    }
 
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-top: 80px;
-            margin-bottom: 5px;
-            z-index: 3;
-        }
+    .review-slider {
+        position: relative;
+        min-height: 350px;
+        margin-bottom: 40px;
+    }
 
-        .hero-tagline {
-            margin-top: 0;
-            margin-bottom: 150px;
-            z-index: 3;
-            font-size: 0.8rem;
-        }
+    .review-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.8s ease, visibility 0.8s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-        .hero-watermark-text {
-            white-space: normal;
-            width: 90%;
-            font-size: 0.75rem;
-            text-align: center;
-            top: 400px;
-            opacity: 0.5;
-        }
+    .review-slide.active {
+        opacity: 1;
+        visibility: visible;
+        position: relative;
+    }
 
-        .hero p {
-            margin-bottom: 40px;
-        }
+    .review-quote {
+        font-family: var(--font-serif);
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
+        line-height: 1.4;
+        color: var(--primary-color);
+        margin-bottom: 30px;
+        font-style: italic;
+        letter-spacing: -0.01em;
+    }
+
+    .review-author {
+        font-family: var(--font-sans);
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--accent-color);
+        font-weight: 600;
+    }
+
+    .review-dots {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: rgba(26, 54, 93, 0.2);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        padding: 0;
+    }
+
+    .dot.active {
+        background-color: var(--accent-color);
+        transform: scale(1.3);
     }
 </style>
 
 <!-- HTML Sections Grouped Together -->
 <section class="hero" id="hero">
-    <img src="/assets/dominion-3.png" alt="" class="hero-watermark">
-    <div class="hero-watermark-text">Dominion Lending Centres Mortgages On Point Brokerage Licence #13119</div>
-    <div class="hero-container">
-        <h1>Your Journey Home <br><em>Starts Here.</em></h1>
-        <div class="hero-tagline">Licensed Mortgage Professional</div>
-        <p>Providing expert, unbiased mortgage advice with access to hundreds of products tailored to your unique
-            financial needs.</p>
-        <div class="hero-btns">
-            <a href="#contact" class="btn btn-primary">Start Your Application</a>
+    <div class="hero-image-area">
+        <div class="hero-title-bottom">
+            <h1>Your Journey Home <br><em>Starts Here.</em></h1>
+        </div>
+    </div>
+
+    <div class="hero-content-area">
+        <div class="hero-watermark-wrapper">
+            <img src="/assets/dominion-3.png" alt="" class="hero-content-watermark">
+            <div class="hero-watermark-text">Dominion Lending Centres Mortgages On Point Brokerage Licence #13119</div>
+        </div>
+        <div class="hero-content-inner">
+            <div class="hero-tagline">Licensed Mortgage Professional</div>
+            <p>Providing expert, unbiased mortgage advice with access to hundreds of products tailored to your unique
+                financial needs.</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary">Start Your Application</a>
+            </div>
         </div>
     </div>
 </section>
@@ -586,7 +754,7 @@ title: Home
     <div class="container">
         <div class="about-grid">
             <div class="about-portrait">
-                <img src="/assets/carole-ann-bryant-portrait.png" alt="Carole Ann Bryant - Mortgage Broker">
+                <img src="/assets/carol-ann-bryant.JPG" alt="Carole Ann Bryant - Mortgage Broker">
             </div>
             <div class="about-text">
                 <h2>Unbiased Expertise. <br><em>Tailored for You.</em></h2>
@@ -641,6 +809,43 @@ title: Home
             <p>Unlock the power of your home's equity. From debt consolidation to investment opportunities, we help you
                 leverage your largest asset effectively.</p>
             <a href="#contact" class="btn btn-outline">Unlock Equity</a>
+        </div>
+    </div>
+</section>
+
+<section class="reviews-section" id="reviews">
+    <div class="reviews-container">
+        <div class="review-slider">
+            <!-- Slide 1 -->
+            <div class="review-slide active">
+                <blockquote class="review-quote">"Carole Ann made our first home purchase seamless. Her expertise and
+                    access to rates we couldn't find ourselves were game-changers."</blockquote>
+                <cite class="review-author">Sarah & Mark T.</cite>
+            </div>
+            <!-- Slide 2 -->
+            <div class="review-slide">
+                <blockquote class="review-quote">"Professional, strategic, and always available. She didn't just find us
+                    a mortgage; she helped us plan our financial future."</blockquote>
+                <cite class="review-author">David R.</cite>
+            </div>
+            <!-- Slide 3 -->
+            <div class="review-slide">
+                <blockquote class="review-quote">"The renewal process was effortless thanks to Carole Ann. We saved
+                    thousands over what our bank was offering."</blockquote>
+                <cite class="review-author">Jennifer L.</cite>
+            </div>
+            <!-- Slide 4 -->
+            <div class="review-slide">
+                <blockquote class="review-quote">"Extremely knowledgeable about equity and refinancing. She made the
+                    complex simple and the results were outstanding."</blockquote>
+                <cite class="review-author">Michael S.</cite>
+            </div>
+        </div>
+        <div class="review-dots">
+            <button class="dot active" aria-label="Go to slide 1"></button>
+            <button class="dot" aria-label="Go to slide 2"></button>
+            <button class="dot" aria-label="Go to slide 3"></button>
+            <button class="dot" aria-label="Go to slide 4"></button>
         </div>
     </div>
 </section>
@@ -801,4 +1006,30 @@ title: Home
             item.classList.toggle('active');
         });
     });
+
+    // Review Slider Logic
+    const slides = document.querySelectorAll('.review-slide');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        currentSlide = index;
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+        });
+    });
+
+    // Auto-rotate every 8 seconds
+    setInterval(() => {
+        let next = (currentSlide + 1) % slides.length;
+        showSlide(next);
+    }, 8000);
 </script>

@@ -29,8 +29,8 @@
   }
 
   .nav-portrait {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -41,6 +41,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 20%;
   }
 
   .nav-name-group {
@@ -54,6 +55,7 @@
     font-weight: 700;
     line-height: 1.1;
     transition: all 0.4s ease;
+    color: var(--white); /* Initially white on desktop */
   }
 
   .nav-license {
@@ -66,12 +68,13 @@
     font-family: var(--font-sans);
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    color: var(--white); /* Initially white on desktop */
   }
 
   /* Scrolled State Transitions */
   .navbar.scrolled .nav-portrait {
     width: 0;
-    height: 60px;
+    height: 80px;
     margin-right: -15px;
     opacity: 0;
     transform: scale(0);
@@ -84,6 +87,11 @@
     overflow: hidden;
   }
 
+  .navbar.scrolled .nav-name,
+  .navbar.scrolled .nav-links a:not(.btn-primary) {
+    color: var(--primary-color);
+  }
+
   .nav-links {
     display: flex;
     gap: 30px;
@@ -93,9 +101,10 @@
   .nav-links a {
     font-family: 'Teodor', var(--font-serif);
     font-weight: 500;
-    color: var(--primary-color);
+    color: var(--white); /* Initially white on desktop */
     font-size: 1.1rem;
     position: relative;
+    transition: all 0.4s ease;
   }
 
   .nav-links a.btn-primary {
@@ -127,11 +136,47 @@
   .mobile-toggle span {
     width: 25px;
     height: 2px;
-    background-color: var(--primary-color);
-    transition: 0.3s;
+    background-color: var(--white); /* Initially white */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+  }
+
+  .navbar.scrolled .mobile-toggle span {
+    background-color: var(--primary-color); /* Navy on scroll */
   }
 
   @media (max-width: 768px) {
+    .navbar {
+      padding: 15px 20px;
+    }
+
+    .nav-portrait {
+      width: 60px;
+      height: 60px;
+    }
+
+    .navbar.scrolled .nav-portrait {
+      height: 60px;
+    }
+
+    .nav-name {
+      font-size: 1.15rem;
+      color: var(--primary-color); /* Keep navy on mobile for readability */
+    }
+
+    .nav-license {
+      font-size: 0.7rem;
+      color: var(--primary-color);
+    }
+    
+    .nav-links a:not(.btn-primary) {
+      color: var(--primary-color); /* Keep navy on mobile */
+    }
+
+    .mobile-toggle span {
+      background-color: var(--primary-color); /* Keep navy on mobile */
+    }
+
     .nav-links {
       position: absolute;
       top: 100%;
@@ -150,8 +195,28 @@
       transform: translateY(0);
     }
 
+    .navbar.menu-open {
+      background: var(--white) !important;
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Hamburger to X Animation */
+    .navbar.menu-open .mobile-toggle span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .navbar.menu-open .mobile-toggle span:nth-child(2) {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+
+    .navbar.menu-open .mobile-toggle span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
     .mobile-toggle {
       display: flex;
+      z-index: 1001; /* Stay above dropdown drawer */
     }
   }
 </style>
@@ -159,7 +224,7 @@
 <nav class="navbar" id="navbar">
   <div class="nav-brand">
     <div class="nav-portrait">
-      <img src="/assets/carole-ann-bryant-portrait.png" alt="Carole Ann Bryant">
+      <img src="/assets/carol-ann-bryant.JPG" alt="Carole Ann Bryant">
     </div>
     <div class="nav-name-group">
       <div class="nav-name">{{ site.name }}</div>
@@ -171,6 +236,7 @@
     <a href="#hero">Home</a>
     <a href="#about">About</a>
     <a href="#services">Services</a>
+    <a href="#reviews">Testimonials</a>
     <a href="#faq">FAQ</a>
     <a href="#contact" class="btn btn-primary">Get in Touch</a>
   </div>
@@ -193,7 +259,10 @@
   });
 
   function toggleMenu() {
-    document.getElementById('nav-links').classList.toggle('open');
+    const navbar = document.getElementById('navbar');
+    const navLinks = document.getElementById('nav-links');
+    navbar.classList.toggle('menu-open');
+    navLinks.classList.toggle('open');
   }
 
   // Smooth scroll
@@ -203,7 +272,12 @@
       const targetId = this.getAttribute('href');
       if (targetId === '#') return;
       
-      document.getElementById('nav-links').classList.remove('open');
+      const navbar = document.getElementById('navbar');
+      const navLinks = document.getElementById('nav-links');
+      
+      navbar.classList.remove('menu-open');
+      navLinks.classList.remove('open');
+      
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
         targetElement.scrollIntoView({

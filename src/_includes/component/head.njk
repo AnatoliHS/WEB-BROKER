@@ -40,6 +40,10 @@
 
       --font-serif: 'Teodor', 'Playfair Display', serif;
       --font-sans: 'Inter', sans-serif;
+
+      --radius: 2rem;
+      --radius-sm: 0.75rem;
+      --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
     }
 
     * {
@@ -103,7 +107,7 @@
     .btn {
       display: inline-block;
       padding: 16px 32px;
-      border-radius: 100px;
+      border-radius: var(--radius-sm);
       font-weight: 500;
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
