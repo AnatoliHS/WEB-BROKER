@@ -161,20 +161,20 @@
 
     .nav-name {
       font-size: 1.15rem;
-      color: var(--primary-color); /* Keep navy on mobile for readability */
+      color: var(--white); /* Changed to white as requested */
     }
 
     .nav-license {
       font-size: 0.7rem;
-      color: var(--primary-color);
+      color: var(--white); /* Changed to white as requested */
     }
     
     .nav-links a:not(.btn-primary) {
-      color: var(--primary-color); /* Keep navy on mobile */
+      color: var(--primary-color); /* Keep navy for the links inside the white drawer */
     }
 
     .mobile-toggle span {
-      background-color: var(--primary-color); /* Keep navy on mobile */
+      background-color: var(--white); /* Changed toggle bars to white */
     }
 
     .nav-links {
@@ -198,6 +198,15 @@
     .navbar.menu-open {
       background: var(--white) !important;
       box-shadow: var(--shadow-lg);
+    }
+
+    .navbar.menu-open .nav-name,
+    .navbar.menu-open .nav-license {
+      color: var(--primary-color) !important;
+    }
+
+    .navbar.menu-open .mobile-toggle span {
+      background-color: var(--primary-color) !important;
     }
 
     /* Hamburger to X Animation */
@@ -236,6 +245,7 @@
     <a href="#hero">Home</a>
     <a href="#about">About</a>
     <a href="#services">Services</a>
+    <a href="#calculators">Estimators</a>
     <a href="#reviews">Testimonials</a>
     <a href="#faq">FAQ</a>
     <a href="#contact" class="btn btn-primary">Get in Touch</a>
