@@ -1269,7 +1269,7 @@ title: Home
                         </div>
                         <div class="input-group">
                             <label>Down Payment <span class="input-val" id="down-val">$50,000</span></label>
-                            <input type="range" id="down" min="5000" max="300000" step="5000" value="50000">
+                            <input type="range" id="down" min="5000" max="500000" step="5000" value="50000">
                         </div>
                         <div class="input-group">
                             <label>Current Interest Rate <span class="input-val" id="rate-val">5.2%</span></label>
@@ -1279,6 +1279,26 @@ title: Home
                             <label>Monthly Debt (Car, Credit Cards) <span class="input-val" id="debt-val">$400</span></label>
                             <input type="range" id="debt" min="0" max="5000" step="100" value="400">
                         </div>
+                        <div class="input-group">
+                            <label>Amortization (Years) <span class="input-val" id="q-amort-val">25</span></label>
+                            <input type="range" id="q-amort" min="10" max="30" step="1" value="25">
+                        </div>
+                        <div class="input-group">
+                            <label>Mortgage Term (Years) <span class="input-val" id="q-term-val">5</span></label>
+                            <input type="range" id="q-term" min="1" max="10" step="1" value="5">
+                        </div>
+                        <div class="input-group">
+                            <label>Annual Property Taxes <span class="input-val" id="q-taxes-val">$3,000</span></label>
+                            <input type="range" id="q-taxes" min="0" max="15000" step="100" value="3000">
+                        </div>
+                        <div class="input-group">
+                            <label>Monthly Heat <span class="input-val" id="q-heat-val">$150</span></label>
+                            <input type="range" id="q-heat" min="0" max="500" step="10" value="150">
+                        </div>
+                        <div class="input-group">
+                            <label>Monthly Condo Fees <span class="input-val" id="q-condo-val">$0</span></label>
+                            <input type="range" id="q-condo" min="0" max="2000" step="50" value="0">
+                        </div>
                     </div>
                     <div class="calc-results">
                         <div class="result-box">
@@ -1286,44 +1306,88 @@ title: Home
                             <div class="result-value" id="buying-power">$0</div>
                         </div>
                         <div class="result-box secondary">
-                            <span class="result-label">Estimated Monthly Payment</span>
+                            <span class="result-label">Total Loan Amount (inc. CMHC)</span>
+                            <div class="result-value-sm" id="qualify-loan">$0</div>
+                        </div>
+                        <div class="result-box secondary">
+                            <span class="result-label">Total Monthly Payment</span>
                             <div class="result-value-sm" id="qualify-payment">$0</div>
-                            <p class="stress-test-note">*Calculated using the Canadian Stress Test rate (Contract + 2%).</p>
+                            <div id="qualify-breakdown" style="font-size: 0.85rem; color: var(--text-light); margin-top: 5px; font-weight: normal;"></div>
+                            <p class="stress-test-note" style="margin-top: 10px;">*Limits evaluated via the Canadian Stress Test.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Refinance Calculator -->
+            <style>
+                .ref-calc-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+                .ref-desktop-spacer { display: inline; visibility: hidden; }
+                @media (max-width: 992px) { 
+                    .ref-calc-inputs { grid-template-columns: 1fr; gap: 0px; }
+                    .ref-desktop-spacer { display: none; }
+                }
+            </style>
             <div class="calc-panel" id="calc-refinance">
-                <div class="calc-grid">
-                    <div class="calc-inputs">
-                        <div class="input-group">
-                            <label>Remaining Mortgage Balance <span class="input-val" id="ref-bal-val">$450,000</span></label>
-                            <input type="range" id="ref-bal" min="50000" max="1500000" step="5000" value="450000">
+                <div class="calc-grid" style="display: block;">
+                    <div class="calc-inputs ref-calc-inputs">
+                        <div>
+                            <h5 style="margin-bottom: 20px; color: var(--primary-color); font-size: 1.1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">Original Mortgage</h5>
+                            <div class="input-group">
+                                <label>Original Mortgage Balance <span class="input-val" id="ref-orig-bal-val">$200,000</span></label>
+                                <input type="range" id="ref-orig-bal" min="50000" max="1500000" step="5000" value="200000">
+                            </div>
+                            <div class="input-group">
+                                <label>Original Rate <span class="input-val" id="ref-orig-rate-val">5.5%</span></label>
+                                <input type="range" id="ref-orig-rate" min="1" max="15" step="0.1" value="5.5">
+                            </div>
+                            <div class="input-group">
+                                <label>Original Amortization (Years) <span class="input-val" id="ref-orig-amort-val">25</span></label>
+                                <input type="range" id="ref-orig-amort" min="5" max="30" step="1" value="25">
+                            </div>
+                            <div class="input-group">
+                                <label>Number of Payments Made <span class="input-val" id="ref-pmts-made-val">12</span></label>
+                                <input type="range" id="ref-pmts-made" min="1" max="360" step="1" value="12">
+                            </div>
+                            <div style="font-size: 0.9rem; color: var(--text-light); text-align: right; margin-top: -10px; margin-bottom: 20px; line-height: 1.6;">
+                                <!-- Spacer to perfectly align with the right column -->
+                                <span class="ref-desktop-spacer">Spacer<br></span>
+                                Original Payment: <strong id="ref-orig-pmt-display" style="color: var(--primary-color);">$0</strong>/mo
+                            </div>
                         </div>
-                        <div class="input-group">
-                            <label>Current Rate <span class="input-val" id="ref-cur-val">6.2%</span></label>
-                            <input type="range" id="ref-cur" min="1" max="10" step="0.1" value="6.2">
-                        </div>
-                        <div class="input-group">
-                            <label>New Potential Rate <span class="input-val" id="ref-new-val">4.8%</span></label>
-                            <input type="range" id="ref-new" min="1" max="10" step="0.1" value="4.8">
-                        </div>
-                        <div class="input-group">
-                            <label>Estimated Penalty & Fees <span class="input-val" id="ref-cost-val">$8,000</span></label>
-                            <input type="range" id="ref-cost" min="0" max="30000" step="500" value="8000">
+                        <div>
+                            <h5 style="margin-bottom: 20px; color: var(--primary-color); font-size: 1.1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">New Mortgage</h5>
+                            <div class="input-group">
+                                <label>New Rate <span class="input-val" id="ref-new-rate-val">4.5%</span></label>
+                                <input type="range" id="ref-new-rate" min="1" max="15" step="0.1" value="4.5">
+                            </div>
+                            <div class="input-group">
+                                <label>New Amortization (Years) <span class="input-val" id="ref-new-amort-val">25</span></label>
+                                <input type="range" id="ref-new-amort" min="5" max="30" step="1" value="25">
+                            </div>
+                            <div class="input-group">
+                                <label>Closing Costs <span class="input-val" id="ref-closing-val">$1,800</span></label>
+                                <input type="range" id="ref-closing" min="0" max="10000" step="100" value="1800">
+                            </div>
+                            <div class="input-group">
+                                <label>Prepayment Penalties <span class="input-val" id="ref-penalty-val">$100</span></label>
+                                <input type="range" id="ref-penalty" min="0" max="25000" step="100" value="100">
+                            </div>
+                            <div style="font-size: 0.9rem; color: var(--text-light); text-align: right; margin-top: -10px; margin-bottom: 20px; line-height: 1.6;">
+                                New Balance: <strong id="ref-new-bal-display" style="color: var(--primary-color);">$196,131.20</strong><br>
+                                New Payment: <strong id="ref-new-pmt-display" style="color: var(--primary-color);">$0</strong>/mo
+                            </div>
                         </div>
                     </div>
-                    <div class="calc-results">
-                        <div class="result-box">
-                            <span class="result-label">Net Interest Savings</span>
-                            <div class="result-value" id="ref-savings">$0</div>
+                    <div class="calc-results" style="text-align: left; padding: 40px 30px; margin-top: 20px;">
+                        <h4 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--primary-color); margin-bottom: 15px;">
+                            You could save <span id="ref-savings-main" style="color: var(--accent-color);">$0</span> in interest
+                        </h4>
+                        <div style="font-size: 1.1rem; color: var(--text-color);">
+                            Your payment will decrease <span id="ref-decrease" style="font-weight: 600;">$0 per month</span>
                         </div>
-                        <div class="result-box secondary">
-                            <span class="result-label">Break-even Point</span>
-                            <div class="result-value-sm" id="ref-breakeven">0 Months</div>
-                            <p class="stress-test-note">Savings calculated over the remaining 5-year term.</p>
+                        <div style="margin-top: 15px; font-size: 0.85rem; color: var(--text-light);">
+                            *Net Refinance Math: Total interest savings minus <span id="ref-out-of-pocket" style="font-weight: 600;">$0</span> in upfront fees equals <strong id="ref-net-savings" style="color: var(--text-color);">$0</strong> net value.
                         </div>
                     </div>
                 </div>
@@ -1334,32 +1398,63 @@ title: Home
                 <div class="calc-grid">
                     <div class="calc-inputs">
                         <div class="input-group">
-                            <label>Mortgage Amount <span class="input-val" id="pay-bal-val">$500,000</span></label>
-                            <input type="range" id="pay-bal" min="50000" max="1500000" step="5000" value="500000">
+                            <label>Original Mortgage Amount <span class="input-val" id="pay-bal-val">$220,000</span></label>
+                            <input type="range" id="pay-bal" min="50000" max="1500000" step="5000" value="220000">
                         </div>
                         <div class="input-group">
-                            <label>Interest Rate <span class="input-val" id="pay-rate-val">5.5%</span></label>
-                            <input type="range" id="pay-rate" min="1" max="10" step="0.1" value="5.5">
+                            <label>Interest Rate <span class="input-val" id="pay-rate-val">4.5%</span></label>
+                            <input type="range" id="pay-rate" min="1" max="10" step="0.1" value="4.5">
                         </div>
                         <div class="input-group">
-                            <label>Amortization (Years) <span class="input-val" id="pay-amort-val">25</span></label>
+                            <label>Original Amortization (Years) <span class="input-val" id="pay-amort-val">25</span></label>
                             <input type="range" id="pay-amort" min="5" max="30" step="1" value="25">
                         </div>
                         <div class="input-group">
-                            <label>Additional Monthly Payment <span class="input-val" id="pay-extra-val">$200</span></label>
-                            <input type="range" id="pay-extra" min="0" max="2000" step="50" value="200">
+                            <label>Years Remaining <span class="input-val" id="pay-remain-val">20</span></label>
+                            <input type="range" id="pay-remain" min="1" max="30" step="1" value="20">
+                        </div>
+                        <div class="input-group">
+                            <label style="margin-bottom: 5px;">Payment Type</label>
+                            <select id="pay-freq" style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-family: inherit; font-size: 0.95rem; background-color: var(--white); cursor: pointer; color: var(--primary-color);">
+                                <option value="12">Monthly</option>
+                                <option value="26">Bi-Weekly</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Additional Payment <span class="input-val" id="pay-extra-val">$100</span></label>
+                            <input type="range" id="pay-extra" min="0" max="2000" step="10" value="100">
+                        </div>
+                        <div class="input-group">
+                            <label style="margin-bottom: 5px;">Additional Payment Frequency</label>
+                            <select id="pay-extra-freq" style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-family: inherit; font-size: 0.95rem; background-color: var(--white); cursor: pointer; color: var(--primary-color);">
+                                <option value="12">Monthly</option>
+                                <option value="26" selected>Bi-Weekly</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="calc-results">
-                        <div class="result-box">
-                            <span class="result-label">Interest Saved</span>
-                            <div class="result-value" id="pay-interest-saved">$0</div>
+                    <div class="calc-results" style="text-align: left; padding: 40px 30px;">
+                        <h4 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--primary-color); margin-bottom: 25px; line-height: 1.4;">
+                            Your additional payments shorten your mortgage by <span id="pay-time-saved" style="color: var(--accent-color);">0 Years</span>.
+                        </h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 25px;">
+                            <div>
+                                <span style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-light); margin-bottom: 5px;">Current payment:</span>
+                                <strong id="pay-current-pmt" style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--primary-color);">$0</strong>
+                            </div>
+                            <div>
+                                <span style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-light); margin-bottom: 5px;">Total scheduled pmts:</span>
+                                <strong id="pay-total-scheduled" style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--primary-color);">$0</strong>
+                            </div>
+                            <div>
+                                <span style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-light); margin-bottom: 5px;">Accelerated savings:</span>
+                                <strong id="pay-accelerated-savings" style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--accent-color);">$0</strong>
+                            </div>
+                            <div>
+                                <span style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-light); margin-bottom: 5px;">Total accelerated pmts:</span>
+                                <strong id="pay-total-accelerated" style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--primary-color);">$0</strong>
+                            </div>
                         </div>
-                        <div class="result-box secondary">
-                            <span class="result-label">Time Removed from Term</span>
-                            <div class="result-value-sm" id="pay-time-saved">0 Years</div>
-                            <p class="stress-test-note">Assumes consistent additional payments over the life of the mortgage.</p>
-                        </div>
+                        <p class="stress-test-note" style="margin-top: 25px; font-size: 0.8rem;">Assumes consistent additional payments over the remaining life of the mortgage.</p>
                     </div>
                 </div>
             </div>
@@ -1727,6 +1822,16 @@ title: Home
     const qDown = document.getElementById('down');
     const qRate = document.getElementById('rate');
     const qDebt = document.getElementById('debt');
+    const qAmort = document.getElementById('q-amort');
+    const qTerm = document.getElementById('q-term');
+    const qTaxes = document.getElementById('q-taxes');
+    const qHeat = document.getElementById('q-heat');
+    const qCondo = document.getElementById('q-condo');
+
+    // Helper for Canadian semi-annual compounding to monthly rate
+    function getMonthlyRate(annualRate) {
+        return Math.pow(1 + annualRate / 2, 1 / 6) - 1;
+    }
 
     function updateQualify() {
         // Update display values
@@ -1734,6 +1839,11 @@ title: Home
         document.getElementById('down-val').innerText = formatCurrency(qDown.value);
         document.getElementById('rate-val').innerText = qRate.value + '%';
         document.getElementById('debt-val').innerText = formatCurrency(qDebt.value);
+        document.getElementById('q-amort-val').innerText = qAmort.value;
+        document.getElementById('q-term-val').innerText = qTerm.value;
+        document.getElementById('q-taxes-val').innerText = formatCurrency(qTaxes.value);
+        document.getElementById('q-heat-val').innerText = formatCurrency(qHeat.value);
+        document.getElementById('q-condo-val').innerText = formatCurrency(qCondo.value);
 
         // Core Canadian Mortgage Logic
         const annualIncome = parseFloat(qIncome.value);
@@ -1743,93 +1853,217 @@ title: Home
         
         // Canadian Stress Test: Max of (Contract + 2%) or 5.25%
         const stressRate = Math.max(contractRate + 0.02, 0.0525);
-        const monthlyStressRate = stressRate / 12;
+        const monthlyStressRate = getMonthlyRate(stressRate);
 
-        // Conservative Ratios (GDS: 32%, TDS: 40%)
+        // CMHC Limits (GDS: 39%, TDS: 44%)
         const monthlyIncome = annualIncome / 12;
-        const gdsLimit = monthlyIncome * 0.32;
-        const tdsLimit = (monthlyIncome * 0.40) - monthlyDebt;
+        const gdsLimit = monthlyIncome * 0.39;
+        const tdsLimit = (monthlyIncome * 0.44) - monthlyDebt;
         
         // We use the more restrictive of GDS or TDS
-        // Assuming ~ $350/mo for taxes/heat for typical professional calculation
-        const estimatedTaxesHeat = 350; 
-        const maxMonthlyPI = Math.min(gdsLimit - estimatedTaxesHeat, tdsLimit - estimatedTaxesHeat);
+        const heatingCosts = parseFloat(qHeat.value);
+        const propertyTaxes = parseFloat(qTaxes.value) / 12;
+        const condoCostsGDS = parseFloat(qCondo.value) * 0.5; // 50% of condo fees for GDS Limits
+        const condoCostsActual = parseFloat(qCondo.value);
 
-        // Standard Amortization Formula to backed out Loan Amount (PV)
-        // PV = PMT * [1 - (1 + r)^-n] / r
-        const n = 25 * 12; // 25 year standard
+        const maxMonthlyPI_GDS = gdsLimit - heatingCosts - propertyTaxes - condoCostsGDS;
+        const maxMonthlyPI_TDS = tdsLimit - heatingCosts - propertyTaxes - condoCostsGDS;
+        const maxMonthlyPI = Math.max(0, Math.min(maxMonthlyPI_GDS, maxMonthlyPI_TDS));
+
+        // Selected Amortization Formula
+        const n = parseInt(qAmort.value) * 12;
         const maxLoan = maxMonthlyPI * (1 - Math.pow(1 + monthlyStressRate, -n)) / monthlyStressRate;
         
-        const maxPurchase = Math.max(maxLoan + downPayment, downPayment);
+        // Account for CMHC Insurance Premium to find base purchase power
+        let maxPurchaseByIncome = maxLoan + downPayment;
+        let defaultDPPercent = downPayment / maxPurchaseByIncome;
+        let cmhcRate = 0;
         
-        // Payment at ACTUAL contract rate for display (not stress rate)
-        const monthlyContractRate = contractRate / 12;
-        const actualPayment = maxLoan * (monthlyContractRate * Math.pow(1 + monthlyContractRate, n)) / (Math.pow(1 + monthlyContractRate, n) - 1);
+        if (defaultDPPercent >= 0.05 && defaultDPPercent < 0.10) cmhcRate = 0.040;
+        else if (defaultDPPercent >= 0.10 && defaultDPPercent < 0.15) cmhcRate = 0.031;
+        else if (defaultDPPercent >= 0.15 && defaultDPPercent < 0.20) cmhcRate = 0.028;
+
+        if (cmhcRate > 0) {
+            maxPurchaseByIncome = (maxLoan / (1 + cmhcRate)) + downPayment;
+        }
+
+        // Apply Canadian Minimum Down Payment Rules
+        let maxPurchaseByDP = 0;
+        if (downPayment < 25000) {
+            maxPurchaseByDP = downPayment / 0.05;
+        } else if (downPayment < 75000) {
+            maxPurchaseByDP = 500000 + (downPayment - 25000) / 0.10;
+        } else if (downPayment < 200000) {
+            maxPurchaseByDP = 999999; // Can't buy 1M+ without 20% down
+        } else {
+            maxPurchaseByDP = downPayment / 0.20;
+        }
+
+        const maxPurchase = Math.min(maxPurchaseByIncome, maxPurchaseByDP);
+        
+        // Actual Mortgage Payment (using contract rate, including CMHC if applicable)
+        const finalPurchase = maxPurchase;
+        const finalDPPercent = downPayment / finalPurchase;
+        let finalCmhcRate = 0;
+        if (finalDPPercent >= 0.05 && finalDPPercent < 0.10) finalCmhcRate = 0.040;
+        else if (finalDPPercent >= 0.10 && finalDPPercent < 0.15) finalCmhcRate = 0.031;
+        else if (finalDPPercent >= 0.15 && finalDPPercent < 0.20) finalCmhcRate = 0.028;
+        
+        const actualLoanAmount = (finalPurchase - downPayment) * (1 + finalCmhcRate);
+        const monthlyContractRate = getMonthlyRate(contractRate);
+        const actualPI = actualLoanAmount > 0 ? actualLoanAmount * (monthlyContractRate * Math.pow(1 + monthlyContractRate, n)) / (Math.pow(1 + monthlyContractRate, n) - 1) : 0;
+        
+        const totalPayment = actualPI + heatingCosts + propertyTaxes + condoCostsActual;
 
         document.getElementById('buying-power').innerText = formatCurrency(maxPurchase);
-        document.getElementById('qualify-payment').innerText = formatCurrency(actualPayment) + "/mo";
+        document.getElementById('qualify-loan').innerText = formatCurrency(actualLoanAmount);
+        document.getElementById('qualify-payment').innerText = formatCurrency(totalPayment) + "/mo";
+        
+        let breakdownHTML = `PI: ${formatCurrency(actualPI)}`;
+        if (propertyTaxes > 0) breakdownHTML += ` | Taxes: ${formatCurrency(propertyTaxes)}`;
+        if (heatingCosts > 0) breakdownHTML += ` | Heat: ${formatCurrency(heatingCosts)}`;
+        if (condoCostsActual > 0) breakdownHTML += ` | Condo: ${formatCurrency(condoCostsActual)}`;
+        document.getElementById('qualify-breakdown').innerText = breakdownHTML;
+    }
+
+    // Helper: calculate total interest paid over a term
+    function getInterestPaid(balance, monthlyRate, pmt, months) {
+        let interest = 0;
+        let b = balance;
+        for(let i=0; i<months; i++) {
+            let intThisMonth = b * monthlyRate;
+            interest += intThisMonth;
+            let prinThisMonth = pmt - intThisMonth;
+            b -= prinThisMonth;
+        }
+        return interest;
     }
 
     // 2. Refinance Savings Logic
     function updateRefinance() {
-        const bal = parseFloat(document.getElementById('ref-bal').value);
-        const curRate = parseFloat(document.getElementById('ref-cur').value) / 100 / 12;
-        const newRate = parseFloat(document.getElementById('ref-new').value) / 100 / 12;
-        const penalty = parseFloat(document.getElementById('ref-cost').value);
+        const origBal = parseFloat(document.getElementById('ref-orig-bal').value);
+        const origRate = getMonthlyRate(parseFloat(document.getElementById('ref-orig-rate').value) / 100);
+        const origAmort = parseInt(document.getElementById('ref-orig-amort').value) * 12;
+        const pmtsMade = parseInt(document.getElementById('ref-pmts-made').value);
 
-        document.getElementById('ref-bal-val').innerText = formatCurrency(bal);
-        document.getElementById('ref-cur-val').innerText = document.getElementById('ref-cur').value + '%';
-        document.getElementById('ref-new-val').innerText = document.getElementById('ref-new').value + '%';
-        document.getElementById('ref-cost-val').innerText = formatCurrency(penalty);
+        const newRate = getMonthlyRate(parseFloat(document.getElementById('ref-new-rate').value) / 100);
+        const newAmort = parseInt(document.getElementById('ref-new-amort').value) * 12;
+        const closing = parseFloat(document.getElementById('ref-closing').value);
+        const penalty = parseFloat(document.getElementById('ref-penalty').value);
 
-        const n = 60; // Calculate over a 5 year term
-        const curPmt = bal * (curRate * Math.pow(1 + curRate, 300)) / (Math.pow(1 + curRate, 300) - 1); // 25 yr base
-        const newPmt = bal * (newRate * Math.pow(1 + newRate, 300)) / (Math.pow(1 + newRate, 300) - 1);
+        document.getElementById('ref-orig-bal-val').innerText = formatCurrency(origBal);
+        document.getElementById('ref-orig-rate-val').innerText = document.getElementById('ref-orig-rate').value + '%';
+        document.getElementById('ref-orig-amort-val').innerText = origAmort / 12;
+        document.getElementById('ref-pmts-made-val').innerText = pmtsMade;
+        
+        document.getElementById('ref-new-rate-val').innerText = document.getElementById('ref-new-rate').value + '%';
+        document.getElementById('ref-new-amort-val').innerText = newAmort / 12;
+        document.getElementById('ref-closing-val').innerText = formatCurrency(closing);
+        document.getElementById('ref-penalty-val').innerText = formatCurrency(penalty);
 
-        const monthlySaving = curPmt - newPmt;
-        const totalSavings = (monthlySaving * n) - penalty;
-        const breakEven = penalty / monthlySaving;
+        const origPmt = origBal * origRate / (1 - Math.pow(1 + origRate, -origAmort));
+        
+        let currentBal = origBal;
+        for(let i=0; i<pmtsMade; i++) {
+            let int = currentBal * origRate;
+            currentBal -= (origPmt - int);
+        }
+        
+        document.getElementById('ref-orig-pmt-display').innerText = formatCurrency(origPmt);
+        document.getElementById('ref-new-bal-display').innerText = formatCurrency(currentBal);
 
-        document.getElementById('ref-savings').innerText = formatCurrency(Math.max(totalSavings, 0));
-        document.getElementById('ref-breakeven').innerText = totalSavings > 0 ? Math.round(breakEven) + " Months" : "N/A";
+        const newPmt = currentBal * newRate / (1 - Math.pow(1 + newRate, -newAmort));
+        document.getElementById('ref-new-pmt-display').innerText = formatCurrency(newPmt);
+        
+        const origRemainingPmts = Math.max(0, origAmort - pmtsMade);
+        const totalOrigRemaining = origPmt * origRemainingPmts;
+        const totalNewRemaining = newPmt * newAmort;
+        
+        const netSavings = totalOrigRemaining - totalNewRemaining;
+        const pmtDecrease = origPmt - newPmt;
+        const outOfPocket = closing + penalty;
+        const trueNetValue = netSavings - outOfPocket;
+
+        document.getElementById('ref-savings-main').innerText = formatCurrency(Math.max(netSavings, 0));
+        
+        const decreaseEl = document.getElementById('ref-decrease');
+        if (pmtDecrease > 0) {
+            decreaseEl.innerText = `${formatCurrency(pmtDecrease)} per month`;
+            decreaseEl.style.color = "var(--text-color)";
+        } else {
+            decreaseEl.innerText = `increase ${formatCurrency(Math.abs(pmtDecrease))} per month`;
+            decreaseEl.style.color = "red";
+        }
+        
+        document.getElementById('ref-out-of-pocket').innerText = formatCurrency(outOfPocket);
+        document.getElementById('ref-net-savings').innerText = formatCurrency(trueNetValue);
+        document.getElementById('ref-net-savings').style.color = trueNetValue >= 0 ? 'var(--text-color)' : 'red';
     }
 
     // 3. Accelerated Payoff Logic
+    function getPeriodRate(annualRate, periodsPerYear) {
+        return Math.pow(1 + annualRate / 2, 2 / periodsPerYear) - 1;
+    }
+
     function updatePayoff() {
         const bal = parseFloat(document.getElementById('pay-bal').value);
-        const rate = parseFloat(document.getElementById('pay-rate').value) / 100 / 12;
-        const years = parseInt(document.getElementById('pay-amort').value);
-        const extra = parseFloat(document.getElementById('pay-extra').value);
+        const freq = parseInt(document.getElementById('pay-freq').value);
+        const rate = getPeriodRate(parseFloat(document.getElementById('pay-rate').value) / 100, freq);
+        const origAmort = parseInt(document.getElementById('pay-amort').value);
+        const remainAmort = parseInt(document.getElementById('pay-remain').value);
+        
+        const extraFreq = parseInt(document.getElementById('pay-extra-freq').value);
+        const rawExtra = parseFloat(document.getElementById('pay-extra').value);
+        // Normalize the additional payment amount into the base Payment Type timeline 
+        const extra = rawExtra * (extraFreq / freq);
 
         document.getElementById('pay-bal-val').innerText = formatCurrency(bal);
         document.getElementById('pay-rate-val').innerText = document.getElementById('pay-rate').value + '%';
-        document.getElementById('pay-amort-val').innerText = years;
-        document.getElementById('pay-extra-val').innerText = formatCurrency(extra);
+        document.getElementById('pay-amort-val').innerText = origAmort;
+        document.getElementById('pay-remain-val').innerText = remainAmort;
+        document.getElementById('pay-extra-val').innerText = formatCurrency(rawExtra);
 
-        const n = years * 12;
-        const standardPmt = bal * (rate * Math.pow(1 + rate, n)) / (Math.pow(1 + rate, n) - 1);
+        const nOrig = origAmort * freq;
+        let nRemain = remainAmort * freq;
+        if (nRemain > nOrig) { 
+            nRemain = nOrig; 
+            document.getElementById('pay-remain').value = origAmort; 
+            document.getElementById('pay-remain-val').innerText = origAmort;
+        }
+        const periodsElapsed = nOrig - nRemain;
+
+        // Base payment calculated from ORIGINAL metrics
+        const standardPmt = bal * (rate * Math.pow(1 + rate, nOrig)) / (Math.pow(1 + rate, nOrig) - 1);
+        
+        // Find current balance after elapsed periods
+        let currentBal = bal;
+        for(let i=0; i<periodsElapsed; i++) {
+            let interest = currentBal * rate;
+            currentBal -= (standardPmt - interest);
+        }
+
         const acceleratedPmt = standardPmt + extra;
+        const totalScheduled = standardPmt * nOrig;
 
-        // Total Interest Standard
-        const totalInterestStandard = (standardPmt * n) - bal;
+        let periodsToPayoff = -Math.log(1 - (rate * currentBal / acceleratedPmt)) / Math.log(1 + rate);
+        if (isNaN(periodsToPayoff)) periodsToPayoff = nRemain;
 
-        // Years to Payoff with Extra
-        // n = -log(1 - (r*PV/PMT)) / log(1 + r)
-        let monthsToPayoff = -Math.log(1 - (rate * bal / acceleratedPmt)) / Math.log(1 + rate);
-        if (isNaN(monthsToPayoff)) monthsToPayoff = n; // Handle edge cases
+        const paymentsAlreadyMade = standardPmt * periodsElapsed;
+        const totalAccelerated = paymentsAlreadyMade + (acceleratedPmt * periodsToPayoff);
+        const interestSaved = totalScheduled - totalAccelerated;
+        const timeSaved = (nRemain - periodsToPayoff) / freq;
 
-        const totalInterestAccelerated = (acceleratedPmt * monthsToPayoff) - bal;
-        const interestSaved = totalInterestStandard - totalInterestAccelerated;
-        const timeSaved = (n - monthsToPayoff) / 12;
-
-        document.getElementById('pay-interest-saved').innerText = formatCurrency(Math.max(interestSaved, 0));
-        document.getElementById('pay-time-saved').innerText = timeSaved > 0 ? timeSaved.toFixed(1) + " Years" : "0 Years";
+        document.getElementById('pay-current-pmt').innerText = formatCurrency(standardPmt);
+        document.getElementById('pay-total-scheduled').innerText = formatCurrency(totalScheduled);
+        document.getElementById('pay-accelerated-savings').innerText = formatCurrency(Math.max(interestSaved, 0));
+        document.getElementById('pay-total-accelerated').innerText = formatCurrency(totalAccelerated);
+        document.getElementById('pay-time-saved').innerText = timeSaved > 0 ? timeSaved.toFixed(1) : "0";
     }
 
     // Event Listeners for all inputs
-    [qIncome, qDown, qRate, qDebt].forEach(el => el.addEventListener('input', updateQualify));
-    ['ref-bal', 'ref-cur', 'ref-new', 'ref-cost'].forEach(id => document.getElementById(id).addEventListener('input', updateRefinance));
-    ['pay-bal', 'pay-rate', 'pay-amort', 'pay-extra'].forEach(id => document.getElementById(id).addEventListener('input', updatePayoff));
+    [qIncome, qDown, qRate, qDebt, qAmort, qTerm, qTaxes, qHeat, qCondo].forEach(el => el.addEventListener('input', updateQualify));
+    ['ref-orig-bal', 'ref-orig-rate', 'ref-orig-amort', 'ref-pmts-made', 'ref-new-rate', 'ref-new-amort', 'ref-closing', 'ref-penalty'].forEach(id => document.getElementById(id).addEventListener('input', updateRefinance));
+    ['pay-bal', 'pay-rate', 'pay-amort', 'pay-remain', 'pay-freq', 'pay-extra', 'pay-extra-freq'].forEach(id => document.getElementById(id).addEventListener('input', updatePayoff));
 
     // Initial run
     updateQualify();
