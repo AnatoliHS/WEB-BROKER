@@ -78,17 +78,22 @@
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     padding-top: 80px;
     margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
 
   .footer-brand-name {
     font-family: 'Teodor', var(--font-serif);
-    font-size: clamp(4rem, 14vw, 12rem);
+    font-size: clamp(3rem, 10vw, 8rem);
     color: var(--white);
     line-height: 0.9;
     letter-spacing: -0.02em;
     display: block;
     opacity: 0.9;
-    white-space: nowrap;
+    text-align: center;
+    width: 100%;
   }
 
   .footer-tagline {
@@ -145,9 +150,9 @@
     .footer-social {
       justify-content: center;
     }
-    
+
     .footer-brand-name {
-      font-size: 9.5vw;
+      font-size: 8vw;
     }
 
     .footer-brand-row {
@@ -196,16 +201,27 @@
       <!-- Column 1: Bio & Social -->
       <div class="footer-col footer-bio">
         <h3>Expert Advice</h3>
-        <p>Providing professional, unbiased mortgage solutions tailored to your unique financial journey. Access to hundreds of products across Canada.</p>
+        <p>Providing professional, unbiased mortgage solutions tailored to your unique financial journey. Access to
+          hundreds of products across Canada.</p>
         <div class="footer-social">
           <a href="#" class="social-link" aria-label="Facebook">
-            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+            </svg>
           </a>
           <a href="#" class="social-link" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
           </a>
           <a href="#" class="social-link" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path><circle cx="4" cy="4" r="2"></circle></svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
           </a>
         </div>
       </div>
@@ -215,7 +231,7 @@
         <h3>Company</h3>
         <div class="footer-links">
           <a href="#hero">Home</a>
-          <a href="#about">About Carol</a>
+          <a href="#about">About Carole</a>
           <a href="#calculators">Estimators</a>
           <a href="#faq">Common Questions</a>
         </div>
@@ -244,7 +260,7 @@
 
     <!-- Monumental Brand Row -->
     <div class="footer-brand-row">
-      <span class="footer-brand-name">Carol Ann Bryant</span>
+      <span class="footer-brand-name">Carole Ann Bryant</span>
       <span class="footer-tagline">Licensed Mortgage Professional</span>
     </div>
 
@@ -260,7 +276,8 @@
     </div>
 
     <div class="disclaimer">
-      Dominion Lending Centres is a national mortgage brokerage and leasing company with more than 2,000 members offering free expert advice across Canada. {{ site.brokerage }} ({{ site.brokerageLicense }}). {{ site.license }}.
+      Dominion Lending Centres is a national mortgage brokerage and leasing company with more than 2,000 members
+      offering free expert advice across Canada. {{ site.brokerage }} ({{ site.brokerageLicense }}). {{ site.license }}.
     </div>
   </div>
 </footer>

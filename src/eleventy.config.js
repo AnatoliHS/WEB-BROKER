@@ -7,12 +7,21 @@ const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const sectionizePlugin = require("./_plugins/eleventy-plugin-sectionize");
 
 module.exports = function(eleventyConfig) {
+  // Consolidate all assets into /assets/
+  eleventyConfig.addPassthroughCopy("assets");
+
+  // Explicitly map root-level files that need to stay at the root for SEO and icons
   eleventyConfig.addPassthroughCopy({
-    "./assets/": "/",
+    "assets/favicon.ico": "/favicon.ico",
+    "assets/apple-touch-icon.png": "/apple-touch-icon.png",
+    "assets/favicon-32x32.png": "/favicon-32x32.png",
+    "assets/favicon-16x16.png": "/favicon-16x16.png",
+    "assets/site.webmanifest": "/site.webmanifest",
+    "assets/android-chrome-192x192.png": "/android-chrome-192x192.png",
+    "assets/android-chrome-512x512.png": "/android-chrome-512x512.png"
   });
-  // Copy any image file to `_site`, via Glob pattern
-	// Keeps the same directory structure.
-	eleventyConfig.addPassthroughCopy("**/*.{png,jpg,jpeg,gif,svg}");
+
+  eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 
 
   eleventyConfig.addPlugin(sectionizePlugin);
