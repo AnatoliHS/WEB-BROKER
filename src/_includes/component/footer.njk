@@ -160,6 +160,34 @@
       text-align: center;
     }
   }
+
+  .footer-policy-link {
+    color: #718096;
+    text-decoration: none;
+    font-size: 0.85rem;
+    position: relative;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+
+  .footer-policy-link:hover {
+    color: var(--white);
+  }
+
+  .footer-policy-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+  }
+
+  .footer-policy-link:hover::after {
+    width: 100%;
+  }
 </style>
 
 <footer class="footer" id="contact">
@@ -221,8 +249,14 @@
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; {{ site.year or '2026' }} Carole Ann Bryant. All Rights Reserved.</p>
-      <p>{{ site.brokerage }} | Brokerage Licence #13119</p>
+      <div class="footer-copyright" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+        <p style="margin: 0;">&copy; {{ site.year or '2026' }} Carole Ann Bryant. All Rights Reserved.</p>
+        <div style="display: flex; gap: 25px;">
+          <a href="/privacy" class="footer-policy-link">Privacy Policy</a>
+          <a href="/terms" class="footer-policy-link">Terms of Use</a>
+        </div>
+      </div>
+      <p style="margin: 0;">{{ site.brokerage }} | Brokerage Licence #13119</p>
     </div>
 
     <div class="disclaimer">

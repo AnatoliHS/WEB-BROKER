@@ -1,4 +1,4 @@
-# Home Inspection Site
+# Carole Ann Bryant Mortgage Broker
 
 ## v1.0.0
 
@@ -8,4 +8,4 @@ Simply clone the repo and run `make` to get started.
 
 This is my first hotfix.
 
-Home inspection.
+Carole Ann Bryant Mortgage Broker.

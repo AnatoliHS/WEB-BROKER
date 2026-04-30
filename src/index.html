@@ -440,11 +440,13 @@ title: Home
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px;
+        padding: 40px 20px;
         visibility: hidden;
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.8s ease, visibility 0.8s ease;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .modal.active {
@@ -454,7 +456,7 @@ title: Home
     }
 
     .modal-overlay {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
@@ -616,7 +618,7 @@ title: Home
     @media (max-width: 768px) {
         .modal {
             align-items: flex-start;
-            padding-top: 60px;
+            padding: 60px 20px;
         }
 
         .modal-container {
@@ -1689,24 +1691,40 @@ title: Home
     const slides = document.querySelectorAll('.review-slide');
     const dots = document.querySelectorAll('.dot');
     let currentSlide = 0;
+    let slideInterval;
 
     function showSlide(index) {
         slides.forEach(slide => slide.classList.remove('active'));
         dots.forEach(dot => dot.classList.remove('active'));
 
-        slides[index].classList.add('active');
-        dots[index].classList.add('active');
+        if (slides[index]) slides[index].classList.add('active');
+        if (dots[index]) dots[index].classList.add('active');
         currentSlide = index;
+    }
+
+    function startAutoRotate() {
+        if (slides.length > 0) {
+            slideInterval = setInterval(() => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }, 8000);
+        }
+    }
+
+    function resetAutoRotate() {
+        clearInterval(slideInterval);
+        startAutoRotate();
     }
 
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             showSlide(index);
+            resetAutoRotate();
         });
     });
 
-    // Auto-rotate every 8 seconds
-    // ... items exist
+    // Initial start
+    startAutoRotate();
 
     // SERVICE MODAL LOGIC
     const modal = document.getElementById('service-modal');
