@@ -116,6 +116,18 @@
     color: #718096;
   }
 
+  .footer-copyright {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footer-policy-links {
+    display: flex;
+    gap: 25px;
+  }
+
   .disclaimer {
     font-size: 0.75rem;
     line-height: 1.6;
@@ -164,6 +176,16 @@
       gap: 20px;
       text-align: center;
     }
+
+    .footer-copyright {
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-policy-links {
+      justify-content: center;
+    }
   }
 
   .footer-policy-link {
@@ -204,20 +226,12 @@
         <p>Providing professional, unbiased mortgage solutions tailored to your unique financial journey. Access to
           hundreds of products across Canada.</p>
         <div class="footer-social">
-          <a href="#" class="social-link" aria-label="Facebook">
+          <a href="https://www.facebook.com/brokercaroleannbryant/" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24">
               <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
             </svg>
           </a>
-          <a href="#" class="social-link" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-            </svg>
-          </a>
-          <a href="#" class="social-link" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/caroleannbryant/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24">
               <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
               <circle cx="4" cy="4" r="2"></circle>
@@ -241,9 +255,9 @@
       <div class="footer-col">
         <h3>Services</h3>
         <div class="footer-links">
-          <a href="javascript:void(0)" class="service-modal-btn" data-service="purchase">Home Purchase</a>
-          <a href="javascript:void(0)" class="service-modal-btn" data-service="renewal">Mortgage Renewal</a>
-          <a href="javascript:void(0)" class="service-modal-btn" data-service="refinance">Equity & Refinance</a>
+          <a href="#purchase">Home Purchase</a>
+          <a href="#renewal">Mortgage Renewal</a>
+          <a href="#refinance">Equity & Refinance</a>
         </div>
       </div>
 
@@ -261,13 +275,13 @@
     <!-- Monumental Brand Row -->
     <div class="footer-brand-row">
       <span class="footer-brand-name">Carole Ann Bryant</span>
-      <span class="footer-tagline">Licensed Mortgage Professional</span>
+      <span class="footer-tagline">Licensed Mortgage Broker</span>
     </div>
 
     <div class="footer-bottom">
-      <div class="footer-copyright" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+      <div class="footer-copyright">
         <p style="margin: 0;">&copy; {{ site.year or '2026' }} Carole Ann Bryant. All Rights Reserved.</p>
-        <div style="display: flex; gap: 25px;">
+        <div class="footer-policy-links">
           <a href="/privacy" class="footer-policy-link">Privacy Policy</a>
           <a href="/terms" class="footer-policy-link">Terms of Use</a>
         </div>

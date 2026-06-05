@@ -1070,6 +1070,7 @@ title: Home
         text-align: center;
         overflow: hidden;
         position: relative;
+        transition: padding 0.3s ease;
     }
 
     .reviews-container {
@@ -1080,8 +1081,42 @@ title: Home
 
     .review-slider {
         position: relative;
-        min-height: 350px;
+        height: 300px;
         margin-bottom: 40px;
+    }
+
+    @media (max-width: 992px) {
+        .review-slider {
+            height: 350px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .reviews-section {
+            padding: 80px 20px;
+        }
+        .review-slider {
+            height: 480px;
+            margin-bottom: 30px;
+        }
+        .review-quote {
+            font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+            margin-bottom: 20px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .reviews-section {
+            padding: 60px 20px;
+        }
+        .review-slider {
+            height: 530px;
+            margin-bottom: 20px;
+        }
+        .review-quote {
+            font-size: clamp(1rem, 4vw, 1.25rem);
+            margin-bottom: 15px;
+        }
     }
 
     .review-slide {
@@ -1095,12 +1130,12 @@ title: Home
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: flex-start;
     }
 
     .review-slide.active {
         opacity: 1;
         visibility: visible;
-        position: relative;
     }
 
     .review-quote {
@@ -1138,11 +1173,21 @@ title: Home
         transition: all 0.3s ease;
         border: none;
         padding: 0;
+        position: relative;
     }
 
     .dot.active {
         background-color: var(--accent-color);
         transform: scale(1.3);
+    }
+
+    .dot::after {
+        content: '';
+        position: absolute;
+        top: -12px;
+        left: -12px;
+        right: -12px;
+        bottom: -12px;
     }
 </style>
 
@@ -1188,11 +1233,9 @@ title: Home
             </div>
             <div class="about-text">
                 <h2>Unbiased Expertise. <br><em>Tailored for You.</em></h2>
-                <p>Your mortgage is likely your largest financial commitment. Choosing the right one can save you
-                    thousands. Unlike a bank, I work with dozens of lenders to ensure you have access to the most
-                    competitive rates and products in Canada.</p>
-                <p>From first-time buyers to complex refinances, my mission is to provide professional, unbiased advice
-                    that simplifies your journey to homeownership.</p>
+                <p>With over 18 years of experience in the mortgage industry, I’ve built my reputation on a foundation of exceptional customer service. I pride myself on being a Mortgage Broker who is easy to reach and quick to respond, ensuring my clients feel supported throughout the entire mortgage process.</p>
+                <p>Whether you are a first-time homebuyer, a seasoned investor, or looking to unlock home equity, my priority is matching you with a strategic mortgage product that aligns with your lifestyle and long-term goals.</p>
+                <p>When I step away from the mortgage world, you might find me in the garden, watercolor painting, tackling the French language, or—my personal favorite—video call “visits” with my grown daughters and grandkids, who are scattered among other provinces and countries.</p>
                 <div class="license">
                     {{ site.license }} <br>
                     {{ site.brokerage }} | Brokerage Licence #13119
@@ -1204,10 +1247,10 @@ title: Home
 
 <section class="services-v2" id="services">
     <div class="services-header">
-        <h2>Expert Solutions <br><em>Tailored to Your Life.</em></h2>
-        <p>From your first home to strategic refinances, we provide the unbiased expertise and market access needed to secure your financial future.</p>
+        <h2>Mortgage Pathways <br><em>Designed for You.</em></h2>
+        <p>From initial purchase options to custom equity solutions, discover how the right mortgage structure elevates your long-term success.</p>
     </div>
-    <div class="service-row">
+    <div class="service-row" id="purchase">
         <div class="service-image">
             <img src="/assets/home-purchase.png" alt="Happy family in new home">
         </div>
@@ -1220,7 +1263,7 @@ title: Home
         </div>
     </div>
 
-    <div class="service-row">
+    <div class="service-row" id="renewal">
         <div class="service-image">
             <img src="/assets/mortgage-renewal.png" alt="Modern office meeting">
         </div>
@@ -1233,7 +1276,7 @@ title: Home
         </div>
     </div>
 
-    <div class="service-row">
+    <div class="service-row" id="refinance">
         <div class="service-image">
             <img src="/assets/equity-refinance.png" alt="Beautiful home exterior">
         </div>
@@ -1274,7 +1317,7 @@ title: Home
                             <input type="range" id="down" min="5000" max="500000" step="5000" value="50000">
                         </div>
                         <div class="input-group">
-                            <label>Current Interest Rate <span class="input-val" id="rate-val">5.2%</span></label>
+                            <label>Select Interest Rate <span class="input-val" id="rate-val">5.2%</span></label>
                             <input type="range" id="rate" min="1" max="10" step="0.1" value="5.2">
                         </div>
                         <div class="input-group">
@@ -1404,7 +1447,7 @@ title: Home
                             <input type="range" id="pay-bal" min="50000" max="1500000" step="5000" value="220000">
                         </div>
                         <div class="input-group">
-                            <label>Interest Rate <span class="input-val" id="pay-rate-val">4.5%</span></label>
+                            <label>Select Interest Rate <span class="input-val" id="pay-rate-val">4.5%</span></label>
                             <input type="range" id="pay-rate" min="1" max="10" step="0.1" value="4.5">
                         </div>
                         <div class="input-group">
@@ -1469,34 +1512,124 @@ title: Home
         <div class="review-slider">
             <!-- Slide 1 -->
             <div class="review-slide active">
-                <blockquote class="review-quote">"Carole Ann made our first home purchase seamless. Her expertise and
-                    access to rates we couldn't find ourselves were game-changers."</blockquote>
-                <cite class="review-author">Sarah & Mark T.</cite>
+                <blockquote class="review-quote">"My experience working with CaroleAnn Bryant was outstanding. At all times CaroleAnn was helpful, professional and friendly. I would highly recommend her services. She was able to get me an excellent rate for my mortgage and troubleshoot any problems that arose with ease and patience. Thank you for all your hard work, CaroleAnn!"</blockquote>
+                <cite class="review-author">Heather Janering</cite>
+                <div class="review-dots">
+                    <button class="dot" aria-label="Go to slide 1"></button>
+                    <button class="dot" aria-label="Go to slide 2"></button>
+                    <button class="dot" aria-label="Go to slide 3"></button>
+                    <button class="dot" aria-label="Go to slide 4"></button>
+                    <button class="dot" aria-label="Go to slide 5"></button>
+                    <button class="dot" aria-label="Go to slide 6"></button>
+                    <button class="dot" aria-label="Go to slide 7"></button>
+                    <button class="dot" aria-label="Go to slide 8"></button>
+                </div>
             </div>
             <!-- Slide 2 -->
             <div class="review-slide">
-                <blockquote class="review-quote">"Professional, strategic, and always available. She didn't just find us
-                    a mortgage; she helped us plan our financial future."</blockquote>
-                <cite class="review-author">David R.</cite>
+                <blockquote class="review-quote">"As a first time home buyers, My wife and I didn’t know what to expect. Carole-Ann made the process seamless and easy for us! Always there to help with questions, and ease the stress. Carole-Ann helped us secure our first mortgage and I couldn’t be happier! Highly Recommend!"</blockquote>
+                <cite class="review-author">Tristan Flatt</cite>
+                <div class="review-dots">
+                    <button class="dot" aria-label="Go to slide 1"></button>
+                    <button class="dot" aria-label="Go to slide 2"></button>
+                    <button class="dot" aria-label="Go to slide 3"></button>
+                    <button class="dot" aria-label="Go to slide 4"></button>
+                    <button class="dot" aria-label="Go to slide 5"></button>
+                    <button class="dot" aria-label="Go to slide 6"></button>
+                    <button class="dot" aria-label="Go to slide 7"></button>
+                    <button class="dot" aria-label="Go to slide 8"></button>
+                </div>
             </div>
             <!-- Slide 3 -->
             <div class="review-slide">
-                <blockquote class="review-quote">"The renewal process was effortless thanks to Carole Ann. We saved
-                    thousands over what our bank was offering."</blockquote>
-                <cite class="review-author">Jennifer L.</cite>
+                <blockquote class="review-quote">"Carole Ann is absolutely amazing! She truly went above and beyond, took time to go through all of my questions, ensured I was comfortable and I truly felt taken care of. I highly recommend Carole to everyone. Even after I was in the home she was available and always happy to help. Anyone looking for a mortgage call Carole!!! She was a great support and always able to help during all the stress and worry I had I knew she had my best interest!"</blockquote>
+                <cite class="review-author">Melissa Jones-Brock</cite>
+                <div class="review-dots">
+                    <button class="dot" aria-label="Go to slide 1"></button>
+                    <button class="dot" aria-label="Go to slide 2"></button>
+                    <button class="dot" aria-label="Go to slide 3"></button>
+                    <button class="dot" aria-label="Go to slide 4"></button>
+                    <button class="dot" aria-label="Go to slide 5"></button>
+                    <button class="dot" aria-label="Go to slide 6"></button>
+                    <button class="dot" aria-label="Go to slide 7"></button>
+                    <button class="dot" aria-label="Go to slide 8"></button>
+                </div>
             </div>
             <!-- Slide 4 -->
             <div class="review-slide">
-                <blockquote class="review-quote">"Extremely knowledgeable about equity and refinancing. She made the
-                    complex simple and the results were outstanding."</blockquote>
-                <cite class="review-author">Michael S.</cite>
+                <blockquote class="review-quote">"CaroleAnn is a fantastic broker! Her personality and knowledge of the market helps tremendously when making the best choice for your mortgage. I have called her many times over the years with questions and have always felt welcome and confident in her service and support as I choose the best option for my mortgage."</blockquote>
+                <cite class="review-author">Chico Echeverria</cite>
+                <div class="review-dots">
+                    <button class="dot" aria-label="Go to slide 1"></button>
+                    <button class="dot" aria-label="Go to slide 2"></button>
+                    <button class="dot" aria-label="Go to slide 3"></button>
+                    <button class="dot" aria-label="Go to slide 4"></button>
+                    <button class="dot" aria-label="Go to slide 5"></button>
+                    <button class="dot" aria-label="Go to slide 6"></button>
+                    <button class="dot" aria-label="Go to slide 7"></button>
+                    <button class="dot" aria-label="Go to slide 8"></button>
+                </div>
             </div>
-        </div>
-        <div class="review-dots">
-            <button class="dot active" aria-label="Go to slide 1"></button>
-            <button class="dot" aria-label="Go to slide 2"></button>
-            <button class="dot" aria-label="Go to slide 3"></button>
-            <button class="dot" aria-label="Go to slide 4"></button>
+            <!-- Slide 5 -->
+            <div class="review-slide">
+                <blockquote class="review-quote">"We have used CaroleAnn as our mortgage broker to purchase both of our homes. She goes above and beyond to ensure that her clients are fully satisfied. CaroleAnn found us great rates and did so very quickly and efficiently. She displayed amazing patience with us, as first time home buyers, explaining every detail of our mortgage and leaving us feeling confident in our purchase. I highly recommend CaroleAnn if you are looking for an honest and efficient mortgage broker!"</blockquote>
+                <cite class="review-author">Michelle Flay</cite>
+                <div class="review-dots">
+                    <button class="dot" aria-label="Go to slide 1"></button>
+                    <button class="dot" aria-label="Go to slide 2"></button>
+                    <button class="dot" aria-label="Go to slide 3"></button>
+                    <button class="dot" aria-label="Go to slide 4"></button>
+                    <button class="dot" aria-label="Go to slide 5"></button>
+                    <button class="dot" aria-label="Go to slide 6"></button>
+                    <button class="dot" aria-label="Go to slide 7"></button>
+                    <button class="dot" aria-label="Go to slide 8"></button>
+                </div>
+            </div>
+            <!-- Slide 6 -->
+            <div class="review-slide">
+                <blockquote class="review-quote">"CaroleAnn has negotiated several mortgages for us ( we have moved 3 times in the last 10 years). She is a hard worker and one in whom we have placed our trust and never been disappointed. Her rates are always competitive and her knowledge base and honesty mean we can rest easy at night with no concerns about unexpected problems arising tomorrow. We have recommended Carole Ann to our own family and have no qualms about recommending her to you"</blockquote>
+                <cite class="review-author">Alan and Jill Gallant</cite>
+                <div class="review-dots">
+                    <button class="dot" aria-label="Go to slide 1"></button>
+                    <button class="dot" aria-label="Go to slide 2"></button>
+                    <button class="dot" aria-label="Go to slide 3"></button>
+                    <button class="dot" aria-label="Go to slide 4"></button>
+                    <button class="dot" aria-label="Go to slide 5"></button>
+                    <button class="dot" aria-label="Go to slide 6"></button>
+                    <button class="dot" aria-label="Go to slide 7"></button>
+                    <button class="dot" aria-label="Go to slide 8"></button>
+                </div>
+            </div>
+            <!-- Slide 7 -->
+            <div class="review-slide">
+                <blockquote class="review-quote">"When have just purchased our first home and Carole Ann was really helpful in finding us a mortgage lender and a mortgage rate that was affordable given the recent rise in interests rates. Carole Ann was helped us walk through the process of the mortgage application and also clear in explaining the terms of the mortgage itself. Thank you Carole Ann for all your help!"</blockquote>
+                <cite class="review-author">Erisa Katono</cite>
+                <div class="review-dots">
+                    <button class="dot" aria-label="Go to slide 1"></button>
+                    <button class="dot" aria-label="Go to slide 2"></button>
+                    <button class="dot" aria-label="Go to slide 3"></button>
+                    <button class="dot" aria-label="Go to slide 4"></button>
+                    <button class="dot" aria-label="Go to slide 5"></button>
+                    <button class="dot" aria-label="Go to slide 6"></button>
+                    <button class="dot" aria-label="Go to slide 7"></button>
+                    <button class="dot" aria-label="Go to slide 8"></button>
+                </div>
+            </div>
+            <!-- Slide 8 -->
+            <div class="review-slide">
+                <blockquote class="review-quote">"CaroleAnn is an expert in her field. She worked incredibly hard to find us the best rate in a timely manner. She was available to answer all our questions and worked with us in such a personal way. I would recommend her to anyone looking for professional, personal and quality service when it comes to a mortgage broker."</blockquote>
+                <cite class="review-author">Ben Mills</cite>
+                <div class="review-dots">
+                    <button class="dot" aria-label="Go to slide 1"></button>
+                    <button class="dot" aria-label="Go to slide 2"></button>
+                    <button class="dot" aria-label="Go to slide 3"></button>
+                    <button class="dot" aria-label="Go to slide 4"></button>
+                    <button class="dot" aria-label="Go to slide 5"></button>
+                    <button class="dot" aria-label="Go to slide 6"></button>
+                    <button class="dot" aria-label="Go to slide 7"></button>
+                    <button class="dot" aria-label="Go to slide 8"></button>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -1528,20 +1661,22 @@ title: Home
                 </div>
                 <div class="faq-answer">
                     In most cases (standard residential mortgages), there is no cost to you! The lender pays the broker
-                    a finder's fee for bringing them the business. For complex or commercial mortgages, a fee may be
-                    charged, which would be discussed upfront.
+                    a finder's fee for bringing them the business. For alternative, private and commercial mortgages, a broker fee may be charged; all costs will be clearly outlined in advance.
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question">
-                    What is a mortgage pre-approval?
+                    What is the difference between a rate hold and a pre-approval?
                     <span class="faq-icon"></span>
                 </div>
                 <div class="faq-answer">
-                    A pre-approval is a commitment from a lender to provide you with a specific mortgage amount at a
-                    certain interest rate for a period (usually 90-120 days). It helps you know your budget and makes
-                    your offer more attractive to sellers.
+                    <strong>A rate hold</strong> simply locks in a specific interest rate for a set period (usually 90 to 120 days).<br>
+                    <strong>The Process:</strong> It requires minimal documentation and can often be done in a few minutes.<br>
+                    <strong>The Catch:</strong> The lender has not looked at your financial situation. It does not guarantee that you qualify for a mortgage, nor does it guarantee how much money you can borrow.<br><br>
+                    <strong>A pre-approval</strong> is a formal, preliminary commitment from a lender stating exactly how much they are willing to lend you.<br>
+                    <strong>The Process:</strong> The mortgage professional and/or the lender review your credit score, income, employment, and down payment documents.<br>
+                    <strong>The Benefit:</strong> It includes a rate hold and determines your maximum purchase budget.
                 </div>
             </div>
 
@@ -1689,16 +1824,25 @@ title: Home
 
     // Review Slider Logic
     const slides = document.querySelectorAll('.review-slide');
-    const dots = document.querySelectorAll('.dot');
     let currentSlide = 0;
     let slideInterval;
 
     function showSlide(index) {
         slides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-
-        if (slides[index]) slides[index].classList.add('active');
-        if (dots[index]) dots[index].classList.add('active');
+        
+        if (slides[index]) {
+            slides[index].classList.add('active');
+            
+            // Set active class on the corresponding dot inside the newly active slide
+            const activeDots = slides[index].querySelectorAll('.dot');
+            activeDots.forEach((dot, dotIndex) => {
+                if (dotIndex === index) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
         currentSlide = index;
     }
 
@@ -1716,14 +1860,25 @@ title: Home
         startAutoRotate();
     }
 
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            showSlide(index);
-            resetAutoRotate();
+    // Attach click listener via event delegation on slider container to handle click on nested dots
+    const sliderContainer = document.querySelector('.review-slider');
+    if (sliderContainer) {
+        sliderContainer.addEventListener('click', (e) => {
+            const clickedDot = e.target.closest('.dot');
+            if (clickedDot) {
+                const dotsContainer = clickedDot.parentElement;
+                const dotsArray = Array.from(dotsContainer.querySelectorAll('.dot'));
+                const index = dotsArray.indexOf(clickedDot);
+                if (index !== -1) {
+                    showSlide(index);
+                    resetAutoRotate();
+                }
+            }
         });
-    });
+    }
 
     // Initial start
+    showSlide(0);
     startAutoRotate();
 
     // SERVICE MODAL LOGIC
