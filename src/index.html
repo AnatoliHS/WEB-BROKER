@@ -170,9 +170,10 @@ title: Home
         .hero-image-area {
             height: 100vh;
             width: 100vw;
-            background-attachment: scroll; /* Fixing the mobile zoom bug */
+            background-attachment: scroll;
+            /* Fixing the mobile zoom bug */
             padding-bottom: 220px;
-            background-position: center 15%; 
+            background-position: center 15%;
         }
 
         .hero-title-bottom h1 {
@@ -312,8 +313,15 @@ title: Home
     }
 
     @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .calc-grid {
@@ -357,7 +365,7 @@ title: Home
         background: var(--primary-color);
         border: 3px solid var(--white);
         border-radius: 50%;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         transition: transform 0.2s ease;
     }
 
@@ -419,7 +427,7 @@ title: Home
             grid-template-columns: 1fr;
             gap: 40px;
         }
-        
+
         .calc-results {
             padding: 30px;
         }
@@ -632,6 +640,7 @@ title: Home
             font-size: 2.2rem;
         }
     }
+
     .reveal-section {
         background-color: var(--white);
         margin-top: 60px;
@@ -1095,10 +1104,12 @@ title: Home
         .reviews-section {
             padding: 80px 20px;
         }
+
         .review-slider {
             height: 480px;
             margin-bottom: 30px;
         }
+
         .review-quote {
             font-size: clamp(1.1rem, 3.5vw, 1.5rem);
             margin-bottom: 20px;
@@ -1109,10 +1120,12 @@ title: Home
         .reviews-section {
             padding: 60px 20px;
         }
+
         .review-slider {
             height: 530px;
             margin-bottom: 20px;
         }
+
         .review-quote {
             font-size: clamp(1rem, 4vw, 1.25rem);
             margin-bottom: 15px;
@@ -1202,7 +1215,8 @@ title: Home
     <section class="reveal-section">
         <div class="reveal-container">
             <h2 class="reveal-title">
-                <span class="reveal-text">Turning your monthly expense into a smart investment strategy. Powered by Dominion
+                <span class="reveal-text">Turning your monthly expense into a smart investment strategy. Powered by
+                    Dominion
                     Lending Centres and backed by Canada’s largest network of 230+ lenders, mortgages are structured to
                     secure competitive rates and transform home financing into a strategic wealth-building asset.
                 </span>
@@ -1225,475 +1239,592 @@ title: Home
         </div>
     </div>
 
-<section class="about-section" id="about">
-    <div class="container">
-        <div class="about-grid">
-            <div class="about-portrait">
-                <img src="/assets/carol-ann-bryant.JPG" alt="Carole Ann Bryant - Mortgage Broker">
-            </div>
-            <div class="about-text">
-                <h2>Unbiased Expertise. <br><em>Tailored for You.</em></h2>
-                <p>With over 18 years of experience in the mortgage industry, I’ve built my reputation on a foundation of exceptional customer service. I pride myself on being a Mortgage Broker who is easy to reach and quick to respond, ensuring my clients feel supported throughout the entire mortgage process.</p>
-                <p>Whether you are a first-time homebuyer, a seasoned investor, or looking to unlock home equity, my priority is matching you with a strategic mortgage product that aligns with your lifestyle and long-term goals.</p>
-                <p>When I step away from the mortgage world, you might find me in the garden, watercolor painting, tackling the French language, or—my personal favorite—video call “visits” with my grown daughters and grandkids, who are scattered among other provinces and countries.</p>
-                <div class="license">
-                    {{ site.license }} <br>
-                    {{ site.brokerage }} | Brokerage Licence #13119
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-portrait">
+                    <img src="/assets/carol-ann-bryant.JPG" alt="Carole Ann Bryant - Mortgage Broker">
+                </div>
+                <div class="about-text">
+                    <h2>Unbiased Expertise. <br><em>Tailored for You.</em></h2>
+                    <p>With over 18 years of experience in the mortgage industry, I’ve built my reputation on a
+                        foundation of exceptional customer service. I pride myself on being a Mortgage Broker who is
+                        easy to reach and quick to respond, ensuring my clients feel supported throughout the entire
+                        mortgage process.</p>
+                    <p>Whether you are a first-time homebuyer, a seasoned investor, or looking to unlock home equity, my
+                        priority is matching you with a strategic mortgage product that aligns with your lifestyle and
+                        long-term goals.</p>
+                    <p>When I step away from the mortgage world, you might find me in the garden, watercolor painting,
+                        tackling the French language, or—my personal favorite—video call “visits” with my grown
+                        daughters and grandkids, who are scattered among other provinces and countries.</p>
+                    <div class="license">
+                        {{ site.license }} <br>
+                        {{ site.brokerage }} | Brokerage Licence #13119
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="services-v2" id="services">
-    <div class="services-header">
-        <h2>Mortgage Pathways <br><em>Designed for You.</em></h2>
-        <p>From initial purchase options to custom equity solutions, discover how the right mortgage structure elevates your long-term success.</p>
-    </div>
-    <div class="service-row" id="purchase">
-        <div class="service-image">
-            <img src="/assets/home-purchase.png" alt="Happy family in new home">
+    <section class="services-v2" id="services">
+        <div class="services-header">
+            <h2>Mortgage Pathways <br><em>Designed for You.</em></h2>
+            <p>From initial purchase options to custom equity solutions, discover how the right mortgage structure
+                elevates your long-term success.</p>
         </div>
-        <div class="service-content">
-            <span class="service-label">Purchase</span>
-            <h3>Home Purchase</h3>
-            <p>Your home is more than an address. It's an investment in your future. We provide the expertise to ensure
-                you secure the best possible financing terms for your new beginning.</p>
-            <button class="btn btn-outline service-modal-btn" data-service="purchase">Explore Solutions</button>
-        </div>
-    </div>
-
-    <div class="service-row" id="renewal">
-        <div class="service-image">
-            <img src="/assets/mortgage-renewal.png" alt="Modern office meeting">
-        </div>
-        <div class="service-content">
-            <span class="service-label">Renewal</span>
-            <h3>Mortgage Renewal</h3>
-            <p>Don't just sign your renewal notice. Let's review your financial goals and find a product that aligns
-                with where you are today, not where you were five years ago.</p>
-            <button class="btn btn-outline service-modal-btn" data-service="renewal">Review Your Options</button>
-        </div>
-    </div>
-
-    <div class="service-row" id="refinance">
-        <div class="service-image">
-            <img src="/assets/equity-refinance.png" alt="Beautiful home exterior">
-        </div>
-        <div class="service-content">
-            <span class="service-label">Refinance</span>
-            <h3>Equity & Refinance</h3>
-            <p>Unlock the power of your home's equity. From debt consolidation to investment opportunities, we help you
-                leverage your largest asset effectively.</p>
-            <button class="btn btn-outline service-modal-btn" data-service="refinance">Unlock Equity</button>
-        </div>
-    </div>
-</section>
-
-<section class="calculators-section" id="calculators">
-    <div class="container">
-        <div class="section-title">
-            <h2>Strategic Planning Tools</h2>
-            <p>Accurate, real-time insights to help you make informed mortgage decisions.</p>
+        <div class="service-row" id="purchase">
+            <div class="service-image">
+                <img src="/assets/home-purchase.png" alt="Happy family in new home">
+            </div>
+            <div class="service-content">
+                <span class="service-label">Purchase</span>
+                <h3>Home Purchase</h3>
+                <p>Your home is more than an address. It's an investment in your future. We provide the expertise to
+                    ensure
+                    you secure the best possible financing terms for your new beginning.</p>
+                <button class="btn btn-outline service-modal-btn" data-service="purchase">Explore Solutions</button>
+            </div>
         </div>
 
-        <div class="calc-nav">
-            <button class="calc-nav-btn active" data-calc="qualify">Mortgage Qualifier</button>
-            <button class="calc-nav-btn" data-calc="refinance">Mortgage Refinance</button>
-            <button class="calc-nav-btn" data-calc="payoff">Mortgage Payoff</button>
+        <div class="service-row" id="renewal">
+            <div class="service-image">
+                <img src="/assets/mortgage-renewal.png" alt="Modern office meeting">
+            </div>
+            <div class="service-content">
+                <span class="service-label">Renewal</span>
+                <h3>Mortgage Renewal</h3>
+                <p>Don't just sign your renewal notice. Let's review your financial goals and find a product that aligns
+                    with where you are today, not where you were five years ago.</p>
+                <button class="btn btn-outline service-modal-btn" data-service="renewal">Review Your Options</button>
+            </div>
         </div>
 
-        <div class="calc-wrapper">
-            <!-- Purchase Power Calculator -->
-            <div class="calc-panel active" id="calc-qualify">
-                <div class="calc-grid">
-                    <div class="calc-inputs">
-                        <div class="input-group">
-                            <label>Annual Household Income <span class="input-val" id="income-val">$120,000</span></label>
-                            <input type="range" id="income" min="40000" max="500000" step="5000" value="120000">
+        <div class="service-row" id="refinance">
+            <div class="service-image">
+                <img src="/assets/equity-refinance.png" alt="Beautiful home exterior">
+            </div>
+            <div class="service-content">
+                <span class="service-label">Refinance</span>
+                <h3>Equity & Refinance</h3>
+                <p>Unlock the power of your home's equity. From debt consolidation to investment opportunities, we help
+                    you
+                    leverage your largest asset effectively.</p>
+                <button class="btn btn-outline service-modal-btn" data-service="refinance">Unlock Equity</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="calculators-section" id="calculators">
+        <div class="container">
+            <div class="section-title">
+                <h2>Strategic Planning Tools</h2>
+                <p>Accurate, real-time insights to help you make informed mortgage decisions.</p>
+            </div>
+
+            <div class="calc-nav">
+                <button class="calc-nav-btn active" data-calc="qualify">Mortgage Qualifier</button>
+                <button class="calc-nav-btn" data-calc="refinance">Mortgage Refinance</button>
+                <button class="calc-nav-btn" data-calc="payoff">Mortgage Payoff</button>
+            </div>
+
+            <div class="calc-wrapper">
+                <!-- Purchase Power Calculator -->
+                <div class="calc-panel active" id="calc-qualify">
+                    <div class="calc-grid">
+                        <div class="calc-inputs">
+                            <div class="input-group">
+                                <label>Annual Household Income <span class="input-val"
+                                        id="income-val">$120,000</span></label>
+                                <input type="range" id="income" min="40000" max="500000" step="5000" value="120000">
+                            </div>
+                            <div class="input-group">
+                                <label>Down Payment <span class="input-val" id="down-val">$50,000</span></label>
+                                <input type="range" id="down" min="5000" max="500000" step="5000" value="50000">
+                            </div>
+                            <div class="input-group">
+                                <label>Select Interest Rate <span class="input-val" id="rate-val">5.2%</span></label>
+                                <input type="range" id="rate" min="1" max="10" step="0.1" value="5.2">
+                            </div>
+                            <div class="input-group">
+                                <label>Monthly Debt (Car, Credit Cards) <span class="input-val"
+                                        id="debt-val">$400</span></label>
+                                <input type="range" id="debt" min="0" max="5000" step="100" value="400">
+                            </div>
+                            <div class="input-group">
+                                <label>Amortization (Years) <span class="input-val" id="q-amort-val">25</span></label>
+                                <input type="range" id="q-amort" min="10" max="30" step="1" value="25">
+                            </div>
+                            <div class="input-group">
+                                <label>Mortgage Term (Years) <span class="input-val" id="q-term-val">5</span></label>
+                                <input type="range" id="q-term" min="1" max="10" step="1" value="5">
+                            </div>
+                            <div class="input-group">
+                                <label>Annual Property Taxes <span class="input-val"
+                                        id="q-taxes-val">$3,000</span></label>
+                                <input type="range" id="q-taxes" min="0" max="15000" step="100" value="3000">
+                            </div>
+                            <div class="input-group">
+                                <label>Monthly Heat <span class="input-val" id="q-heat-val">$150</span></label>
+                                <input type="range" id="q-heat" min="0" max="500" step="10" value="150">
+                            </div>
+                            <div class="input-group">
+                                <label>Monthly Condo Fees <span class="input-val" id="q-condo-val">$0</span></label>
+                                <input type="range" id="q-condo" min="0" max="2000" step="50" value="0">
+                            </div>
                         </div>
-                        <div class="input-group">
-                            <label>Down Payment <span class="input-val" id="down-val">$50,000</span></label>
-                            <input type="range" id="down" min="5000" max="500000" step="5000" value="50000">
-                        </div>
-                        <div class="input-group">
-                            <label>Select Interest Rate <span class="input-val" id="rate-val">5.2%</span></label>
-                            <input type="range" id="rate" min="1" max="10" step="0.1" value="5.2">
-                        </div>
-                        <div class="input-group">
-                            <label>Monthly Debt (Car, Credit Cards) <span class="input-val" id="debt-val">$400</span></label>
-                            <input type="range" id="debt" min="0" max="5000" step="100" value="400">
-                        </div>
-                        <div class="input-group">
-                            <label>Amortization (Years) <span class="input-val" id="q-amort-val">25</span></label>
-                            <input type="range" id="q-amort" min="10" max="30" step="1" value="25">
-                        </div>
-                        <div class="input-group">
-                            <label>Mortgage Term (Years) <span class="input-val" id="q-term-val">5</span></label>
-                            <input type="range" id="q-term" min="1" max="10" step="1" value="5">
-                        </div>
-                        <div class="input-group">
-                            <label>Annual Property Taxes <span class="input-val" id="q-taxes-val">$3,000</span></label>
-                            <input type="range" id="q-taxes" min="0" max="15000" step="100" value="3000">
-                        </div>
-                        <div class="input-group">
-                            <label>Monthly Heat <span class="input-val" id="q-heat-val">$150</span></label>
-                            <input type="range" id="q-heat" min="0" max="500" step="10" value="150">
-                        </div>
-                        <div class="input-group">
-                            <label>Monthly Condo Fees <span class="input-val" id="q-condo-val">$0</span></label>
-                            <input type="range" id="q-condo" min="0" max="2000" step="50" value="0">
-                        </div>
-                    </div>
-                    <div class="calc-results">
-                        <div class="result-box">
-                            <span class="result-label">Estimated Buying Power</span>
-                            <div class="result-value" id="buying-power">$0</div>
-                        </div>
-                        <div class="result-box secondary">
-                            <span class="result-label">Total Loan Amount (inc. CMHC)</span>
-                            <div class="result-value-sm" id="qualify-loan">$0</div>
-                        </div>
-                        <div class="result-box secondary">
-                            <span class="result-label">Total Monthly Payment</span>
-                            <div class="result-value-sm" id="qualify-payment">$0</div>
-                            <div id="qualify-breakdown" style="font-size: 0.85rem; color: var(--text-light); margin-top: 5px; font-weight: normal;"></div>
-                            <p class="stress-test-note" style="margin-top: 10px;">*Limits evaluated via the Canadian Stress Test.</p>
+                        <div class="calc-results">
+                            <div class="result-box">
+                                <span class="result-label">Estimated Buying Power</span>
+                                <div class="result-value" id="buying-power">$0</div>
+                            </div>
+                            <div class="result-box secondary">
+                                <span class="result-label">Total Loan Amount (inc. CMHC)</span>
+                                <div class="result-value-sm" id="qualify-loan">$0</div>
+                            </div>
+                            <div class="result-box secondary">
+                                <span class="result-label">Total Monthly Payment</span>
+                                <div class="result-value-sm" id="qualify-payment">$0</div>
+                                <div id="qualify-breakdown"
+                                    style="font-size: 0.85rem; color: var(--text-light); margin-top: 5px; font-weight: normal;">
+                                </div>
+                                <p class="stress-test-note" style="margin-top: 10px;">*Limits evaluated via the Canadian
+                                    Stress Test.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Refinance Calculator -->
-            <style>
-                .ref-calc-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-                .ref-desktop-spacer { display: inline; visibility: hidden; }
-                @media (max-width: 992px) { 
-                    .ref-calc-inputs { grid-template-columns: 1fr; gap: 0px; }
-                    .ref-desktop-spacer { display: none; }
-                }
-            </style>
-            <div class="calc-panel" id="calc-refinance">
-                <div class="calc-grid" style="display: block;">
-                    <div class="calc-inputs ref-calc-inputs">
-                        <div>
-                            <h5 style="margin-bottom: 20px; color: var(--primary-color); font-size: 1.1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">Original Mortgage</h5>
-                            <div class="input-group">
-                                <label>Original Mortgage Balance <span class="input-val" id="ref-orig-bal-val">$200,000</span></label>
-                                <input type="range" id="ref-orig-bal" min="50000" max="1500000" step="5000" value="200000">
-                            </div>
-                            <div class="input-group">
-                                <label>Original Rate <span class="input-val" id="ref-orig-rate-val">5.5%</span></label>
-                                <input type="range" id="ref-orig-rate" min="1" max="15" step="0.1" value="5.5">
-                            </div>
-                            <div class="input-group">
-                                <label>Original Amortization (Years) <span class="input-val" id="ref-orig-amort-val">25</span></label>
-                                <input type="range" id="ref-orig-amort" min="5" max="30" step="1" value="25">
-                            </div>
-                            <div class="input-group">
-                                <label>Number of Payments Made <span class="input-val" id="ref-pmts-made-val">12</span></label>
-                                <input type="range" id="ref-pmts-made" min="1" max="360" step="1" value="12">
-                            </div>
-                            <div style="font-size: 0.9rem; color: var(--text-light); text-align: right; margin-top: -10px; margin-bottom: 20px; line-height: 1.6;">
-                                <!-- Spacer to perfectly align with the right column -->
-                                <span class="ref-desktop-spacer">Spacer<br></span>
-                                Original Payment: <strong id="ref-orig-pmt-display" style="color: var(--primary-color);">$0</strong>/mo
-                            </div>
-                        </div>
-                        <div>
-                            <h5 style="margin-bottom: 20px; color: var(--primary-color); font-size: 1.1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">New Mortgage</h5>
-                            <div class="input-group">
-                                <label>New Rate <span class="input-val" id="ref-new-rate-val">4.5%</span></label>
-                                <input type="range" id="ref-new-rate" min="1" max="15" step="0.1" value="4.5">
-                            </div>
-                            <div class="input-group">
-                                <label>New Amortization (Years) <span class="input-val" id="ref-new-amort-val">25</span></label>
-                                <input type="range" id="ref-new-amort" min="5" max="30" step="1" value="25">
-                            </div>
-                            <div class="input-group">
-                                <label>Closing Costs <span class="input-val" id="ref-closing-val">$1,800</span></label>
-                                <input type="range" id="ref-closing" min="0" max="10000" step="100" value="1800">
-                            </div>
-                            <div class="input-group">
-                                <label>Prepayment Penalties <span class="input-val" id="ref-penalty-val">$100</span></label>
-                                <input type="range" id="ref-penalty" min="0" max="25000" step="100" value="100">
-                            </div>
-                            <div style="font-size: 0.9rem; color: var(--text-light); text-align: right; margin-top: -10px; margin-bottom: 20px; line-height: 1.6;">
-                                New Balance: <strong id="ref-new-bal-display" style="color: var(--primary-color);">$196,131.20</strong><br>
-                                New Payment: <strong id="ref-new-pmt-display" style="color: var(--primary-color);">$0</strong>/mo
-                            </div>
-                        </div>
-                    </div>
-                    <div class="calc-results" style="text-align: left; padding: 40px 30px; margin-top: 20px;">
-                        <h4 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--primary-color); margin-bottom: 15px;">
-                            You could save <span id="ref-savings-main" style="color: var(--accent-color);">$0</span> in interest
-                        </h4>
-                        <div style="font-size: 1.1rem; color: var(--text-color);">
-                            Your payment will decrease <span id="ref-decrease" style="font-weight: 600;">$0 per month</span>
-                        </div>
-                        <div style="margin-top: 15px; font-size: 0.85rem; color: var(--text-light);">
-                            *Net Refinance Math: Total interest savings minus <span id="ref-out-of-pocket" style="font-weight: 600;">$0</span> in upfront fees equals <strong id="ref-net-savings" style="color: var(--text-color);">$0</strong> net value.
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <!-- Refinance Calculator -->
+                <style>
+                    .ref-calc-inputs {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 30px;
+                    }
 
-            <!-- Payoff Calculator -->
-            <div class="calc-panel" id="calc-payoff">
-                <div class="calc-grid">
-                    <div class="calc-inputs">
-                        <div class="input-group">
-                            <label>Original Mortgage Amount <span class="input-val" id="pay-bal-val">$220,000</span></label>
-                            <input type="range" id="pay-bal" min="50000" max="1500000" step="5000" value="220000">
-                        </div>
-                        <div class="input-group">
-                            <label>Select Interest Rate <span class="input-val" id="pay-rate-val">4.5%</span></label>
-                            <input type="range" id="pay-rate" min="1" max="10" step="0.1" value="4.5">
-                        </div>
-                        <div class="input-group">
-                            <label>Original Amortization (Years) <span class="input-val" id="pay-amort-val">25</span></label>
-                            <input type="range" id="pay-amort" min="5" max="30" step="1" value="25">
-                        </div>
-                        <div class="input-group">
-                            <label>Years Remaining <span class="input-val" id="pay-remain-val">20</span></label>
-                            <input type="range" id="pay-remain" min="1" max="30" step="1" value="20">
-                        </div>
-                        <div class="input-group">
-                            <label style="margin-bottom: 5px;">Payment Type</label>
-                            <select id="pay-freq" style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-family: inherit; font-size: 0.95rem; background-color: var(--white); cursor: pointer; color: var(--primary-color);">
-                                <option value="12">Monthly</option>
-                                <option value="26">Bi-Weekly</option>
-                            </select>
-                        </div>
-                        <div class="input-group">
-                            <label>Additional Payment <span class="input-val" id="pay-extra-val">$100</span></label>
-                            <input type="range" id="pay-extra" min="0" max="2000" step="10" value="100">
-                        </div>
-                        <div class="input-group">
-                            <label style="margin-bottom: 5px;">Additional Payment Frequency</label>
-                            <select id="pay-extra-freq" style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-family: inherit; font-size: 0.95rem; background-color: var(--white); cursor: pointer; color: var(--primary-color);">
-                                <option value="12">Monthly</option>
-                                <option value="26" selected>Bi-Weekly</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="calc-results" style="text-align: left; padding: 40px 30px;">
-                        <h4 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--primary-color); margin-bottom: 25px; line-height: 1.4;">
-                            Your additional payments shorten your mortgage by <span id="pay-time-saved" style="color: var(--accent-color);">0 Years</span>.
-                        </h4>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 25px;">
+                    .ref-desktop-spacer {
+                        display: inline;
+                        visibility: hidden;
+                    }
+
+                    @media (max-width: 992px) {
+                        .ref-calc-inputs {
+                            grid-template-columns: 1fr;
+                            gap: 0px;
+                        }
+
+                        .ref-desktop-spacer {
+                            display: none;
+                        }
+                    }
+                </style>
+                <div class="calc-panel" id="calc-refinance">
+                    <div class="calc-grid" style="display: block;">
+                        <div class="calc-inputs ref-calc-inputs">
                             <div>
-                                <span style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-light); margin-bottom: 5px;">Current payment:</span>
-                                <strong id="pay-current-pmt" style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--primary-color);">$0</strong>
+                                <h5
+                                    style="margin-bottom: 20px; color: var(--primary-color); font-size: 1.1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">
+                                    Original Mortgage</h5>
+                                <div class="input-group">
+                                    <label>Original Mortgage Balance <span class="input-val"
+                                            id="ref-orig-bal-val">$200,000</span></label>
+                                    <input type="range" id="ref-orig-bal" min="50000" max="1500000" step="5000"
+                                        value="200000">
+                                </div>
+                                <div class="input-group">
+                                    <label>Original Rate <span class="input-val"
+                                            id="ref-orig-rate-val">5.5%</span></label>
+                                    <input type="range" id="ref-orig-rate" min="1" max="15" step="0.1" value="5.5">
+                                </div>
+                                <div class="input-group">
+                                    <label>Original Amortization (Years) <span class="input-val"
+                                            id="ref-orig-amort-val">25</span></label>
+                                    <input type="range" id="ref-orig-amort" min="5" max="30" step="1" value="25">
+                                </div>
+                                <div class="input-group">
+                                    <label>Number of Payments Made <span class="input-val"
+                                            id="ref-pmts-made-val">12</span></label>
+                                    <input type="range" id="ref-pmts-made" min="1" max="360" step="1" value="12">
+                                </div>
+                                <div
+                                    style="font-size: 0.9rem; color: var(--text-light); text-align: right; margin-top: -10px; margin-bottom: 20px; line-height: 1.6;">
+                                    <!-- Spacer to perfectly align with the right column -->
+                                    <span class="ref-desktop-spacer">Spacer<br></span>
+                                    Original Payment: <strong id="ref-orig-pmt-display"
+                                        style="color: var(--primary-color);">$0</strong>/mo
+                                </div>
                             </div>
                             <div>
-                                <span style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-light); margin-bottom: 5px;">Total scheduled pmts:</span>
-                                <strong id="pay-total-scheduled" style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--primary-color);">$0</strong>
-                            </div>
-                            <div>
-                                <span style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-light); margin-bottom: 5px;">Accelerated savings:</span>
-                                <strong id="pay-accelerated-savings" style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--accent-color);">$0</strong>
-                            </div>
-                            <div>
-                                <span style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-light); margin-bottom: 5px;">Total accelerated pmts:</span>
-                                <strong id="pay-total-accelerated" style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--primary-color);">$0</strong>
+                                <h5
+                                    style="margin-bottom: 20px; color: var(--primary-color); font-size: 1.1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">
+                                    New Mortgage</h5>
+                                <div class="input-group">
+                                    <label>New Rate <span class="input-val" id="ref-new-rate-val">4.5%</span></label>
+                                    <input type="range" id="ref-new-rate" min="1" max="15" step="0.1" value="4.5">
+                                </div>
+                                <div class="input-group">
+                                    <label>New Amortization (Years) <span class="input-val"
+                                            id="ref-new-amort-val">25</span></label>
+                                    <input type="range" id="ref-new-amort" min="5" max="30" step="1" value="25">
+                                </div>
+                                <div class="input-group">
+                                    <label>Closing Costs <span class="input-val"
+                                            id="ref-closing-val">$1,800</span></label>
+                                    <input type="range" id="ref-closing" min="0" max="10000" step="100" value="1800">
+                                </div>
+                                <div class="input-group">
+                                    <label>Prepayment Penalties <span class="input-val"
+                                            id="ref-penalty-val">$100</span></label>
+                                    <input type="range" id="ref-penalty" min="0" max="25000" step="100" value="100">
+                                </div>
+                                <div
+                                    style="font-size: 0.9rem; color: var(--text-light); text-align: right; margin-top: -10px; margin-bottom: 20px; line-height: 1.6;">
+                                    New Balance: <strong id="ref-new-bal-display"
+                                        style="color: var(--primary-color);">$196,131.20</strong><br>
+                                    New Payment: <strong id="ref-new-pmt-display"
+                                        style="color: var(--primary-color);">$0</strong>/mo
+                                </div>
                             </div>
                         </div>
-                        <p class="stress-test-note" style="margin-top: 25px; font-size: 0.8rem;">Assumes consistent additional payments over the remaining life of the mortgage.</p>
+                        <div class="calc-results" style="text-align: left; padding: 40px 30px; margin-top: 20px;">
+                            <h4
+                                style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--primary-color); margin-bottom: 15px;">
+                                You could save <span id="ref-savings-main" style="color: var(--accent-color);">$0</span>
+                                in interest
+                            </h4>
+                            <div style="font-size: 1.1rem; color: var(--text-color);">
+                                Your payment will decrease <span id="ref-decrease" style="font-weight: 600;">$0 per
+                                    month</span>
+                            </div>
+                            <div style="margin-top: 15px; font-size: 0.85rem; color: var(--text-light);">
+                                *Net Refinance Math: Total interest savings minus <span id="ref-out-of-pocket"
+                                    style="font-weight: 600;">$0</span> in upfront fees equals <strong
+                                    id="ref-net-savings" style="color: var(--text-color);">$0</strong> net value.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payoff Calculator -->
+                <div class="calc-panel" id="calc-payoff">
+                    <div class="calc-grid">
+                        <div class="calc-inputs">
+                            <div class="input-group">
+                                <label>Original Mortgage Amount <span class="input-val"
+                                        id="pay-bal-val">$220,000</span></label>
+                                <input type="range" id="pay-bal" min="50000" max="1500000" step="5000" value="220000">
+                            </div>
+                            <div class="input-group">
+                                <label>Select Interest Rate <span class="input-val"
+                                        id="pay-rate-val">4.5%</span></label>
+                                <input type="range" id="pay-rate" min="1" max="10" step="0.1" value="4.5">
+                            </div>
+                            <div class="input-group">
+                                <label>Original Amortization (Years) <span class="input-val"
+                                        id="pay-amort-val">25</span></label>
+                                <input type="range" id="pay-amort" min="5" max="30" step="1" value="25">
+                            </div>
+                            <div class="input-group">
+                                <label>Years Remaining <span class="input-val" id="pay-remain-val">20</span></label>
+                                <input type="range" id="pay-remain" min="1" max="30" step="1" value="20">
+                            </div>
+                            <div class="input-group">
+                                <label style="margin-bottom: 5px;">Payment Type</label>
+                                <select id="pay-freq"
+                                    style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-family: inherit; font-size: 0.95rem; background-color: var(--white); cursor: pointer; color: var(--primary-color);">
+                                    <option value="12">Monthly</option>
+                                    <option value="26">Bi-Weekly</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label>Additional Payment <span class="input-val" id="pay-extra-val">$100</span></label>
+                                <input type="range" id="pay-extra" min="0" max="2000" step="10" value="100">
+                            </div>
+                            <div class="input-group">
+                                <label style="margin-bottom: 5px;">Additional Payment Frequency</label>
+                                <select id="pay-extra-freq"
+                                    style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 4px; font-family: inherit; font-size: 0.95rem; background-color: var(--white); cursor: pointer; color: var(--primary-color);">
+                                    <option value="12">Monthly</option>
+                                    <option value="26" selected>Bi-Weekly</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="calc-results" style="text-align: left; padding: 40px 30px;">
+                            <h4
+                                style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--primary-color); margin-bottom: 25px; line-height: 1.4;">
+                                Your additional payments shorten your mortgage by <span id="pay-time-saved"
+                                    style="color: var(--accent-color);">0 Years</span>.
+                            </h4>
+                            <div
+                                style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 25px;">
+                                <div>
+                                    <span
+                                        style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-light); margin-bottom: 5px;">Current
+                                        payment:</span>
+                                    <strong id="pay-current-pmt"
+                                        style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--primary-color);">$0</strong>
+                                </div>
+                                <div>
+                                    <span
+                                        style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-light); margin-bottom: 5px;">Total
+                                        scheduled pmts:</span>
+                                    <strong id="pay-total-scheduled"
+                                        style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--primary-color);">$0</strong>
+                                </div>
+                                <div>
+                                    <span
+                                        style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-light); margin-bottom: 5px;">Accelerated
+                                        savings:</span>
+                                    <strong id="pay-accelerated-savings"
+                                        style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--accent-color);">$0</strong>
+                                </div>
+                                <div>
+                                    <span
+                                        style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-light); margin-bottom: 5px;">Total
+                                        accelerated pmts:</span>
+                                    <strong id="pay-total-accelerated"
+                                        style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--primary-color);">$0</strong>
+                                </div>
+                            </div>
+                            <p class="stress-test-note" style="margin-top: 25px; font-size: 0.8rem;">Assumes consistent
+                                additional payments over the remaining life of the mortgage.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="reviews-section" id="reviews">
-    <div class="reviews-container">
-        <div class="review-slider">
-            <!-- Slide 1 -->
-            <div class="review-slide active">
-                <blockquote class="review-quote">"My experience working with CaroleAnn Bryant was outstanding. At all times CaroleAnn was helpful, professional and friendly. I would highly recommend her services. She was able to get me an excellent rate for my mortgage and troubleshoot any problems that arose with ease and patience. Thank you for all your hard work, CaroleAnn!"</blockquote>
-                <cite class="review-author">Heather Janering</cite>
-                <div class="review-dots">
-                    <button class="dot" aria-label="Go to slide 1"></button>
-                    <button class="dot" aria-label="Go to slide 2"></button>
-                    <button class="dot" aria-label="Go to slide 3"></button>
-                    <button class="dot" aria-label="Go to slide 4"></button>
-                    <button class="dot" aria-label="Go to slide 5"></button>
-                    <button class="dot" aria-label="Go to slide 6"></button>
-                    <button class="dot" aria-label="Go to slide 7"></button>
-                    <button class="dot" aria-label="Go to slide 8"></button>
+    <section class="reviews-section" id="reviews">
+        <div class="reviews-container">
+            <div class="review-slider">
+                <!-- Slide 1 -->
+                <div class="review-slide active">
+                    <blockquote class="review-quote">"My experience working with CaroleAnn Bryant was outstanding. At
+                        all times CaroleAnn was helpful, professional and friendly. I would highly recommend her
+                        services. She was able to get me an excellent rate for my mortgage and troubleshoot any problems
+                        that arose with ease and patience. Thank you for all your hard work, CaroleAnn!"</blockquote>
+                    <cite class="review-author">Heather Janering</cite>
+                    <div class="review-dots">
+                        <button class="dot" aria-label="Go to slide 1"></button>
+                        <button class="dot" aria-label="Go to slide 2"></button>
+                        <button class="dot" aria-label="Go to slide 3"></button>
+                        <button class="dot" aria-label="Go to slide 4"></button>
+                        <button class="dot" aria-label="Go to slide 5"></button>
+                        <button class="dot" aria-label="Go to slide 6"></button>
+                        <button class="dot" aria-label="Go to slide 7"></button>
+                        <button class="dot" aria-label="Go to slide 8"></button>
+                    </div>
                 </div>
-            </div>
-            <!-- Slide 2 -->
-            <div class="review-slide">
-                <blockquote class="review-quote">"As a first time home buyers, My wife and I didn’t know what to expect. Carole-Ann made the process seamless and easy for us! Always there to help with questions, and ease the stress. Carole-Ann helped us secure our first mortgage and I couldn’t be happier! Highly Recommend!"</blockquote>
-                <cite class="review-author">Tristan Flatt</cite>
-                <div class="review-dots">
-                    <button class="dot" aria-label="Go to slide 1"></button>
-                    <button class="dot" aria-label="Go to slide 2"></button>
-                    <button class="dot" aria-label="Go to slide 3"></button>
-                    <button class="dot" aria-label="Go to slide 4"></button>
-                    <button class="dot" aria-label="Go to slide 5"></button>
-                    <button class="dot" aria-label="Go to slide 6"></button>
-                    <button class="dot" aria-label="Go to slide 7"></button>
-                    <button class="dot" aria-label="Go to slide 8"></button>
+                <!-- Slide 2 -->
+                <div class="review-slide">
+                    <blockquote class="review-quote">"As a first time home buyers, My wife and I didn’t know what to
+                        expect. Carole-Ann made the process seamless and easy for us! Always there to help with
+                        questions, and ease the stress. Carole-Ann helped us secure our first mortgage and I couldn’t be
+                        happier! Highly Recommend!"</blockquote>
+                    <cite class="review-author">Tristan Flatt</cite>
+                    <div class="review-dots">
+                        <button class="dot" aria-label="Go to slide 1"></button>
+                        <button class="dot" aria-label="Go to slide 2"></button>
+                        <button class="dot" aria-label="Go to slide 3"></button>
+                        <button class="dot" aria-label="Go to slide 4"></button>
+                        <button class="dot" aria-label="Go to slide 5"></button>
+                        <button class="dot" aria-label="Go to slide 6"></button>
+                        <button class="dot" aria-label="Go to slide 7"></button>
+                        <button class="dot" aria-label="Go to slide 8"></button>
+                    </div>
                 </div>
-            </div>
-            <!-- Slide 3 -->
-            <div class="review-slide">
-                <blockquote class="review-quote">"Carole Ann is absolutely amazing! She truly went above and beyond, took time to go through all of my questions, ensured I was comfortable and I truly felt taken care of. I highly recommend Carole to everyone. Even after I was in the home she was available and always happy to help. Anyone looking for a mortgage call Carole!!! She was a great support and always able to help during all the stress and worry I had I knew she had my best interest!"</blockquote>
-                <cite class="review-author">Melissa Jones-Brock</cite>
-                <div class="review-dots">
-                    <button class="dot" aria-label="Go to slide 1"></button>
-                    <button class="dot" aria-label="Go to slide 2"></button>
-                    <button class="dot" aria-label="Go to slide 3"></button>
-                    <button class="dot" aria-label="Go to slide 4"></button>
-                    <button class="dot" aria-label="Go to slide 5"></button>
-                    <button class="dot" aria-label="Go to slide 6"></button>
-                    <button class="dot" aria-label="Go to slide 7"></button>
-                    <button class="dot" aria-label="Go to slide 8"></button>
+                <!-- Slide 3 -->
+                <div class="review-slide">
+                    <blockquote class="review-quote">"Carole Ann is absolutely amazing! She truly went above and beyond,
+                        took time to go through all of my questions, ensured I was comfortable and I truly felt taken
+                        care of. I highly recommend Carole to everyone. Even after I was in the home she was available
+                        and always happy to help. Anyone looking for a mortgage call Carole!!! She was a great support
+                        and always able to help during all the stress and worry I had I knew she had my best interest!"
+                    </blockquote>
+                    <cite class="review-author">Melissa Jones-Brock</cite>
+                    <div class="review-dots">
+                        <button class="dot" aria-label="Go to slide 1"></button>
+                        <button class="dot" aria-label="Go to slide 2"></button>
+                        <button class="dot" aria-label="Go to slide 3"></button>
+                        <button class="dot" aria-label="Go to slide 4"></button>
+                        <button class="dot" aria-label="Go to slide 5"></button>
+                        <button class="dot" aria-label="Go to slide 6"></button>
+                        <button class="dot" aria-label="Go to slide 7"></button>
+                        <button class="dot" aria-label="Go to slide 8"></button>
+                    </div>
                 </div>
-            </div>
-            <!-- Slide 4 -->
-            <div class="review-slide">
-                <blockquote class="review-quote">"CaroleAnn is a fantastic broker! Her personality and knowledge of the market helps tremendously when making the best choice for your mortgage. I have called her many times over the years with questions and have always felt welcome and confident in her service and support as I choose the best option for my mortgage."</blockquote>
-                <cite class="review-author">Chico Echeverria</cite>
-                <div class="review-dots">
-                    <button class="dot" aria-label="Go to slide 1"></button>
-                    <button class="dot" aria-label="Go to slide 2"></button>
-                    <button class="dot" aria-label="Go to slide 3"></button>
-                    <button class="dot" aria-label="Go to slide 4"></button>
-                    <button class="dot" aria-label="Go to slide 5"></button>
-                    <button class="dot" aria-label="Go to slide 6"></button>
-                    <button class="dot" aria-label="Go to slide 7"></button>
-                    <button class="dot" aria-label="Go to slide 8"></button>
+                <!-- Slide 4 -->
+                <div class="review-slide">
+                    <blockquote class="review-quote">"CaroleAnn is a fantastic broker! Her personality and knowledge of
+                        the market helps tremendously when making the best choice for your mortgage. I have called her
+                        many times over the years with questions and have always felt welcome and confident in her
+                        service and support as I choose the best option for my mortgage."</blockquote>
+                    <cite class="review-author">Chico Echeverria</cite>
+                    <div class="review-dots">
+                        <button class="dot" aria-label="Go to slide 1"></button>
+                        <button class="dot" aria-label="Go to slide 2"></button>
+                        <button class="dot" aria-label="Go to slide 3"></button>
+                        <button class="dot" aria-label="Go to slide 4"></button>
+                        <button class="dot" aria-label="Go to slide 5"></button>
+                        <button class="dot" aria-label="Go to slide 6"></button>
+                        <button class="dot" aria-label="Go to slide 7"></button>
+                        <button class="dot" aria-label="Go to slide 8"></button>
+                    </div>
                 </div>
-            </div>
-            <!-- Slide 5 -->
-            <div class="review-slide">
-                <blockquote class="review-quote">"We have used CaroleAnn as our mortgage broker to purchase both of our homes. She goes above and beyond to ensure that her clients are fully satisfied. CaroleAnn found us great rates and did so very quickly and efficiently. She displayed amazing patience with us, as first time home buyers, explaining every detail of our mortgage and leaving us feeling confident in our purchase. I highly recommend CaroleAnn if you are looking for an honest and efficient mortgage broker!"</blockquote>
-                <cite class="review-author">Michelle Flay</cite>
-                <div class="review-dots">
-                    <button class="dot" aria-label="Go to slide 1"></button>
-                    <button class="dot" aria-label="Go to slide 2"></button>
-                    <button class="dot" aria-label="Go to slide 3"></button>
-                    <button class="dot" aria-label="Go to slide 4"></button>
-                    <button class="dot" aria-label="Go to slide 5"></button>
-                    <button class="dot" aria-label="Go to slide 6"></button>
-                    <button class="dot" aria-label="Go to slide 7"></button>
-                    <button class="dot" aria-label="Go to slide 8"></button>
+                <!-- Slide 5 -->
+                <div class="review-slide">
+                    <blockquote class="review-quote">"We have used CaroleAnn as our mortgage broker to purchase both of
+                        our homes. She goes above and beyond to ensure that her clients are fully satisfied. CaroleAnn
+                        found us great rates and did so very quickly and efficiently. She displayed amazing patience
+                        with us, as first time home buyers, explaining every detail of our mortgage and leaving us
+                        feeling confident in our purchase. I highly recommend CaroleAnn if you are looking for an honest
+                        and efficient mortgage broker!"</blockquote>
+                    <cite class="review-author">Michelle Flay</cite>
+                    <div class="review-dots">
+                        <button class="dot" aria-label="Go to slide 1"></button>
+                        <button class="dot" aria-label="Go to slide 2"></button>
+                        <button class="dot" aria-label="Go to slide 3"></button>
+                        <button class="dot" aria-label="Go to slide 4"></button>
+                        <button class="dot" aria-label="Go to slide 5"></button>
+                        <button class="dot" aria-label="Go to slide 6"></button>
+                        <button class="dot" aria-label="Go to slide 7"></button>
+                        <button class="dot" aria-label="Go to slide 8"></button>
+                    </div>
                 </div>
-            </div>
-            <!-- Slide 6 -->
-            <div class="review-slide">
-                <blockquote class="review-quote">"CaroleAnn has negotiated several mortgages for us ( we have moved 3 times in the last 10 years). She is a hard worker and one in whom we have placed our trust and never been disappointed. Her rates are always competitive and her knowledge base and honesty mean we can rest easy at night with no concerns about unexpected problems arising tomorrow. We have recommended Carole Ann to our own family and have no qualms about recommending her to you"</blockquote>
-                <cite class="review-author">Alan and Jill Gallant</cite>
-                <div class="review-dots">
-                    <button class="dot" aria-label="Go to slide 1"></button>
-                    <button class="dot" aria-label="Go to slide 2"></button>
-                    <button class="dot" aria-label="Go to slide 3"></button>
-                    <button class="dot" aria-label="Go to slide 4"></button>
-                    <button class="dot" aria-label="Go to slide 5"></button>
-                    <button class="dot" aria-label="Go to slide 6"></button>
-                    <button class="dot" aria-label="Go to slide 7"></button>
-                    <button class="dot" aria-label="Go to slide 8"></button>
+                <!-- Slide 6 -->
+                <div class="review-slide">
+                    <blockquote class="review-quote">"CaroleAnn has negotiated several mortgages for us ( we have moved
+                        3 times in the last 10 years). She is a hard worker and one in whom we have placed our trust and
+                        never been disappointed. Her rates are always competitive and her knowledge base and honesty
+                        mean we can rest easy at night with no concerns about unexpected problems arising tomorrow. We
+                        have recommended Carole Ann to our own family and have no qualms about recommending her to you"
+                    </blockquote>
+                    <cite class="review-author">Alan and Jill Gallant</cite>
+                    <div class="review-dots">
+                        <button class="dot" aria-label="Go to slide 1"></button>
+                        <button class="dot" aria-label="Go to slide 2"></button>
+                        <button class="dot" aria-label="Go to slide 3"></button>
+                        <button class="dot" aria-label="Go to slide 4"></button>
+                        <button class="dot" aria-label="Go to slide 5"></button>
+                        <button class="dot" aria-label="Go to slide 6"></button>
+                        <button class="dot" aria-label="Go to slide 7"></button>
+                        <button class="dot" aria-label="Go to slide 8"></button>
+                    </div>
                 </div>
-            </div>
-            <!-- Slide 7 -->
-            <div class="review-slide">
-                <blockquote class="review-quote">"When have just purchased our first home and Carole Ann was really helpful in finding us a mortgage lender and a mortgage rate that was affordable given the recent rise in interests rates. Carole Ann was helped us walk through the process of the mortgage application and also clear in explaining the terms of the mortgage itself. Thank you Carole Ann for all your help!"</blockquote>
-                <cite class="review-author">Erisa Katono</cite>
-                <div class="review-dots">
-                    <button class="dot" aria-label="Go to slide 1"></button>
-                    <button class="dot" aria-label="Go to slide 2"></button>
-                    <button class="dot" aria-label="Go to slide 3"></button>
-                    <button class="dot" aria-label="Go to slide 4"></button>
-                    <button class="dot" aria-label="Go to slide 5"></button>
-                    <button class="dot" aria-label="Go to slide 6"></button>
-                    <button class="dot" aria-label="Go to slide 7"></button>
-                    <button class="dot" aria-label="Go to slide 8"></button>
+                <!-- Slide 7 -->
+                <div class="review-slide">
+                    <blockquote class="review-quote">"When have just purchased our first home and Carole Ann was really
+                        helpful in finding us a mortgage lender and a mortgage rate that was affordable given the recent
+                        rise in interests rates. Carole Ann was helped us walk through the process of the mortgage
+                        application and also clear in explaining the terms of the mortgage itself. Thank you Carole Ann
+                        for all your help!"</blockquote>
+                    <cite class="review-author">Erisa Katono</cite>
+                    <div class="review-dots">
+                        <button class="dot" aria-label="Go to slide 1"></button>
+                        <button class="dot" aria-label="Go to slide 2"></button>
+                        <button class="dot" aria-label="Go to slide 3"></button>
+                        <button class="dot" aria-label="Go to slide 4"></button>
+                        <button class="dot" aria-label="Go to slide 5"></button>
+                        <button class="dot" aria-label="Go to slide 6"></button>
+                        <button class="dot" aria-label="Go to slide 7"></button>
+                        <button class="dot" aria-label="Go to slide 8"></button>
+                    </div>
                 </div>
-            </div>
-            <!-- Slide 8 -->
-            <div class="review-slide">
-                <blockquote class="review-quote">"CaroleAnn is an expert in her field. She worked incredibly hard to find us the best rate in a timely manner. She was available to answer all our questions and worked with us in such a personal way. I would recommend her to anyone looking for professional, personal and quality service when it comes to a mortgage broker."</blockquote>
-                <cite class="review-author">Ben Mills</cite>
-                <div class="review-dots">
-                    <button class="dot" aria-label="Go to slide 1"></button>
-                    <button class="dot" aria-label="Go to slide 2"></button>
-                    <button class="dot" aria-label="Go to slide 3"></button>
-                    <button class="dot" aria-label="Go to slide 4"></button>
-                    <button class="dot" aria-label="Go to slide 5"></button>
-                    <button class="dot" aria-label="Go to slide 6"></button>
-                    <button class="dot" aria-label="Go to slide 7"></button>
-                    <button class="dot" aria-label="Go to slide 8"></button>
+                <!-- Slide 8 -->
+                <div class="review-slide">
+                    <blockquote class="review-quote">"CaroleAnn is an expert in her field. She worked incredibly hard to
+                        find us the best rate in a timely manner. She was available to answer all our questions and
+                        worked with us in such a personal way. I would recommend her to anyone looking for professional,
+                        personal and quality service when it comes to a mortgage broker."</blockquote>
+                    <cite class="review-author">Ben Mills</cite>
+                    <div class="review-dots">
+                        <button class="dot" aria-label="Go to slide 1"></button>
+                        <button class="dot" aria-label="Go to slide 2"></button>
+                        <button class="dot" aria-label="Go to slide 3"></button>
+                        <button class="dot" aria-label="Go to slide 4"></button>
+                        <button class="dot" aria-label="Go to slide 5"></button>
+                        <button class="dot" aria-label="Go to slide 6"></button>
+                        <button class="dot" aria-label="Go to slide 7"></button>
+                        <button class="dot" aria-label="Go to slide 8"></button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="faq-section" id="faq">
-    <div class="container">
-        <div class="section-title">
-            <h2>Common Questions</h2>
-            <p>Answers to some of the most frequently asked questions about mortgages in Canada.</p>
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Common Questions</h2>
+                <p>Answers to some of the most frequently asked questions about mortgages in Canada.</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What is the difference between a mortgage broker and a bank?
+                        <span class="faq-icon"></span>
+                    </div>
+                    <div class="faq-answer">
+                        A bank only offers mortgage products from their own institution. As a licensed mortgage
+                        professional, I have access to dozens of different lenders, including major banks, credit
+                        unions,
+                        and private lenders, allowing me to find the best product and rate for your specific situation.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How much does it cost to use a mortgage broker?
+                        <span class="faq-icon"></span>
+                    </div>
+                    <div class="faq-answer">
+                        In most cases (standard residential mortgages), there is no cost to you! The lender pays the
+                        broker
+                        a finder's fee for bringing them the business. For alternative, private and commercial
+                        mortgages, a broker fee may be charged; all costs will be clearly outlined in advance.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What is the difference between a rate hold and a pre-approval?
+                        <span class="faq-icon"></span>
+                    </div>
+                    <div class="faq-answer">
+                        <strong>A rate hold</strong> simply locks in a specific interest rate for a set period (usually
+                        90 to 120 days).<br>
+                        <strong>The Process:</strong> It requires minimal documentation and can often be done in a few
+                        minutes.<br>
+                        <strong>The Catch:</strong> The lender has not looked at your financial situation. It does not
+                        guarantee that you qualify for a mortgage, nor does it guarantee how much money you can
+                        borrow.<br><br>
+                        <strong>A pre-approval</strong> is a formal, preliminary commitment from a lender stating
+                        exactly how much they are willing to lend you.<br>
+                        <strong>The Process:</strong> The mortgage professional and/or the lender review your credit
+                        score, income, employment, and down payment documents.<br>
+                        <strong>The Benefit:</strong> It includes a rate hold and determines your maximum purchase
+                        budget.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Fixed vs. Variable: Which is better?
+                        <span class="faq-icon"></span>
+                    </div>
+                    <div class="faq-answer">
+                        A fixed rate remains the same for your entire term, providing stability. A variable rate
+                        fluctuates
+                        with the prime rate, which can save you money if rates drop, but carries more risk if rates
+                        rise.
+                        The right choice depends on your risk tolerance and financial goals.
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question">
-                    What is the difference between a mortgage broker and a bank?
-                    <span class="faq-icon"></span>
-                </div>
-                <div class="faq-answer">
-                    A bank only offers mortgage products from their own institution. As a licensed mortgage
-                    professional, I have access to dozens of different lenders, including major banks, credit unions,
-                    and private lenders, allowing me to find the best product and rate for your specific situation.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    How much does it cost to use a mortgage broker?
-                    <span class="faq-icon"></span>
-                </div>
-                <div class="faq-answer">
-                    In most cases (standard residential mortgages), there is no cost to you! The lender pays the broker
-                    a finder's fee for bringing them the business. For alternative, private and commercial mortgages, a broker fee may be charged; all costs will be clearly outlined in advance.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    What is the difference between a rate hold and a pre-approval?
-                    <span class="faq-icon"></span>
-                </div>
-                <div class="faq-answer">
-                    <strong>A rate hold</strong> simply locks in a specific interest rate for a set period (usually 90 to 120 days).<br>
-                    <strong>The Process:</strong> It requires minimal documentation and can often be done in a few minutes.<br>
-                    <strong>The Catch:</strong> The lender has not looked at your financial situation. It does not guarantee that you qualify for a mortgage, nor does it guarantee how much money you can borrow.<br><br>
-                    <strong>A pre-approval</strong> is a formal, preliminary commitment from a lender stating exactly how much they are willing to lend you.<br>
-                    <strong>The Process:</strong> The mortgage professional and/or the lender review your credit score, income, employment, and down payment documents.<br>
-                    <strong>The Benefit:</strong> It includes a rate hold and determines your maximum purchase budget.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    Fixed vs. Variable: Which is better?
-                    <span class="faq-icon"></span>
-                </div>
-                <div class="faq-answer">
-                    A fixed rate remains the same for your entire term, providing stability. A variable rate fluctuates
-                    with the prime rate, which can save you money if rates drop, but carries more risk if rates rise.
-                    The right choice depends on your risk tolerance and financial goals.
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
 </section>
 
@@ -1735,23 +1866,27 @@ title: Home
 
             <div class="contact-form">
                 <form id="contactForm" action="#" method="POST">
-                    <div id="contactFormResult" style="display:none; margin-bottom: 15px; padding: 10px; border-radius: 4px; font-weight: 500;"></div>
+                    <div id="contactFormResult"
+                        style="display:none; margin-bottom: 15px; padding: 10px; border-radius: 4px; font-weight: 500;">
+                    </div>
                     <div class="form-group">
                         <label for="name">FullName</label>
                         <input type="text" id="name" name="name" placeholder="John Doe" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="john@example.com" pattern="[^\s@]+@[^\s@]+\.[^\s@]+" title="Please provide a valid email address." required>
+                        <input type="email" id="email" name="email" placeholder="john@example.com"
+                            pattern="[^\s@]+@[^\s@]+\.[^\s@]+" title="Please provide a valid email address." required>
                     </div>
                     <div class="form-group">
                         <label for="message">Your Message</label>
                         <textarea id="message" name="message" rows="5" placeholder="How can I help you today?"
                             required></textarea>
                     </div>
-                    
+
                     <!-- Cloudflare Turnstile Widget -->
-                    <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-theme="light" style="margin-bottom: 15px;"></div>
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAADl9Y-UdABoWTkF8" data-theme="light"
+                        style="margin-bottom: 15px;"></div>
                     <!-- Note: '1x00000000000000000000AA' is a testing sitekey that always passes. Replace with your actual sitekey. -->
                     <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
@@ -1797,7 +1932,7 @@ title: Home
     // Shared state for scroll animations
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
-        
+
         // 1. Text Reveal Logic
         const reveals = document.querySelectorAll('.reveal-text');
         reveals.forEach(reveal => {
@@ -1834,10 +1969,10 @@ title: Home
 
     function showSlide(index) {
         slides.forEach(slide => slide.classList.remove('active'));
-        
+
         if (slides[index]) {
             slides[index].classList.add('active');
-            
+
             // Set active class on the corresponding dot inside the newly active slide
             const activeDots = slides[index].querySelectorAll('.dot');
             activeDots.forEach((dot, dotIndex) => {
@@ -1966,7 +2101,7 @@ title: Home
 
     modalClose.addEventListener('click', hideModal);
     modalOverlay.addEventListener('click', hideModal);
-    
+
     // Close on Escape
     window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('active')) hideModal();
@@ -2028,7 +2163,7 @@ title: Home
         const monthlyDebt = parseFloat(qDebt.value);
         const downPayment = parseFloat(qDown.value);
         const contractRate = parseFloat(qRate.value) / 100;
-        
+
         // Canadian Stress Test: Max of (Contract + 2%) or 5.25%
         const stressRate = Math.max(contractRate + 0.02, 0.0525);
         const monthlyStressRate = getMonthlyRate(stressRate);
@@ -2037,7 +2172,7 @@ title: Home
         const monthlyIncome = annualIncome / 12;
         const gdsLimit = monthlyIncome * 0.39;
         const tdsLimit = (monthlyIncome * 0.44) - monthlyDebt;
-        
+
         // We use the more restrictive of GDS or TDS
         const heatingCosts = parseFloat(qHeat.value);
         const propertyTaxes = parseFloat(qTaxes.value) / 12;
@@ -2051,12 +2186,12 @@ title: Home
         // Selected Amortization Formula
         const n = parseInt(qAmort.value) * 12;
         const maxLoan = maxMonthlyPI * (1 - Math.pow(1 + monthlyStressRate, -n)) / monthlyStressRate;
-        
+
         // Account for CMHC Insurance Premium to find base purchase power
         let maxPurchaseByIncome = maxLoan + downPayment;
         let defaultDPPercent = downPayment / maxPurchaseByIncome;
         let cmhcRate = 0;
-        
+
         if (defaultDPPercent >= 0.05 && defaultDPPercent < 0.10) cmhcRate = 0.040;
         else if (defaultDPPercent >= 0.10 && defaultDPPercent < 0.15) cmhcRate = 0.031;
         else if (defaultDPPercent >= 0.15 && defaultDPPercent < 0.20) cmhcRate = 0.028;
@@ -2078,7 +2213,7 @@ title: Home
         }
 
         const maxPurchase = Math.min(maxPurchaseByIncome, maxPurchaseByDP);
-        
+
         // Actual Mortgage Payment (using contract rate, including CMHC if applicable)
         const finalPurchase = maxPurchase;
         const finalDPPercent = downPayment / finalPurchase;
@@ -2086,17 +2221,17 @@ title: Home
         if (finalDPPercent >= 0.05 && finalDPPercent < 0.10) finalCmhcRate = 0.040;
         else if (finalDPPercent >= 0.10 && finalDPPercent < 0.15) finalCmhcRate = 0.031;
         else if (finalDPPercent >= 0.15 && finalDPPercent < 0.20) finalCmhcRate = 0.028;
-        
+
         const actualLoanAmount = (finalPurchase - downPayment) * (1 + finalCmhcRate);
         const monthlyContractRate = getMonthlyRate(contractRate);
         const actualPI = actualLoanAmount > 0 ? actualLoanAmount * (monthlyContractRate * Math.pow(1 + monthlyContractRate, n)) / (Math.pow(1 + monthlyContractRate, n) - 1) : 0;
-        
+
         const totalPayment = actualPI + heatingCosts + propertyTaxes + condoCostsActual;
 
         document.getElementById('buying-power').innerText = formatCurrency(maxPurchase);
         document.getElementById('qualify-loan').innerText = formatCurrency(actualLoanAmount);
         document.getElementById('qualify-payment').innerText = formatCurrency(totalPayment) + "/mo";
-        
+
         let breakdownHTML = `PI: ${formatCurrency(actualPI)}`;
         if (propertyTaxes > 0) breakdownHTML += ` | Taxes: ${formatCurrency(propertyTaxes)}`;
         if (heatingCosts > 0) breakdownHTML += ` | Heat: ${formatCurrency(heatingCosts)}`;
@@ -2108,7 +2243,7 @@ title: Home
     function getInterestPaid(balance, monthlyRate, pmt, months) {
         let interest = 0;
         let b = balance;
-        for(let i=0; i<months; i++) {
+        for (let i = 0; i < months; i++) {
             let intThisMonth = b * monthlyRate;
             interest += intThisMonth;
             let prinThisMonth = pmt - intThisMonth;
@@ -2133,37 +2268,37 @@ title: Home
         document.getElementById('ref-orig-rate-val').innerText = document.getElementById('ref-orig-rate').value + '%';
         document.getElementById('ref-orig-amort-val').innerText = origAmort / 12;
         document.getElementById('ref-pmts-made-val').innerText = pmtsMade;
-        
+
         document.getElementById('ref-new-rate-val').innerText = document.getElementById('ref-new-rate').value + '%';
         document.getElementById('ref-new-amort-val').innerText = newAmort / 12;
         document.getElementById('ref-closing-val').innerText = formatCurrency(closing);
         document.getElementById('ref-penalty-val').innerText = formatCurrency(penalty);
 
         const origPmt = origBal * origRate / (1 - Math.pow(1 + origRate, -origAmort));
-        
+
         let currentBal = origBal;
-        for(let i=0; i<pmtsMade; i++) {
+        for (let i = 0; i < pmtsMade; i++) {
             let int = currentBal * origRate;
             currentBal -= (origPmt - int);
         }
-        
+
         document.getElementById('ref-orig-pmt-display').innerText = formatCurrency(origPmt);
         document.getElementById('ref-new-bal-display').innerText = formatCurrency(currentBal);
 
         const newPmt = currentBal * newRate / (1 - Math.pow(1 + newRate, -newAmort));
         document.getElementById('ref-new-pmt-display').innerText = formatCurrency(newPmt);
-        
+
         const origRemainingPmts = Math.max(0, origAmort - pmtsMade);
         const totalOrigRemaining = origPmt * origRemainingPmts;
         const totalNewRemaining = newPmt * newAmort;
-        
+
         const netSavings = totalOrigRemaining - totalNewRemaining;
         const pmtDecrease = origPmt - newPmt;
         const outOfPocket = closing + penalty;
         const trueNetValue = netSavings - outOfPocket;
 
         document.getElementById('ref-savings-main').innerText = formatCurrency(Math.max(netSavings, 0));
-        
+
         const decreaseEl = document.getElementById('ref-decrease');
         if (pmtDecrease > 0) {
             decreaseEl.innerText = `${formatCurrency(pmtDecrease)} per month`;
@@ -2172,7 +2307,7 @@ title: Home
             decreaseEl.innerText = `increase ${formatCurrency(Math.abs(pmtDecrease))} per month`;
             decreaseEl.style.color = "red";
         }
-        
+
         document.getElementById('ref-out-of-pocket').innerText = formatCurrency(outOfPocket);
         document.getElementById('ref-net-savings').innerText = formatCurrency(trueNetValue);
         document.getElementById('ref-net-savings').style.color = trueNetValue >= 0 ? 'var(--text-color)' : 'red';
@@ -2189,7 +2324,7 @@ title: Home
         const rate = getPeriodRate(parseFloat(document.getElementById('pay-rate').value) / 100, freq);
         const origAmort = parseInt(document.getElementById('pay-amort').value);
         const remainAmort = parseInt(document.getElementById('pay-remain').value);
-        
+
         const extraFreq = parseInt(document.getElementById('pay-extra-freq').value);
         const rawExtra = parseFloat(document.getElementById('pay-extra').value);
         // Normalize the additional payment amount into the base Payment Type timeline 
@@ -2203,19 +2338,19 @@ title: Home
 
         const nOrig = origAmort * freq;
         let nRemain = remainAmort * freq;
-        if (nRemain > nOrig) { 
-            nRemain = nOrig; 
-            document.getElementById('pay-remain').value = origAmort; 
+        if (nRemain > nOrig) {
+            nRemain = nOrig;
+            document.getElementById('pay-remain').value = origAmort;
             document.getElementById('pay-remain-val').innerText = origAmort;
         }
         const periodsElapsed = nOrig - nRemain;
 
         // Base payment calculated from ORIGINAL metrics
         const standardPmt = bal * (rate * Math.pow(1 + rate, nOrig)) / (Math.pow(1 + rate, nOrig) - 1);
-        
+
         // Find current balance after elapsed periods
         let currentBal = bal;
-        for(let i=0; i<periodsElapsed; i++) {
+        for (let i = 0; i < periodsElapsed; i++) {
             let interest = currentBal * rate;
             currentBal -= (standardPmt - interest);
         }
@@ -2255,7 +2390,7 @@ title: Home
             e.preventDefault();
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const resultDiv = document.getElementById('contactFormResult');
-            
+
             submitBtn.disabled = true;
             submitBtn.innerText = 'Sending...';
             resultDiv.style.display = 'none';
