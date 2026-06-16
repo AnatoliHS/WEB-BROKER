@@ -10,7 +10,7 @@ export async function onRequestPost({ request, env }) {
       });
     }
 
-    // 1. Email format validation
+    // 1. Email format validationn
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return new Response(JSON.stringify({ error: "Invalid email format" }), {
@@ -27,7 +27,7 @@ export async function onRequestPost({ request, env }) {
           'Accept': 'application/dns-json'
         }
       });
-      
+
       if (dnsResponse.ok) {
         const dnsData = await dnsResponse.json();
         if (!dnsData.Answer || dnsData.Answer.length === 0) {
@@ -54,7 +54,7 @@ export async function onRequestPost({ request, env }) {
     // Default to a verified domain email if set, otherwise use what's available
     const fromEmail = env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
     // Default to the broker's email (where messages should be sent)
-    const toEmail = env.RESEND_TO_EMAIL || "ca.bry.85@gmail.com"; 
+    const toEmail = env.RESEND_TO_EMAIL || "ca.bry.85@gmail.com";
 
     const emailResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
