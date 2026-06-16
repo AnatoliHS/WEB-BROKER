@@ -1884,10 +1884,6 @@ title: Home
                             required></textarea>
                     </div>
 
-                    <!-- Cloudflare Turnstile Widget -->
-                    <div class="cf-turnstile" data-sitekey="0x4AAAAAADl9Y-UdABoWTkF8" data-theme="light"
-                        style="margin-bottom: 15px;"></div>
-
                     <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
             </div>
@@ -2427,14 +2423,7 @@ title: Home
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerText = 'Send Message';
-                // Reset Turnstile widget so the form can be submitted again if needed
-                if (window.turnstile) {
-                    window.turnstile.reset();
-                }
             }
         });
     }
 </script>
-
-<!-- Cloudflare Turnstile Script -->
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
