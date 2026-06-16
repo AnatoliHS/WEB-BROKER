@@ -1,7 +1,7 @@
 export async function onRequestPost({ request, env }) {
   try {
     const data = await request.json();
-    const { name, email, message } = data;
+    const { name, email, message, 'cf-turnstile-response': turnstileToken } = data;
 
     if (!name || !email || !message) {
       return new Response(JSON.stringify({ error: "Missing required fields" }), {
@@ -40,6 +40,45 @@ export async function onRequestPost({ request, env }) {
     } catch (e) {
       console.error("DNS check failed", e);
       // Proceed if DNS DoH fails to avoid blocking legitimate users due to third-party outage
+    }
+
+    // 3. Cloudflare Turnstile Verification
+    const turnstileSecret = env.TURNSTILE_SECRET_KEY;
+    if (!turnstileSecret) {
+      return new Response(JSON.stringify({ error: "Server configuration error: missing Turnstile secret" }), {
+        status: 500,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
+
+    if (!turnstileToken) {
+      return new Response(JSON.stringify({ error: "Please complete the anti-spam challenge" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
+
+    const turnstileFormData = new FormData();
+    turnstileFormData.append('secret', turnstileSecret);
+    turnstileFormData.append('response', turnstileToken);
+    
+    // Optional: add remoteip for stronger verification
+    const ip = request.headers.get('CF-Connecting-IP');
+    if (ip) {
+      turnstileFormData.append('remoteip', ip);
+    }
+
+    const turnstileResult = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body: turnstileFormData
+    });
+
+    const turnstileOutcome = await turnstileResult.json();
+    if (!turnstileOutcome.success) {
+      return new Response(JSON.stringify({ error: "Anti-spam verification failed. Please try again." }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" }
+      });
     }
 
     // 4. Send Email via Resend
