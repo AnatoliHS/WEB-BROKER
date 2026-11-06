@@ -1,6 +1,7 @@
 ---
 layout: policy.njk
 title: Privacy Policy
+description: How Carole Ann Bryant and Dominion Lending Centres collect, use and protect your personal information.
 ---
 
 <section style="padding: 160px 20px 100px; max-width: 900px; margin: 0 auto;">

@@ -1,6 +1,7 @@
 ---
 layout: policy.njk
 title: Terms of Use
+description: Terms and conditions for using the Carole Ann Bryant, Dominion Lending Centres mortgage broker website.
 ---
 
 <section style="padding: 160px 20px 100px; max-width: 900px; margin: 0 auto;">

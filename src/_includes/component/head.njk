@@ -1,71 +1,118 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ site.name }} | Expert Mortgage Broker in Northumberland County, ON</title>
-
-  <meta name="description"
-    content="Professional mortgage advice from {{ site.name }}, {{ site.title }} at {{ site.brokerage }}. Specialized in Home Purchases, Renewals, and Refinancing. Serving Northumberland County and across Ontario." />
-  <meta name="keywords"
-    content="Mortgage Broker, Northumberland County, Ontario, Home Purchase, Mortgage Renewal, Refinancing, Carole Ann Bryant, Dominion Lending Centres" />
+  {%- set defaultTitle = site.name + " | Expert Mortgage Broker in Northumberland County, ON" %}
+  {%- set defaultDescription = "Professional mortgage advice from " + site.name + ", " + site.title + " at " + site.brokerage + ". Specialized in Home Purchases, Renewals, and Refinancing. Serving Northumberland County and across Ontario." %}
+  {%- set pageTitle = defaultTitle if isHome or not title else (title + " | " + site.name + ", Mortgage Broker") %}
+  {%- set pageDescription = description or defaultDescription %}
+  {%- set canonicalUrl = site.url + (page.url | replace("/", "", 1)) %}
+  {%- set shareImage = site.url + "assets/og-image.jpg" %}
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ pageDescription }}" />
   <meta name="author" content="{{ site.name }}" />
-  <meta name="robots" content="index, follow" />
-
-  <!-- Canonical URL -->
-  <link rel="canonical" href="{{ site.url }}" />
+  {%- if noindex %}
+  <meta name="robots" content="noindex, follow" />
+  {%- else %}
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="{{ canonicalUrl }}" />
+  {%- endif %}
+  <meta name="theme-color" content="#1a365d" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="{{ site.url }}" />
-  <meta property="og:title" content="{{ site.name }} | Mortgage Broker Northumberland County, ON" />
-  <meta property="og:description"
-    content="Expert mortgage advice with access to hundreds of products. Specializing in home purchases, renewals, and equity refinancing." />
-  <meta property="og:image" content="{{ site.url }}assets/carol-ann-bryant.JPG" />
+  <meta property="og:site_name" content="{{ site.name }}, Mortgage Broker" />
+  <meta property="og:locale" content="en_CA" />
+  <meta property="og:url" content="{{ canonicalUrl }}" />
+  <meta property="og:title" content="{{ pageTitle }}" />
+  <meta property="og:description" content="{{ pageDescription }}" />
+  <meta property="og:image" content="{{ shareImage }}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="{{ site.name }}, Licensed Mortgage Broker" />
 
   <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="{{ site.url }}" />
-  <meta property="twitter:title" content="{{ site.name }} | Mortgage Broker Northumberland County" />
-  <meta property="twitter:description"
-    content="Professional mortgage solutions tailored to your unique financial situation." />
-  <meta property="twitter:image" content="{{ site.url }}assets/carol-ann-bryant.JPG" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ pageTitle }}" />
+  <meta name="twitter:description" content="{{ pageDescription }}" />
+  <meta name="twitter:image" content="{{ shareImage }}" />
+  {%- if preloadImage %}
 
-  <!-- Structured Data: FinancialService / Mortgage Broker -->
+  <link rel="preload" as="image" href="{{ preloadImageMobile }}" media="(max-width: 768px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="{{ preloadImage }}" media="(min-width: 769px)" fetchpriority="high" />
+  {%- endif %}
+  {%- if isHome %}
+
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "FinancialService",
-    "name": "{{ site.name }} - {{ site.brokerage }}",
-    "description": "Licensed mortgage professional providing expert advice on home purchases, renewals, and refinancing in Northumberland County and across Ontario.",
-    "url": "{{ site.url }}",
-    "telephone": "{{ site.phone }}",
-    "email": "{{ site.email }}",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Northumberland",
-      "addressRegion": "ON",
-      "addressCountry": "CA"
-    },
-    "image": "{{ site.url }}assets/carol-ann-bryant.JPG",
-    "priceRange": "$$$",
-    "legalName": "{{ site.name }}",
-    "memberOf": {
-      "@type": "Organization",
-      "name": "{{ site.brokerage }}"
-    },
-    "identifier": [
+    "@graph": [
       {
-        "@type": "PropertyValue",
-        "name": "Originator Licence",
-        "value": "M08001276"
+        "@type": "WebSite",
+        "@id": "{{ site.url }}#website",
+        "url": "{{ site.url }}",
+        "name": "{{ site.name }}, Mortgage Broker",
+        "inLanguage": "en-CA"
       },
       {
-        "@type": "PropertyValue",
-        "name": "Brokerage Licence",
-        "value": "13119"
+        "@type": ["FinancialService", "LocalBusiness"],
+        "@id": "{{ site.url }}#business",
+        "name": "{{ site.name }} - {{ site.brokerage }}",
+        "description": "Licensed mortgage professional providing expert advice on home purchases, renewals, and refinancing in Northumberland County and across Ontario.",
+        "url": "{{ site.url }}",
+        "telephone": "+1-{{ site.phone }}",
+        "email": "{{ site.email }}",
+        "image": "{{ site.url }}assets/carol-ann-bryant.JPG",
+        "logo": "{{ site.url }}android-chrome-512x512.png",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Northumberland",
+          "addressRegion": "ON",
+          "addressCountry": "CA"
+        },
+        "areaServed": [
+          { "@type": "AdministrativeArea", "name": "Northumberland County, Ontario" },
+          { "@type": "State", "name": "Ontario" }
+        ],
+        "founder": { "@id": "{{ site.url }}#carole" },
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "{{ site.brokerage }}"
+        },
+        "sameAs": {{ site.social | dump | safe }},
+        "identifier": [
+          { "@type": "PropertyValue", "name": "Originator Licence", "value": "M08001276" },
+          { "@type": "PropertyValue", "name": "Brokerage Licence", "value": "13119" }
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "{{ site.url }}#carole",
+        "name": "{{ site.name }}",
+        "jobTitle": "Licensed Mortgage Broker",
+        "image": "{{ site.url }}assets/carol-ann-bryant.JPG",
+        "telephone": "+1-{{ site.phone }}",
+        "email": "{{ site.email }}",
+        "worksFor": { "@id": "{{ site.url }}#business" },
+        "sameAs": {{ site.social | dump | safe }}
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "{{ site.url }}#faq",
+        "mainEntity": [
+          {%- for item in faq %}
+          {
+            "@type": "Question",
+            "name": {{ item.question | dump | safe }},
+            "acceptedAnswer": { "@type": "Answer", "text": {{ item.answer | dump | safe }} }
+          }{% if not loop.last %},{% endif %}
+          {%- endfor %}
+        ]
       }
     ]
   }
   </script>
+  {%- endif %}
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">

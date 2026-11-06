@@ -1,6 +1,9 @@
 ---
 layout: default.njk
 title: Home
+isHome: true
+preloadImage: /assets/deal.webp
+preloadImageMobile: /assets/deal-900.webp
 ---
 
 <!-- Styles Grouped Together -->
@@ -20,7 +23,7 @@ title: Home
         height: 100vh;
         width: 100%;
         position: relative;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('/assets/deal.png');
+        background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('/assets/deal.webp');
         background-size: cover;
         background-position: center top;
         background-attachment: scroll;
@@ -92,6 +95,7 @@ title: Home
 
     .hero-content-watermark {
         width: 100%;
+        height: auto;
         margin-bottom: -10px;
         opacity: 0.12;
         /* Kept the logo subtle */
@@ -160,6 +164,10 @@ title: Home
     }
 
     @media (max-width: 768px) {
+        .hero-image-area {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('/assets/deal-900.webp');
+        }
+
         .hero {
             padding: 0 !important;
             margin: 0 !important;
@@ -1023,6 +1031,87 @@ title: Home
         margin-top: 20px;
     }
 
+    /* Contact form: inline thank-you panel */
+    .contact-success {
+        text-align: center;
+        padding: 30px 10px;
+        animation: successSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .contact-success[hidden],
+    #contactForm[hidden] {
+        display: none;
+    }
+
+    .contact-success:focus {
+        outline: none;
+    }
+
+    .contact-success h3 {
+        font-size: 2.25rem;
+        margin-bottom: 15px;
+    }
+
+    .contact-success p {
+        color: var(--text-light);
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 10px;
+    }
+
+    .contact-success a {
+        color: var(--primary-color);
+        font-weight: 500;
+    }
+
+    .contact-form .contact-success .btn {
+        width: auto;
+        margin-top: 25px;
+        font-family: inherit;
+    }
+
+    .contact-success .btn-outline:not(:hover) {
+        background-color: transparent;
+    }
+
+    .success-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 28px;
+        border-radius: 50%;
+        display: block;
+        stroke-width: 2.5;
+        stroke: var(--accent-color);
+        stroke-miterlimit: 10;
+        animation: successFill .4s ease-in-out .4s forwards, successScale .3s cubic-bezier(0.175, 0.885, 0.32, 1.275) .9s forwards;
+    }
+
+    .success-icon-circle {
+        stroke-dasharray: 166;
+        stroke-dashoffset: 166;
+        fill: none;
+        animation: successStroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    }
+
+    .success-icon-check {
+        transform-origin: 50% 50%;
+        stroke-dasharray: 48;
+        stroke-dashoffset: 48;
+        animation: successStroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+    }
+
+    @keyframes successStroke { 100% { stroke-dashoffset: 0; } }
+    @keyframes successScale { 0%, 100% { transform: none; } 50% { transform: scale3d(1.1, 1.1, 1); } }
+    @keyframes successFill { 100% { box-shadow: inset 0 0 0 40px rgba(184, 134, 11, 0.04); } }
+    @keyframes successSlideIn { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: none; } }
+
+    @media (prefers-reduced-motion: reduce) {
+        .contact-success, .success-icon, .success-icon-circle, .success-icon-check {
+            animation: none;
+            stroke-dashoffset: 0;
+        }
+    }
+
     /* MEDIA QUERIES */
     @media (max-width: 992px) {
 
@@ -1226,7 +1315,7 @@ title: Home
 
     <div class="hero-content-area">
         <div class="hero-watermark-wrapper">
-            <img src="/assets/dominion-3.png" alt="" class="hero-content-watermark">
+            <img src="/assets/dominion-3.webp" alt="" class="hero-content-watermark" width="1100" height="673">
             <div class="hero-watermark-text">Dominion Lending Centres Mortgages On Point Brokerage Licence #13119</div>
         </div>
         <div class="hero-content-inner">
@@ -1243,7 +1332,7 @@ title: Home
         <div class="container">
             <div class="about-grid">
                 <div class="about-portrait">
-                    <img src="/assets/carol-ann-bryant.JPG" alt="Carole Ann Bryant - Mortgage Broker">
+                    <img src="/assets/carol-ann-bryant.webp" alt="Carole Ann Bryant, licensed mortgage broker" width="768" height="960" loading="lazy" decoding="async">
                 </div>
                 <div class="about-text">
                     <h2>Unbiased Expertise. <br><em>Tailored for You.</em></h2>
@@ -1274,7 +1363,7 @@ title: Home
         </div>
         <div class="service-row" id="purchase">
             <div class="service-image">
-                <img src="/assets/home-purchase.png" alt="Happy family in new home">
+                <img src="/assets/home-purchase.webp" alt="Family celebrating the purchase of their new home" width="840" height="840" loading="lazy" decoding="async">
             </div>
             <div class="service-content">
                 <span class="service-label">Purchase</span>
@@ -1288,7 +1377,7 @@ title: Home
 
         <div class="service-row" id="renewal">
             <div class="service-image">
-                <img src="/assets/mortgage-renewal.png" alt="Modern office meeting">
+                <img src="/assets/mortgage-renewal.webp" alt="Homeowners reviewing mortgage renewal options with a broker" width="840" height="840" loading="lazy" decoding="async">
             </div>
             <div class="service-content">
                 <span class="service-label">Renewal</span>
@@ -1301,7 +1390,7 @@ title: Home
 
         <div class="service-row" id="refinance">
             <div class="service-image">
-                <img src="/assets/equity-refinance.png" alt="Beautiful home exterior">
+                <img src="/assets/equity-refinance.webp" alt="Home exterior representing equity available for refinancing" width="840" height="840" loading="lazy" decoding="async">
             </div>
             <div class="service-content">
                 <span class="service-label">Refinance</span>
@@ -1761,67 +1850,17 @@ title: Home
             </div>
 
             <div class="faq-container">
+                {%- for item in faq %}
                 <div class="faq-item">
                     <div class="faq-question">
-                        What is the difference between a mortgage broker and a bank?
+                        {{ item.question }}
                         <span class="faq-icon"></span>
                     </div>
                     <div class="faq-answer">
-                        A bank only offers mortgage products from their own institution. As a licensed mortgage
-                        professional, I have access to dozens of different lenders, including major banks, credit
-                        unions,
-                        and private lenders, allowing me to find the best product and rate for your specific situation.
+                        {{ item.answer | safe }}
                     </div>
                 </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        How much does it cost to use a mortgage broker?
-                        <span class="faq-icon"></span>
-                    </div>
-                    <div class="faq-answer">
-                        In most cases (standard residential mortgages), there is no cost to you! The lender pays the
-                        broker
-                        a finder's fee for bringing them the business. For alternative, private and commercial
-                        mortgages, a broker fee may be charged; all costs will be clearly outlined in advance.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        What is the difference between a rate hold and a pre-approval?
-                        <span class="faq-icon"></span>
-                    </div>
-                    <div class="faq-answer">
-                        <strong>A rate hold</strong> simply locks in a specific interest rate for a set period (usually
-                        90 to 120 days).<br>
-                        <strong>The Process:</strong> It requires minimal documentation and can often be done in a few
-                        minutes.<br>
-                        <strong>The Catch:</strong> The lender has not looked at your financial situation. It does not
-                        guarantee that you qualify for a mortgage, nor does it guarantee how much money you can
-                        borrow.<br><br>
-                        <strong>A pre-approval</strong> is a formal, preliminary commitment from a lender stating
-                        exactly how much they are willing to lend you.<br>
-                        <strong>The Process:</strong> The mortgage professional and/or the lender review your credit
-                        score, income, employment, and down payment documents.<br>
-                        <strong>The Benefit:</strong> It includes a rate hold and determines your maximum purchase
-                        budget.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Fixed vs. Variable: Which is better?
-                        <span class="faq-icon"></span>
-                    </div>
-                    <div class="faq-answer">
-                        A fixed rate remains the same for your entire term, providing stability. A variable rate
-                        fluctuates
-                        with the prime rate, which can save you money if rates drop, but carries more risk if rates
-                        rise.
-                        The right choice depends on your risk tolerance and financial goals.
-                    </div>
-                </div>
+                {%- endfor %}
             </div>
         </div>
     </section>
@@ -1865,12 +1904,23 @@ title: Home
             </div>
 
             <div class="contact-form">
+                <div id="contactSuccess" class="contact-success" role="status" tabindex="-1" hidden>
+                    <svg class="success-icon" viewBox="0 0 52 52" aria-hidden="true">
+                        <circle class="success-icon-circle" cx="26" cy="26" r="25" fill="none" />
+                        <path class="success-icon-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                    </svg>
+                    <h3>Message Sent!</h3>
+                    <p>Thank you for contacting <strong>{{ site.name }}</strong>. I have received your inquiry and will be in touch shortly.</p>
+                    <p>Need to talk sooner? Call <a href="tel:{{ site.phone }}">{{ site.phone }}</a>.</p>
+                    <button type="button" id="contactSendAnother" class="btn btn-outline">Send Another Message</button>
+                </div>
+
                 <form id="contactForm" action="#" method="POST">
-                    <div id="contactFormResult"
+                    <div id="contactFormResult" role="alert"
                         style="display:none; margin-bottom: 15px; padding: 10px; border-radius: 4px; font-weight: 500;">
                     </div>
                     <div class="form-group">
-                        <label for="name">FullName</label>
+                        <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" placeholder="John Doe" required>
                     </div>
                     <div class="form-group">
@@ -2385,7 +2435,14 @@ title: Home
 
     // Contact Form Submission
     const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
+    const successPanel = document.getElementById('contactSuccess');
+    if (contactForm && successPanel) {
+        document.getElementById('contactSendAnother').addEventListener('click', () => {
+            successPanel.hidden = true;
+            contactForm.hidden = false;
+            document.getElementById('name').focus();
+        });
+
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const submitBtn = contactForm.querySelector('button[type="submit"]');
@@ -2408,11 +2465,10 @@ title: Home
                 const result = await response.json();
 
                 if (response.ok) {
-                    resultDiv.innerText = 'Message sent successfully! I will get back to you soon.';
-                    resultDiv.style.backgroundColor = '#d4edda';
-                    resultDiv.style.color = '#155724';
-                    resultDiv.style.display = 'block';
                     contactForm.reset();
+                    contactForm.hidden = true;
+                    successPanel.hidden = false;
+                    successPanel.focus();
                 } else {
                     resultDiv.innerText = result.error || 'Failed to send message. Please try again later.';
                     resultDiv.style.backgroundColor = '#f8d7da';

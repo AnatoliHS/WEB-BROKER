@@ -256,7 +256,7 @@
 <nav class="navbar" id="navbar">
   <div class="nav-brand">
     <div class="nav-portrait">
-      <img src="/assets/carol-ann-bryant.JPG" alt="Carole Ann Bryant">
+      <img src="/assets/carol-ann-bryant-200.webp" alt="Carole Ann Bryant" width="200" height="250">
     </div>
     <div class="nav-name-group">
       <div class="nav-name">{{ site.name }} <span class="nav-title-sub">{{ site.title }}</span></div>
@@ -300,11 +300,11 @@
   }
 
   // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href').replace(/^\//, '');
+      if (targetId === '#' || !document.querySelector(targetId)) return;
       e.preventDefault();
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
       
       const navbar = document.getElementById('navbar');
       const navLinks = document.getElementById('nav-links');
